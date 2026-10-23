@@ -106,8 +106,16 @@ export const savePaymentMethod = async (type, display_label, is_default = false)
   return run(supabase.from('payment_methods').insert({ user_id: me.id, type, display_label, is_default }).select().single());
 };
 
+// ---------- Screen 8b: live tracking ----------
+// Stages run on a timer counted from getGroup(...).placed_at, so every phone shows the same stage.
+// When the timer reaches "Delivered", call this once (safe to call again).
+export const markDelivered = groupId => rpc('mark_delivered', { p_group: groupId });
+
 // ---------- Screen 9: history ----------
 export const myGroupOrders = () => rpc('my_group_orders');
+// Everything that happened in a group order, oldest first (audit log; members only)
+export const groupActivity = groupId =>
+  run(supabase.from('audit_log').select('at, actor_id, table_name, action, changes').eq('group_order_id', groupId).order('at'));
 
 // ---------- helpers for the UI ----------
 export const rupees = n => '₹' + Number(n ?? 0).toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 });

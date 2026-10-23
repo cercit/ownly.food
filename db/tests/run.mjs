@@ -186,6 +186,74 @@ ok(Math.abs(totals.reduce((a, b) => a + b, 0) - bill) < 0.001, `equal split: sha
 ok(eqp.members.every(m => m.payment.status === 'pending'), 'equal split: everyone, host included, starts as pending');
 ok(eqp.members.flatMap(m => m.items).every(i => i.image_url), 'cart items carry their photos');
 
+// ---------- 06: delivered + shared tracking clock ----------
+await db.exec('reset role');
+// live Supabase grants every table privilege to anon and authenticated by default; copy that before 06
+await db.exec(`grant all on all tables in schema public to anon, authenticated`);
+await db.exec(readFileSync(path.join(here, '..', '06_delivered.sql'), 'utf8'));
+await db.exec(readFileSync(path.join(here, '..', '06_delivered.sql'), 'utf8'));
+console.log('applied 06 (twice)');
+await asUser(f1);
+const beforeDel = (await one(`select get_group($1) j`, [eq.id])).j;
+ok(beforeDel.placed_at && beforeDel.delivered_at === null, 'members get the placed time, so every phone runs the same tracking clock');
+await asUser(stranger);
+await throwsLike(`select mark_delivered($1)`, [eq.id], /Join this group/, 'a non-member cannot mark an order delivered');
+await asUser(f1);
+const del = (await one(`select mark_delivered($1) j`, [eq.id])).j;
+ok(del.status === 'delivered' && del.already === false, 'a member\'s app marks the order delivered when tracking finishes');
+ok((await one(`select mark_delivered($1) j`, [eq.id])).j.already === true, 'marking delivered twice is harmless');
+ok((await one(`select my_group_orders() j`)).j.find(o => o.id === eq.id).status === 'delivered', 'order history shows Delivered');
+await asUser(host);
+await throwsLike(`select mark_delivered($1)`, [dflt.id], /Only a placed order/, 'an order that is still open cannot be marked delivered');
+await asAnon();
+await throwsLike(`select mark_delivered($1)`, [eq.id], /permission denied/, 'logged-out visitors cannot call it');
+await throwsLike(`insert into restaurants (name, cuisine, area, city, opens_at, closes_at) values ('x','x','x','Chennai','10:00','22:00')`, [],
+  /permission denied/, 'logged-out visitors cannot add restaurants');
+await throwsLike(`delete from menu_items`, [], /permission denied/, 'logged-out visitors cannot delete dishes');
+ok(+(await one(`select count(*) n from menu_items`)).n === 150, 'logged-out visitors can still browse all 150 dishes');
+
+await asUser(f1);
+await db.query(`update profiles set full_name = 'Karthik I.', phone = '+91 90000 10003'`);
+ok((await one(`select full_name from profiles`)).full_name === 'Karthik I.', 'people can still edit their own name and phone');
+await throwsLike(`update profiles set email = 'someone-else@example.org'`, [], /permission denied/, 'people cannot change their profile email');
+await throwsLike(`update profiles set auth_user_id = gen_random_uuid()`, [], /permission denied/, 'people cannot change their login link');
+await throwsLike(`insert into payments (group_order_id, member_id, food_amount, shared_share, delivery_share, tax_share, total, payee, status)
+  select group_order_id, member_id, 0, 0, 0, 0, 0, 'host', 'paid' from payments limit 1`, [], /permission denied/, 'nobody can write payments directly');
+await throwsLike(`update group_orders set status = 'delivered'`, [], /permission denied/, 'nobody can change an order status directly');
+await db.query(`insert into addresses (user_id, label, label_name, line1, area, city, pincode) values (me(), 'office', 'Office', 'Tidel Park', 'OMR', 'Chennai', '600113')`);
+ok(+(await one(`select count(*) n from addresses where city = 'Chennai'`)).n === 1, 'people can still save their own addresses');
+
+// audit log: run a full group order after 06, then read the record
+const mine = (await db.query(`select table_name, action, changes from audit_log where group_order_id is null order by id`)).rows;
+const nameChange = mine.find(a => a.table_name === 'profiles' && a.action === 'update');
+ok(nameChange && nameChange.changes.full_name.to === 'Karthik I.' && !('email' in nameChange.changes),
+  `profile edit recorded with only what changed (name: "${nameChange?.changes.full_name.from}" -> "${nameChange?.changes.full_name.to}")`);
+ok(mine.some(a => a.table_name === 'addresses' && a.action === 'insert'), 'saving an address is recorded');
+await asUser(host);
+const ratnaDish = (await one(`select id from menu_items where restaurant_id = (select restaurant_id from group_orders where id = $1) and is_available limit 1`, [dflt.id])).id;
+await one(`select add_item($1, $2, 2, 'extra chutney', false)`, [dflt.id, ratnaDish]);
+await asUser(f1); await one(`select join_group($1)`, [dflt.share_code]);
+await asUser(host); await one(`select lock_group($1)`, [dflt.id]); await one(`select place_group($1, 30, 0, 0)`, [dflt.id]);
+await one(`select pay_share($1, 'upi')`, [dflt.id]);
+const trail = (await db.query(`select table_name, action, actor_id, changes from audit_log where group_order_id = $1 order by id`, [dflt.id])).rows;
+const has = (t, a, f = () => true) => trail.some(x => x.table_name === t && x.action === a && f(x));
+ok(has('order_items', 'insert', x => x.changes.notes === 'extra chutney'), 'adding a dish is recorded, with its note');
+ok(has('group_members', 'insert'), 'joining is recorded');
+ok(has('group_orders', 'update', x => x.changes.status?.from === 'open' && x.changes.status?.to === 'locked'), 'lock recorded as status open -> locked');
+ok(has('group_orders', 'update', x => x.changes.status?.to === 'placed'), 'placing the order is recorded');
+ok(has('payments', 'update', x => x.changes.status?.to === 'paid'), 'a payment is recorded as pending -> paid');
+ok(trail.every(x => x.actor_id), 'every group action records who did it');
+await asUser(f1);
+ok(+(await one(`select count(*) n from audit_log where group_order_id = $1`, [dflt.id])).n === trail.length, 'group members can see the group\'s full history');
+await asUser(stranger);
+ok(+(await one(`select count(*) n from audit_log`)).n === 0, 'outsiders see none of it');
+await asUser(host);
+await throwsLike(`insert into audit_log (table_name, action) values ('x', 'insert')`, [], /permission denied/, 'nobody can add to the audit log');
+await throwsLike(`delete from audit_log`, [], /permission denied/, 'nobody can delete from the audit log');
+await db.query(`insert into payment_methods (user_id, type, display_label, gateway_token) values (me(), 'card', 'Visa •••• 4242', 'tok_secret_123')`);
+await db.exec('reset role');
+ok(+(await one(`select count(*) n from audit_log where changes::text like '%tok_secret%'`)).n === 0, 'payment gateway tokens are never copied into the log');
+
 await db.exec('reset role');
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

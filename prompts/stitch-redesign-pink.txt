@@ -1,0 +1,50 @@
+STITCH REDESIGN: OWNLY TOGETHER (PINK). Start a NEW Stitch project. Attach: Ownly_Together_Web_Design_System.md, ownly-logo.jpg, implementation_plan.md
+
+==================== PROMPT 1 (mobile, 390 px) ====================
+
+Design Ownly Together, a group food-ordering feature for Ownly (Rapido's zero-commission food app), launching in Chennai. Follow the attached design system exactly and use the attached Ownly logo. The attached implementation plan has the full product rules.
+
+What it does: one person (the host) starts a group order and shares a link. Friends, flatmates or colleagues join, add their own food, and each person pays only their own share. Nobody has to chase anyone on UPI.
+
+LOOK AND FEEL
+- Ownly pink: #F50062 for headlines and accents. Buttons are #C40054 with white text, hover #A80047. Pale pink #FFE3ED for chips, blush #FFF1F6 for alternate sections, page #FFF9FC, white cards.
+- Navy #111D35 for text, #576177 for secondary text, borders #F0D7E2.
+- Status chips always have words, not just colour: Paid (green #16845A), Pending (amber #A65D00), Payment failed (red), Order locked.
+- Fonts: Plus Jakarta Sans for headings (700–800), Inter for everything else. Use tabular numbers for every ₹ amount.
+- Rounded cards (16–24 px corners), pill buttons, soft shadows, lots of white space. Lucide-style line icons. Playful, frictionless, trustworthy.
+- Real Chennai food photos (dosa, idli, biryani, Chettinad, filter coffee) and prices in ₹.
+- Every screen has a thin strip: "Concept prototype by Sameer Mittimani. Not an official Rapido product."
+
+SCREENS (mobile, 390 px wide)
+1. Sign in: email, then a 6-digit code sent to that email. No passwords. First-time users add their name.
+2. Explore restaurants: Chennai area chips (OMR, Velachery, T. Nagar, Adyar, Anna Nagar, Nungambakkam, Mylapore), cuisine filter, veg-only toggle, restaurant cards with photo, cuisine and area.
+3. Menu: dishes with photo, price, veg / non-veg mark, Add button. Unavailable dishes greyed out with "Unavailable".
+4. Start group order (host): pick restaurant, delivery address, cut-off time (15 min, 30 min, custom) and the split rule: "Pay for what you ordered" (default) or "Split everything equally". Then show the room code (e.g. TNR742), a QR code, "Copy link" and "Share on WhatsApp".
+5. Join: open the link or type the code. Preview the restaurant, host name, cut-off and split rule, then "Join group".
+6. Shared cart: dishes grouped by person with notes, a "Shared" toggle on a dish, member status (Adding items, Done), countdown to cut-off, "4 of 12 joined", running total.
+7. Host checkout: lock the cart, enter Rapido's delivery fee, packaging and taxes, see each person's share, "Place order", "Cancel order".
+8. Order confirmation: a small celebration, who ordered what, each person's share with Paid / Pending, and the tracking link with "Copy link" and "Share on WhatsApp".
+9. My share and pay: my dishes, my share of shared dishes, my share of Rapido's charges, my total, how it was worked out for the chosen split rule. "Pay my share" opens a Razorpay-style demo sheet: UPI apps, QR, card, netbanking, "Paid the host in cash", plus "Simulate success" and "Simulate failure". Note: "Demo payment: no real money moves." Below: the group's Paid / Pending list.
+10. Live tracking: Order accepted → Preparing → Picked up → On the way → Delivered, a simple Chennai map, "Your Rapido Captain is on the way".
+11. Order history: past group orders with restaurant, date, people, my share, status, receipt, "Order again with this group".
+12. Profile: name, phone (optional), saved addresses (Home, Office, Friend's place, Other) with a map pin after the user allows location, saved payment methods as masked labels only (e.g. "Visa •••• 4242").
+13. States: group full ("This group is full (12 people)"), link expired, dish unavailable, payment failed with Retry, empty cart.
+
+RULES (follow exactly)
+- Up to 12 people per group, host included. No limit on order value. One restaurant per group. Only the host can lock, place or cancel.
+- Room code is 6 capital letters or numbers with no dash (TNR742). Same code in share and WhatsApp messages.
+- Rapido's delivery, packaging and taxes are plain amounts split equally across everyone.
+- Everyone pays their own share, the host included.
+- Chennai places and restaurants only.
+- Do NOT include: price comparisons with other apps, "markup", "₹0 fees", "you saved" banners, "absorbed fees", a bag capacity gauge, any 6-person or ₹2,000 limit, rider names, number plates or a call button, made-up product names like "Rapido Direct" or "Express Saver", company names, CIN or GSTIN numbers, or made-up statistics.
+- Footer text only: "Concept prototype by Sameer Mittimani. Not an official Rapido product."
+
+==================== PROMPT 2 (desktop, 1440 px) ====================
+
+Now design the same 13 screens for desktop (1440 px), using the mobile designs as the base: same brand, logo, colours, fonts, rules and concept strip. Use the width well: the menu beside the live shared cart, the split summary beside the payment options, the group's progress in a side panel. Max content width 1200 px on a 12-column grid.
+
+==================== PROMPT 3 (web landing page, desktop and mobile) ====================
+
+Design the Ownly Together landing page, following section 6 of the design system:
+navigation, hero ("Order Together. Pay Your Share. No More Chasing."), how it works (Start a group → Share link → Everyone chooses → Each pays their share), why it matters, for every crew (office lunch, flatmates, hostel friends, weekend plans), prototype preview marked "Proposed experience", order again with this group, Chennai launch areas (planned, not live), FAQs, and a closing pink strip.
+Same rules as before: no fee or price claims, no made-up statistics, no company details, concept strip in the footer.
