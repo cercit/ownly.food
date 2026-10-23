@@ -102,8 +102,6 @@ export const ExploreScreen: React.FC<ExploreScreenProps> = ({
             <span>✓ Up to 12 members per room</span>
             <span>•</span>
             <span>✓ Host chooses split rule</span>
-            <span>•</span>
-            <span>✓ Direct kitchen tariffs</span>
           </div>
         </div>
       </div>
@@ -185,11 +183,6 @@ export const ExploreScreen: React.FC<ExploreScreenProps> = ({
                     loading="lazy"
                   />
                   <div className="absolute top-3 left-3 flex items-center gap-1.5">
-                    <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-xs text-[#111D35] text-xs font-bold flex items-center gap-1 shadow-xs border border-[#F0D7E2]">
-                      <span className="material-symbols-outlined text-[#FF922E] text-[14px]">star</span>
-                      <span>{restaurant.rating}</span>
-                      <span className="text-[#576177] font-normal text-[11px]">({restaurant.rating_count})</span>
-                    </span>
                     {restaurant.is_pure_veg && (
                       <span className="px-2.5 py-1 rounded-full bg-[#E5F6ED] text-[#125F43] text-[10px] font-extrabold uppercase border border-[#16845A]/20">
                         Pure Veg
@@ -197,12 +190,6 @@ export const ExploreScreen: React.FC<ExploreScreenProps> = ({
                     )}
                   </div>
 
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2.5 py-1 rounded-full bg-[#111D35]/85 backdrop-blur-xs text-white text-xs font-semibold flex items-center gap-1">
-                      <span className="material-symbols-outlined text-[13px]">timer</span>
-                      <span>{restaurant.prep_time}</span>
-                    </span>
-                  </div>
 
                   <div className="absolute bottom-2 left-3 right-3">
                     <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#111D35]/80 backdrop-blur-xs text-white text-[11px] font-semibold">
@@ -252,7 +239,7 @@ export const ExploreScreen: React.FC<ExploreScreenProps> = ({
             <div className="p-5 border-b border-[#F0D7E2] flex items-center justify-between bg-[#FFF9FC]">
               <div>
                 <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#C40054] bg-[#FFE3ED] px-2 py-0.5 rounded-full">
-                  {activeMenuRestaurant.area} • Direct Kitchen Tariff
+                  {activeMenuRestaurant.area}
                 </span>
                 <h3 className="text-lg font-extrabold text-[#111D35] mt-1">{activeMenuRestaurant.name}</h3>
               </div>

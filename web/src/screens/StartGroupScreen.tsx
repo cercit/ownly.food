@@ -249,7 +249,6 @@ export const StartGroupScreen: React.FC<StartGroupScreenProps> = ({
                   <div className="min-w-0 flex-1">
                     <h4 className="font-bold text-sm text-[#111D35] truncate">{r.name}</h4>
                     <p className="text-xs text-[#576177] truncate">{r.area} • {r.cuisine}</p>
-                    <span className="text-[11px] text-[#125F43] font-bold mt-0.5 block">{r.prep_time}</span>
                   </div>
                 </div>
               ))}
@@ -298,14 +297,14 @@ export const StartGroupScreen: React.FC<StartGroupScreenProps> = ({
               <span>Order Cut-Off Window</span>
             </label>
             <p className="text-xs text-[#576177]">
-              When the timer ends, the cart locks automatically so food arrives on time.
+              The host locks the cart. Members cannot join after the cut-off.
             </p>
 
             <div className="grid grid-cols-3 gap-3">
               {[
-                { label: '15 Mins', val: 15, desc: 'Express Rush' },
+                { label: '15 Mins', val: 15, desc: 'Quick' },
                 { label: '30 Mins', val: 30, desc: 'Recommended' },
-                { label: '45 Mins', val: 45, desc: 'Relaxed Team Review' }
+                { label: '45 Mins', val: 45, desc: 'Relaxed' }
               ].map((opt) => (
                 <button
                   type="button"

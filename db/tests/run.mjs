@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const NM = 'C:/Users/samsm/OneDrive/Desktop/Claude/PM Projects/AI-Credit-Underwriter/Lov_cercit/node_modules/@electric-sql/pglite/dist/';
+const NM = process.env.PGLITE_DIST || 'C:/Users/samsm/OneDrive/Desktop/Claude/PM Projects/AI-Credit-Underwriter/Lov_cercit/node_modules/@electric-sql/pglite/dist/';
 const { PGlite } = await import(pathToFileURL(NM + 'index.js').href);
 const { pgcrypto } = await import(pathToFileURL(NM + 'contrib/pgcrypto.js').href);
 

@@ -197,7 +197,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ onSignOut }) => {
                 <div>
                   <span className="text-xs font-bold text-[#111D35] block">Location Access for Chennai Deliveries</span>
                   <p className="text-[11px] text-[#576177]">
-                    We use your location solely to guide your Rapido Captain directly to your exact office tower gate or apartment block.
+                    We use your location only to save a map pin with this address.
                   </p>
                 </div>
               </div>

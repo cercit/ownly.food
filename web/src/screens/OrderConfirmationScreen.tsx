@@ -88,7 +88,7 @@ export const OrderConfirmationScreen: React.FC<OrderConfirmationScreenProps> = (
             <span>Squad Share & Tracking Link</span>
           </span>
           <p className="text-xs text-[#576177]">
-            Send this link to everyone in the order so they can see their share, pay, and track the rider.
+            Send this link to everyone in the order so they can see their share, pay, and track the order.
           </p>
 
           <div className="bg-[#FFF1F6] border border-[#F0D7E2] rounded-2xl p-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">

@@ -133,7 +133,7 @@ export const HostCheckoutScreen: React.FC<HostCheckoutScreenProps> = ({
           </div>
         </div>
 
-        {/* Rapido Charges Input Box (Rule 5: No absorbed fees, three plain lines) */}
+        {/* Rapido Charges Input Box (three plain lines) */}
         <div className="bg-white rounded-3xl p-5 sm:p-6 border border-[#F0D7E2] shadow-[0_6px_18px_rgba(17,29,53,0.06)] flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">

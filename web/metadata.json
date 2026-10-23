@@ -1,6 +1,0 @@
-{
-  "name": "Ownly Together — Chennai Group Food Ordering",
-  "description": "Zero-commission collaborative group food ordering and fair delivery for Chennai teams, flatmates, and friends.",
-  "requestFramePermissions": ["geolocation"],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

@@ -251,7 +251,7 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onSuccess }) => {
           <form onSubmit={handleSaveName} className="flex flex-col gap-4">
             <div className="text-center mb-1">
               <h2 className="text-lg font-bold text-[#111D35]">Welcome to Chennai!</h2>
-              <p className="text-xs text-[#576177] mt-0.5">What should your squad call you in the group cart?</p>
+              <p className="text-xs text-[#576177] mt-0.5">What name should the group see in the cart?</p>
             </div>
 
             <div>
@@ -279,13 +279,8 @@ export const SignInScreen: React.FC<SignInScreenProps> = ({ onSuccess }) => {
           </form>
         )}
 
-        {/* Direct Chennai Delivery Assurance */}
+        
         <div className="mt-6 pt-4 border-t border-[#F0D7E2] flex items-center justify-center gap-3 text-[#576177] text-[11px]">
-          <span className="flex items-center gap-1 font-semibold text-[#16845A]">
-            <span className="material-symbols-outlined text-[14px]">verified</span>
-            100% Direct Kitchen Tariffs
-          </span>
-          <span>•</span>
           <span className="flex items-center gap-1 font-semibold text-[#C40054]">
             <span className="material-symbols-outlined text-[14px]">moped</span>
             Rapido Delivery

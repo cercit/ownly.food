@@ -4,7 +4,6 @@ import {
   onAuthChange,
   codeFromLink,
   getGroup,
-  seedSampleActiveOrderIfEmpty,
   signOut,
   User,
   GroupOrder
@@ -29,7 +28,7 @@ import { ProfileScreen } from './screens/ProfileScreen.tsx';
 export default function App() {
   const [user, setUser] = useState<User | null>(currentUser());
   const [currentScreen, setCurrentScreen] = useState<string>('explore');
-  const [activeGroupId, setActiveGroupId] = useState<string>('grp_sample_tnr742');
+  const [activeGroupId, setActiveGroupId] = useState<string>('');
   const [activeGroup, setActiveGroup] = useState<GroupOrder | null>(null);
   const [startRestaurantId, setStartRestaurantId] = useState<string | undefined>(undefined);
   const [joinCodeFromUrl, setJoinCodeFromUrl] = useState<string | undefined>(undefined);
@@ -46,10 +45,6 @@ export default function App() {
 
   // Ensure initial active demo group exists for quick exploration
   useEffect(() => {
-    const sample = seedSampleActiveOrderIfEmpty();
-    setActiveGroup(sample);
-    setActiveGroupId(sample.id);
-
     // Check if ?join=XXXXXX parameter was provided in the URL
     const urlCode = codeFromLink();
     if (urlCode) {
@@ -63,11 +58,7 @@ export default function App() {
     if (!activeGroupId) return;
     getGroup(activeGroupId)
       .then((g) => setActiveGroup(g))
-      .catch(() => {
-        // Fallback to sample if not found
-        const sample = seedSampleActiveOrderIfEmpty();
-        setActiveGroup(sample);
-      });
+      .catch(() => setActiveGroup(null));
   }, [activeGroupId, currentScreen]);
 
   const showToast = (msg: string) => {

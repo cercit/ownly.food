@@ -179,7 +179,7 @@ export const LiveTrackingScreen: React.FC<LiveTrackingScreenProps> = ({
               <circle cx="50" cy="65" r="10" fill="#C40054" />
               <circle cx="50" cy="65" r="4" fill="#FFFFFF" />
 
-              {/* Animated Rider Position */}
+              {/* Order position */}
               <g className="animate-pulse">
                 <circle cx="210" cy="115" r="16" fill="#F50062" fillOpacity="0.25" />
                 <circle cx="210" cy="115" r="9" fill="#111D35" />
@@ -203,22 +203,8 @@ export const LiveTrackingScreen: React.FC<LiveTrackingScreenProps> = ({
                 <span className="font-bold truncate">{group.delivery_address.area}</span>
               </div>
             </div>
-
-            <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-xs flex items-center gap-2 border border-[#F0D7E2]">
-              <span className="material-symbols-outlined text-[16px] text-[#C40054]">navigation</span>
-              <span className="text-xs font-bold text-[#111D35]">
-                Rapido Courier en route • Estimated 18-24 mins
-              </span>
-            </div>
           </div>
 
-          {/* Privacy Note */}
-          <div className="p-3.5 bg-[#FFF9FC] flex items-center gap-2 text-xs text-[#576177]">
-            <span className="material-symbols-outlined text-[18px] text-[#16845A] shrink-0">verified_user</span>
-            <span>
-              <strong>Privacy Guard:</strong> Exact floor & desk details are only unlocked to your Rapido Captain upon arrival at the building gate.
-            </span>
-          </div>
         </div>
 
         {/* Live Squad Link Bar */}
