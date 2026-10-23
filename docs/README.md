@@ -17,3 +17,5 @@ Group food ordering for Ownly, launching in Chennai. Read the folders in order, 
 What changed and when: [CHANGELOG.md](CHANGELOG.md).
 
 *Concept prototype by Sameer Mittimani for the IIT Roorkee × Masai product management course. Not an official Rapido product.*
+
+Front-end build plan (test, audit, rebuild, retest): [BUILD-PLAN.md](BUILD-PLAN.md).
