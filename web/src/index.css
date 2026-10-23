@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+  --brand-pink: #F50062;
+  --brand-pink-dark: #C40054;
+  --brand-pink-hover: #A80047;
+  --brand-pink-soft: #FFE3ED;
+  --brand-blush: #FFF1F6;
+  --surface: #FFFFFF;
+  --page: #FFF9FC;
+  --navy: #111D35;
+  --text-secondary: #576177;
+  --border: #F0D7E2;
+  --positive: #16845A;
+  --warning: #A65D00;
+  --failed: #A32234;
+  --violet: #7C3AED;
+  --orange: #FF922E;
+  --shadow-sm: 0 6px 18px rgba(17, 29, 53, 0.06);
+  --shadow-md: 0 10px 30px rgba(17, 29, 53, 0.08);
+  --shadow-lg: 0 16px 42px rgba(17, 29, 53, 0.12);
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+  --ease: cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--page);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Custom Design System Utility Classes */
+.brand-hero {
+  background: radial-gradient(circle at 85% 28%, #FFD3E3 0, transparent 40%), linear-gradient(160deg, #FFFFFF, #FFF1F6);
+}
+
+.brand-surface {
+  background: linear-gradient(135deg, #FFF1F6, #FFFFFF);
+}
+
+.card-ownly {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s var(--ease);
+}
+
+.card-ownly:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary-ownly {
+  background-color: var(--brand-pink-dark);
+  color: #FFFFFF;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 9px 24px rgba(196, 0, 84, 0.18);
+  transition: all 0.18s var(--ease);
+}
+
+.btn-primary-ownly:hover {
+  background-color: var(--brand-pink-hover);
+  box-shadow: 0 12px 26px rgba(196, 0, 84, 0.26);
+}
+
+.btn-primary-ownly:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary-ownly {
+  background-color: #FFFFFF;
+  color: var(--navy);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  transition: all 0.18s var(--ease);
+}
+
+.btn-secondary-ownly:hover {
+  background-color: var(--brand-blush);
+  border-color: #E2B6C8;
+}
+
+.badge-soft-pink {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--brand-pink-soft);
+  color: var(--brand-pink-dark);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-paid-badge {
+  color: #125F43;
+  background-color: #E5F6ED;
+  border: 1px solid rgba(22, 132, 90, 0.2);
+}
+
+.status-pending-badge {
+  color: #855000;
+  background-color: #FFF1D9;
+  border: 1px solid rgba(166, 93, 0, 0.2);
+}
+
+.status-failed-badge {
+  color: #A32234;
+  background-color: #FFE7E9;
+  border: 1px solid rgba(163, 34, 52, 0.2);
+}
+
+/* Custom scrollbar suppression */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

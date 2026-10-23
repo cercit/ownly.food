@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><title>Checkout Flow - Ownly Together</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#00210e", "surface-container-high": "#e1e9f7", "tertiary": "#006d3b", "error-container": "#ffdad6", "on-error": "#ffffff", "on-primary-container": "#6d5500", "on-primary": "#ffffff", "on-secondary-container": "#fffbff", "badge-green-tint": "#E8F7EE", "error": "#ba1a1a", "inverse-primary": "#f0c12a", "on-surface": "#141c26", "surface": "#f8f9ff", "surface-dim": "#d3dae9", "border-subtle": "#E5E9EE", "primary-fixed": "#ffe08f", "on-primary-fixed": "#241a00", "on-primary-fixed-variant": "#584400", "background": "#f8f9ff", "on-secondary-fixed": "#410003", "on-background": "#141c26", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "on-surface-variant": "#4e4633", "secondary-fixed-dim": "#ffb3ac", "tertiary-container": "#73e59c", "surface-container-low": "#eff4ff", "outline-variant": "#d1c5ad", "tertiary-fixed-dim": "#6add94", "outline": "#807661", "on-error-container": "#93000a", "surface-cream": "#FAFAF7", "badge-crimson-tint": "#FDECEE", "surface-bright": "#f8f9ff", "primary": "#755b00", "text-muted": "#606D7C", "surface-container": "#e6eefd", "secondary-container": "#db3231", "on-tertiary-fixed-variant": "#00522b", "on-tertiary-container": "#006637", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#87faae", "badge-yellow-tint": "#FFF8E1", "on-secondary-fixed-variant": "#93000f", "surface-container-highest": "#dbe3f1", "secondary-fixed": "#ffdad6", "primary-fixed-dim": "#f0c12a", "primary-container": "#f9c933", "surface-tint": "#755b00", "inverse-surface": "#29313c", "secondary": "#b7131c", "surface-card": "#FFFFFF", "surface-variant": "#dbe3f1", "inverse-on-surface": "#eaf1ff" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "space-md": "1rem", "margin-mobile": "1rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "margin": "2rem", "gutter-mobile": "0.75rem", "gutter": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg-mobile": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"] }, "fontSize": { "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "800" }], "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "headline-xl-mobile": ["30px", { "lineHeight": "36px", "fontWeight": "800" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-xl": ["40px", { "lineHeight": "48px", "fontWeight": "800" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;min-height:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;font-family:'Plus Jakarta Sans',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Go back" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-high transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Checkout Flow</h1></div><div class="flex items-center gap-space-xs"><button aria-label="Share room" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[20px]">share</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface"><div class="flex flex-col w-full pb-safe">
+<!-- Concept Prototype Pill Banner -->
+<aside aria-label="Prototype notice" class="w-full bg-primary-container text-on-primary-fixed-variant px-margin-mobile py-space-xs flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-on-primary-fixed-variant" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Concept Prototype</span>
+</div>
+<span class="font-label-sm text-label-sm opacity-80">Zero Commission Network</span>
+</aside>
+<div class="px-margin-mobile pt-space-md flex flex-col gap-space-md">
+<!-- Context Header Capsule (Room & Restaurant Info) -->
+<section class="bg-surface-container-lowest rounded-2xl p-space-md shadow-[0_2px_12px_-2px_rgba(20,28,38,0.06)] flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-12 h-12 rounded-xl bg-badge-yellow-tint flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[26px]">restaurant</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Paradise Biryani</h2>
+<span class="material-symbols-outlined text-tertiary text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Direct Kitchen Order</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-sm text-label-sm uppercase text-text-muted block">Room Code</span>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-wider font-bold">PAR-742</span>
+</div>
+</section>
+<!-- Order Placed Success Banner -->
+<section class="bg-badge-green-tint text-on-tertiary-fixed rounded-2xl p-space-md flex items-start gap-space-sm shadow-sm relative overflow-hidden">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/40 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-tertiary text-[22px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs">
+<h3 class="font-label-lg text-label-lg text-tertiary">Order Placed &amp; Confirmed!</h3>
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-0.5">
+          Estimated delivery in <span class="font-bold">25-30 mins</span> by <span class="font-bold text-tertiary">Rapido Captain</span>
+</p>
+</div>
+</section>
+<!-- Honest Savings Callout Banner -->
+<section class="bg-badge-yellow-tint text-on-primary-fixed-variant rounded-2xl p-space-md shadow-sm flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-fixed text-[20px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<div class="flex-1">
+<p class="font-label-lg text-label-lg text-on-primary-fixed leading-tight">
+          You saved ₹112 on this order!
+        </p>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">
+          Zero packaging markup, zero surge, pure kitchen price.
+        </p>
+</div>
+</section>
+<!-- Individual Share Invoice Card -->
+<article class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_20px_-4px_rgba(20,28,38,0.06)] flex flex-col gap-space-md">
+<!-- Card Header -->
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-secondary">
+            PS
+          </div>
+<div>
+<span class="font-label-sm text-label-sm uppercase text-text-muted block">Split Breakdown</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Priya S. (You)</h3>
+</div>
+</div>
+<div class="px-space-sm py-1 rounded-full bg-badge-yellow-tint text-primary flex items-center gap-1 font-label-md text-label-md" id="payment-status-badge">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">hourglass_top</span>
+<span id="payment-status-text">Payment Pending</span>
+</div>
+</div>
+<!-- Itemized Dish Rows -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-low">
+<img class="w-14 h-14 rounded-lg object-cover shrink-0" data-alt="A fragrant steaming pot of authentic Dum Biryani layered with marinated soft paneer cubes, golden saffron rice, crispy fried onions, fresh mint sprigs, shot overhead against warm cream slate surface with appetizing natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfAW4Zzg71M82tsVOfOExVwyrHHeIhHrPa-VmvxfC_FETt410mAEIgASGGoW5n4bD7DxJCeiBBBlHcytE3rw0E5HB6NPARxsY15L0rZc3eBBi5VhF33n2rHzj7HOQjsgiQLcb-mfwgjqLJGVvuc7fVhHTfKFOiLUhh27JNcTNEB7kC-SRaDxm5zLRpRH9VJGeO_SK7jxNfzZBch6V8c_HM46Hto5NFlnLQ4ojBrJOfrV_Rv6aO67OC"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-sm bg-badge-green-tint flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</span>
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">Paneer Dum Biryani (Handi)</h4>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Quantity: 1x</p>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">₹319</span>
+</div>
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-low">
+<img class="w-14 h-14 rounded-lg object-cover shrink-0" data-alt="Glistening traditional Indian Shahi Gajar Ka Halwa dessert in a brass bowl, rich ruby red grated carrot pudding garnished with sliced pistachios and cashews, warm glowing studio light, appetizing food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4b_M-KQcl3VyCvrwJ7OsuWUHmOEC_de16YErce_WJCckFzEBzQEtK_z8eYhC8FGfp0UhdWjvca3qqPWHhgb-QDxmONc4SHJfhJqnPxrLQLJH1-aVvlQOl5AsyVSF3EBvZG3ddRMNpgLe1wI_TLzxr00xwL4LAp0LlYhImu-2ZElcaK-S8vuLJM5JGdt7uaD9kuh9vQ3lvT-yn3laVyzDNTlaFiVjkhqRtAwtWDsolJKoG7-wgs8ak"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-sm bg-badge-green-tint flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</span>
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">Shahi Gajar Ka Halwa</h4>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Quantity: 1x</p>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">₹110</span>
+</div>
+</div>
+<!-- Transparent Fee Calculation Stack -->
+<div class="bg-surface-container-low/70 rounded-2xl p-space-md flex flex-col gap-space-xs text-on-surface">
+<div class="flex justify-between items-center text-text-muted font-body-md text-body-md">
+<span>Food Subtotal</span>
+<span class="text-on-surface font-label-md text-label-md">₹429</span>
+</div>
+<div class="flex justify-between items-center text-text-muted font-body-md text-body-md">
+<div class="flex items-center gap-1">
+<span>Split Delivery</span>
+<span class="text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-on-surface-variant font-bold">1/4 of ₹40</span>
+</div>
+<span class="text-on-surface font-label-md text-label-md">₹10</span>
+</div>
+<div class="flex justify-between items-center text-text-muted font-body-md text-body-md">
+<div class="flex items-center gap-1">
+<span>Proportional GST</span>
+<span class="text-[10px] bg-surface-container-high px-1.5 py-0.5 rounded text-on-surface-variant font-bold">5%</span>
+</div>
+<span class="text-on-surface font-label-md text-label-md">₹21</span>
+</div>
+<div class="h-px bg-surface-container-highest my-1"></div>
+<div class="flex justify-between items-center pt-space-xs">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface block leading-tight">Total Your Share</span>
+<span class="font-body-sm text-body-sm text-text-muted">Exact mathematical share</span>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold text-secondary">₹460</span>
+</div>
+</div>
+<!-- UPI Payment CTAs -->
+<div class="flex flex-col gap-space-sm pt-space-xs" id="payment-action-box">
+<button class="w-full bg-primary-container text-on-primary-fixed py-space-md px-space-lg rounded-full font-label-lg text-label-lg shadow-[0_4px_14px_0_rgba(249,201,51,0.35)] active:scale-[0.98] transition-transform flex items-center justify-center gap-space-sm" id="upi-pay-btn" onclick="handleUpiPayment()">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span>Pay My Share (₹460) via UPI (Test Mode)</span>
+</button>
+<!-- UPI Provider Micro Logos (Mocked cleanly with pills) -->
+<div class="flex items-center justify-center gap-space-md text-text-muted py-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted">Instant split via</span>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-[11px] font-bold text-on-surface">GPay</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-[11px] font-bold text-on-surface">PhonePe</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-[11px] font-bold text-on-surface">Paytm</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-high text-on-surface py-space-sm px-space-md rounded-full font-label-md text-label-md hover:bg-surface-container-highest active:scale-[0.98] transition-colors flex items-center justify-center gap-space-xs mt-1" id="cash-host-btn" onclick="handleCashPayment()">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span id="cash-btn-label">I Paid the Host in Cash</span>
+</button>
+</div>
+<!-- Payment Success State (Hidden by default) -->
+<div class="hidden bg-badge-green-tint rounded-2xl p-space-md flex flex-col items-center text-center gap-space-xs" id="payment-success-card">
+<div class="w-12 h-12 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">done_all</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-tertiary">Share Settled!</h4>
+<p class="font-body-sm text-body-sm text-on-surface">
+          ₹460 transferred directly to host Sameer. No balances remaining.
+        </p>
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-tertiary font-bold mt-1">UPI Ref: TEST-98471924</span>
+</div>
+</article>
+<!-- Live Group Repayment Roster -->
+<section class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_20px_-4px_rgba(20,28,38,0.06)] flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Live Repayment Roster</h3>
+</div>
+<span class="font-label-md text-label-md text-text-muted bg-surface-container-high px-space-sm py-1 rounded-full" id="settled-counter">3 of 4 Settled</span>
+</div>
+<!-- Roster Member List -->
+<div class="flex flex-col gap-space-xs">
+<!-- Host Member -->
+<div class="flex items-center justify-between p-space-sm rounded-2xl bg-surface-container-low/60">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed flex items-center justify-center font-bold text-label-md relative">
+              SK
+              <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary">star</span>
+</span>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-label-lg text-on-surface">Sameer</span>
+<span class="text-[10px] bg-badge-yellow-tint text-on-primary-fixed font-bold px-1.5 py-0.2 rounded-full">Host</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">₹272 share</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-badge-green-tint text-tertiary px-space-sm py-1 rounded-full font-label-md text-label-md">
+<span>Paid</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Priya (Self) -->
+<div class="flex items-center justify-between p-space-sm rounded-2xl bg-badge-yellow-tint/40" id="roster-self-row">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center font-bold text-label-md">
+              PS
+            </div>
+<div>
+<div class="flex items-center gap-1">
+<span class="font-label-lg text-label-lg text-on-surface">Priya</span>
+<span class="text-[10px] bg-surface-container-high text-on-surface font-bold px-1.5 py-0.2 rounded-full">You</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">₹460 share</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-badge-yellow-tint text-primary px-space-sm py-1 rounded-full font-label-md text-label-md" id="roster-self-badge">
+<span>Pending</span>
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+</div>
+</div>
+<!-- Rahul -->
+<div class="flex items-center justify-between p-space-sm rounded-2xl bg-surface-container-low/60">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-label-md">
+              RK
+            </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">Rahul</span>
+<span class="font-body-sm text-body-sm text-text-muted">₹323 share</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-badge-green-tint text-tertiary px-space-sm py-1 rounded-full font-label-md text-label-md">
+<span>Paid</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Ananya -->
+<div class="flex items-center justify-between p-space-sm rounded-2xl bg-surface-container-low/60">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-label-md">
+              AM
+            </div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">Ananya</span>
+<span class="font-body-sm text-body-sm text-text-muted">₹75 share</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-badge-green-tint text-tertiary px-space-sm py-1 rounded-full font-label-md text-label-md">
+<span>Paid</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Transparent Network Trust Note -->
+<footer class="p-space-md rounded-2xl bg-surface-container-low flex items-start gap-space-sm mb-space-md">
+<span class="material-symbols-outlined text-text-muted text-[20px] shrink-0 mt-0.5">verified_user</span>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+        Zero commission model. Payments go directly to kitchen and Rapido delivery partner. Nobody has to chase anyone.
+      </p>
+</footer>
+</div>
+<script>
+    function markAsPaid(method) {
+      // Update Invoice Card Badge
+      const statusBadge = document.getElementById('payment-status-badge');
+      const statusText = document.getElementById('payment-status-text');
+      statusBadge.className = 'px-space-sm py-1 rounded-full bg-badge-green-tint text-tertiary flex items-center gap-1 font-label-md text-label-md';
+      statusBadge.innerHTML = '<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: \'FILL\' 1;">check_circle</span><span>Paid</span>';
+
+      // Update Roster Row
+      const rosterBadge = document.getElementById('roster-self-badge');
+      rosterBadge.className = 'flex items-center gap-1.5 bg-badge-green-tint text-tertiary px-space-sm py-1 rounded-full font-label-md text-label-md';
+      rosterBadge.innerHTML = '<span>Paid</span><span class="material-symbols-outlined text-[16px]" style="font-variation-settings: \'FILL\' 1;">check_circle</span>';
+
+      // Update Roster Counter
+      document.getElementById('settled-counter').innerText = '4 of 4 Settled';
+
+      // Toggle Action Section to Success Card
+      document.getElementById('payment-action-box').classList.add('hidden');
+      const successCard = document.getElementById('payment-success-card');
+      successCard.classList.remove('hidden');
+
+      if (method === 'cash') {
+        successCard.querySelector('p').innerText = 'Cash payment marked. Host Sameer notified for single-tap confirmation.';
+        successCard.querySelector('span.tracking-wide').innerText = 'Method: Direct Cash';
+      }
+    }
+
+    function handleUpiPayment() {
+      const btn = document.getElementById('upi-pay-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span><span>Processing Test UPI...</span>';
+      setTimeout(() => {
+        markAsPaid('upi');
+      }, 700);
+    }
+
+    function handleCashPayment() {
+      markAsPaid('cash');
+    }
+  </script>
+</div></main></body></html>
