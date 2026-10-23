@@ -33,6 +33,8 @@
 | Multi-restaurant single checkout | Roadmap opportunity | ✓ | ? | ✓ | — |
 | Schedule food delivery | Roadmap opportunity | ? | ✓ | ? | ◐ |
 | Same-group one-tap reorder | **P** | ? | ? | — (previous selections only) | — |
+| Host chooses the split (itemised or equal) | **P** | ? | ? | ? | ◐ (agreed in chat) |
+| "Paid the host in cash" option | **P** | ? | ? | ? | ◐ |
 | Group discounts | Roadmap opportunity | ? | ? | ✓ | — |
 | No platform fee | Ownly brand promise* | — | — | ? | Not applicable |
 
@@ -42,11 +44,11 @@
 
 | Priority | Feature | Inspiration | User benefit | Suggested metric |
 |---|---|---|---|---|
-| **P1** | QR join alongside WhatsApp invite link | Swiggy | Fast joining at office tables | Invite-to-join conversion |
-| **P1** | Member payment-status view and reminders | UPI app payment-request patterns | Host knows who has paid | Fully paid group-order rate |
+| **P1** | QR join alongside WhatsApp invite link (already in the prototype) | Swiggy | Fast joining at office tables | Invite-to-join conversion |
+| **P1** | Member payment-status view (in the prototype) and reminders (next) | UPI app payment-request patterns | Host knows who has paid | Fully paid group-order rate |
 | **P2** | Scheduled office-lunch orders | Zomato | Plan lunch before peak hours | Scheduled group orders/week |
 | **P2** | Multi-restaurant collaborative checkout | EatSure + Swiggy | Accommodate different food preferences | Group cart completion rate |
-| **P3** | Transparent group savings/rewards | EatSure | Encourage trial and repeat use | 30-day group repeat rate |
+| **P3** | Transparent group savings/rewards (later; not in the prototype, which avoids savings claims) | EatSure | Encourage trial and repeat use | 30-day group repeat rate |
 
 ## 4. Executive summary
 

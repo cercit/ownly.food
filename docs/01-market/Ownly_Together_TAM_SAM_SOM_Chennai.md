@@ -35,7 +35,7 @@ The model is intended as a **planning hypothesis**, not a final forecast.
 
 | Input | Assumption |
 |---|---|
-| Chennai population planning proxy | 1.26 crore |
+| Chennai metro population (planning proxy) | 1.26 crore |
 | Population aged 18–39 | 40% |
 | Online food-delivery participation | 40% of target age group |
 | Group-order participation | 30% of delivery users |
@@ -70,7 +70,7 @@ The model is intended as a **planning hypothesis**, not a final forecast.
 ## Key Insights
 1. **Meaningful niche opportunity:** Chennai group ordering is a smaller but valuable wedge inside the broader food-delivery market.
 2. **Adoption matters most:** Invite-to-signup conversion and repeat group orders will strongly determine success.
-3. **Clear differentiator:** Shared carts are common; individual UPI payments and repeat groups are stronger differentiators.
+3. **Clear differentiator:** Swiggy, Zomato and EatSure already offer shared group carts (see the competitor analysis in this folder); individual UPI payments and repeat groups are stronger differentiators.
 4. **Biggest risks:** Actual group-order frequency, restaurant coverage, payment completion and retention are still unvalidated.
 
 ---
@@ -78,6 +78,7 @@ The model is intended as a **planning hypothesis**, not a final forecast.
 ## Important Notes
 - **GMV is not revenue.** This analysis does not estimate Ownly revenue.
 - Figures are **illustrative planning estimates** based on secondary benchmarks and explicit assumptions.
+- 7% first-year adoption is a target for a city Ownly hasn't launched in yet; present the 3% conservative case alongside it.
 - The next step is to validate the high-impact assumptions through Chennai interviews, surveys and pilot launch data.
 
 ---

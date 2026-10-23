@@ -120,7 +120,7 @@ WhatsApp chaos → effortless split payments → habitual group ordering.
 **App icon reference:** [Ownly App Store listing](https://apps.apple.com/in/app/ownly-food-delivery-app/id6747476494)
 
 - **Logo motif:** White smiling/bowl-shaped Ownly symbol with an energetic pink app icon. Prefer the genuine Ownly logo provided by the brand; when unavailable, use text-only `ownly` rather than presenting an improvised mark as official.
-- **Colour direction:** Vibrant hot pink/fuchsia gradients, deeper raspberry pink, white/off-white surfaces, charcoal text. Sample visual-design colours (approximate, **not official brand HEX specifications**): `#F72580`, `#CD125E`, `#FFF5F8`, `#24202A`.
+- **Colour direction:** Vibrant hot pink/fuchsia gradients, deeper raspberry pink, white/off-white surfaces, charcoal text. Sample visual-design colours (approximate, **not official brand HEX specifications**): `#F72580`, `#CD125E`, `#FFF5F8`, `#24202A`. The project has since settled on the design system in `assets/design/` (pink `#F50062`, buttons `#C40054`, navy `#111D35`); use those for new work.
 - **Shapes:** Rounded cards, generous whitespace, soft shadows, friendly modern sans-serif typography, curved connectors and small delivery/food/cart icons.
 - **Voice:** Warm, clear, transparent pricing, group convenience and control. Avoid suggesting that Ownly Together is live.
 - **Verified Hyderabad-page themes:** No packaging fees, no platform fees, no surge charges and transparent pricing. These are current Ownly brand themes, **not independently verified requirements of the proposed Chennai group feature**.

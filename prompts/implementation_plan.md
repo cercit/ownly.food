@@ -1,5 +1,7 @@
 # Ownly Together: group food ordering for Chennai
 
+> **Record:** this is the plan given to Google AI Studio on 24 Oct 2026. Two things changed after it: the colours are now the pink design system in `assets/design/` (not the yellow in section 5), and the backend gained `markDelivered`, `groupActivity` and the audit log (see `docs/CHANGELOG.md`).
+
 A concept feature for Ownly, Rapido's zero-commission food app. Friends, flatmates and office teams in Chennai order from one restaurant together. Each person adds their own food, the app splits the bill fairly, and everyone pays their own share. Ownly isn't in Chennai yet, so group ordering is how it launches there.
 
 Every screen shows a thin strip: **"Concept prototype by Sameer Mittimani. Not an official Rapido product."**

@@ -16,13 +16,13 @@ The WhatsApp messages arrive faster than he can read them. Someone wants chicken
 
 At 12:40 PM, he finally places the order. But the hardest part isn't over. He's paid ₹2,800 from his own account. By evening, only seven colleagues have transferred their shares. The next morning, he's checking UPI payments and sending uncomfortable reminders. "Machan, I'll send it after lunch," someone promises. Arjun smiles, but the frustration stays.
 
-The following week, things happen differently. Arjun opens **Ownly Together** and creates a group called "OMR Lunch Crew." Instead of collecting everyone's choices, he shares one invitation link in their WhatsApp group. His colleagues join, browse the menu, and add their own meals to a shared cart. Each person's selection appears beside their name.
+The following week, things happen differently. Arjun opens **Ownly Together** and starts a group order from their usual lunch place. Instead of collecting everyone's choices, he shares one invitation link in their WhatsApp group. His colleagues join, browse the menu, and add their own meals to a shared cart. Each person's selection appears beside their name.
 
-When everyone is ready, the app displays individual payment amounts. Each colleague pays their own share through UPI. Arjun can see who's paid and whose payment is pending, without digging through screenshots or bank notifications. *So this is what organising lunch should feel like.* For once, he's choosing his own meal instead of fixing everyone else's.
+At the cut-off, Arjun locks the cart and places one order, and the app works out everyone's share. Each colleague pays their own share through UPI. Arjun can see who's paid and whose payment is pending, without digging through screenshots or bank notifications. *So this is what organising lunch should feel like.* For once, he's choosing his own meal instead of fixing everyone else's.
 
 The food arrives, and the team gathers around the office table. Between laughter, biryani and the last few spoonfuls of curd rice, Arjun realises something: he hasn't thought about collecting money even once. The afternoon feels lighter.
 
-A few days later, the group asks about lunch again. Arjun opens his saved group and taps **"Order Again With This Group."** Outside, Chennai continues its busy rhythm. Inside, twelve colleagues are about to share another meal—and Arjun gets to enjoy it with them.
+A few days later, the group asks about lunch again. Arjun opens his saved group and taps **"Order Again With This Group."** Outside, Chennai continues its busy rhythm. Inside, the same twelve people are about to share another meal, and this time Arjun gets to enjoy it with them.
 
 **Ownly Together. Order Together. Pay Your Share. No More Chasing.**
 
@@ -40,7 +40,7 @@ When the host finally assembles the cart, Priya discovers an unexpected amount b
 
 The following weekend, her flatmate shares something different: an invitation to **Ownly Together**, a proposed group-ordering experience. Curious but cautious about trying another app, Priya opens the WhatsApp link. It takes her directly to their group order, where she can browse the menu and see what everyone is choosing.
 
-She adds paneer butter masala and two rotis to her own cart. Her selections appear beside her name in the shared order, while everyone else's choices remain visible. Before checkout, she sees her individual total, including her share of applicable charges. She confirms the amount and pays directly through UPI. No calculations, no confusing screenshots, no transferring money to a friend.
+She adds paneer butter masala and two rotis to her own cart. Her selections appear beside her name in the shared order, while everyone else's choices remain visible. Once her flatmate places the order, she sees her individual total, including her share of the delivery charges. She confirms the amount and pays directly through UPI. No calculations, no confusing screenshots, no transferring money to a friend.
 
 For the first time, Priya feels completely in control of a group meal. She knows what she's getting, what she's paying, and where her money is going. When dinner arrives, everyone settles onto the floor around their little coffee table, passing dishes and laughing about the week.
 
