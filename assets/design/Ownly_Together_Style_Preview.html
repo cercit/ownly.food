@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ownly Together concept website design system visual handoff. Not a live product.">
+  <title>Ownly Together — Website Design System Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Ownly_Together_Design_Tokens.css">
+  <style>
+    .site-head { background:#fff; border-bottom:1px solid var(--border); }
+    .site-head .container { min-height:80px; display:flex; gap:24px; align-items:center; justify-content:space-between; }
+    .logo { display:flex; gap:12px; align-items:center; font-weight:800; font-size:24px; letter-spacing:-1.2px; white-space:nowrap; }
+    .logo-symbol { display:grid; place-items:center; height:43px; width:43px; border-radius:14px; background:var(--brand-pink); color:#fff; font-weight:900; font-size:26px; }
+    .logo strong { color:var(--brand-pink-dark); }
+    .header-nav { display:flex; align-items:center; gap:25px; }
+    .header-nav a { color:var(--navy); text-decoration:none; font-size:14px; font-weight:600; }
+    .header-nav a:hover { color:var(--brand-pink-dark); }
+    .concept-strip { background:var(--navy); color:#fff; text-align:center; padding:10px 20px; font-size:12px; font-weight:600; letter-spacing:.03em; }
+    .hero { overflow:hidden; position:relative; }
+    .hero .container { min-height:630px; display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:62px; }
+    .hero-content { padding-block:68px; }
+    .hero-content h1 { margin-top:20px; max-width:650px; }
+    .hero-content p { max-width:550px; color:var(--text-secondary); font-size:18px; margin:24px 0 30px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+    .small-note { margin-top:22px; font-size:12px; color:var(--text-secondary); }
+    .hero-art { padding-block:42px; position:relative; display:flex; justify-content:center; }
+    .hero-art::before { content:""; position:absolute; width:450px; height:450px; border-radius:50%; background:#F8B5D1; filter:blur(24px); opacity:.45; z-index:0; top:50%; left:50%; transform:translate(-50%,-50%); }
+    .hero-art .demo-phone { z-index:1; transform:rotate(3deg); }
+    .phone-top { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #F6E7ED; padding-bottom:11px; margin-bottom:13px; }
+    .phone-top b { color:var(--brand-pink-dark); font-size:16px; }
+    .phone-heading { color:var(--navy); font-size:20px; font-weight:800; margin:2px 0 2px; }
+    .phone-label { color:var(--text-secondary); font-size:12px; }
+    .avatars { display:flex; margin:16px 0; padding-left:5px; }
+    .avatars span { display:grid; place-items:center; margin-left:-5px; width:34px; height:34px; border:2px solid #fff; border-radius:50%; background:#FCE1EC; color:#AA164D; font-weight:800; font-size:11px; }
+    .avatars span:nth-child(2) { background:#F1DFFE; color:#7235C0; }
+    .avatars span:nth-child(3) { background:#DFF5EA; color:#237752; }
+    .demo-item { font-size:13px; }
+    .food-thumb { display:grid; place-items:center; font-size:22px; width:46px; height:46px; border-radius:14px; background:#FFF2E5; flex:none; }
+    .item-copy { flex:1; min-width:0; }
+    .item-copy b { display:block; font-size:13px; }
+    .item-copy small { color:var(--text-secondary); }
+    .item-price { font-weight:800; font-size:14px; }
+    .phone-total { margin:14px 0 12px; padding:12px; background:var(--brand-blush); border-radius:16px; display:flex; justify-content:space-between; gap:10px; font-size:13px; }
+    .phone-total b { color:var(--brand-pink-dark); }
+    .phone-pay { display:flex; width:100%; justify-content:center; background:var(--brand-pink-dark); color:#fff; border-radius:999px; padding:13px; font-weight:800; font-size:13px; }
+    .phone-foot { margin:10px 0 0; color:var(--text-secondary); font-size:11px; text-align:center; }
+    .section-title { margin-bottom:12px; }
+    .section-caption { max-width:650px; color:var(--text-secondary); margin-bottom:38px; }
+    .steps-grid { display:grid; gap:18px; grid-template-columns:repeat(4,1fr); }
+    .step-top { width:52px; height:52px; display:grid; place-items:center; border-radius:17px; background:var(--brand-pink-soft); color:var(--brand-pink-dark); font-size:20px; font-weight:800; }
+    .step-card h3 { margin-top:22px; margin-bottom:12px; font-size:19px; }
+    .step-card p { font-size:14px; margin:0; color:var(--text-secondary); }
+    .colors-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:15px; }
+    .swatch { overflow:hidden; padding:0; }
+    .swatch-color { height:80px; }
+    .swatch-meta { padding:12px; }
+    .swatch-name { font-size:12px; font-weight:800; }
+    .swatch-hex { font-size:12px; color:var(--text-secondary); }
+    .components { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; }
+    .components .card { min-height:205px; }
+    .components .card > p { font-size:14px; margin:6px 0 20px; color:var(--text-secondary); }
+    .pair { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+    .sample-status { font-size:12px; padding:7px 11px; border-radius:999px; display:inline-block; font-weight:800; }
+    .type-sample { border-left:5px solid var(--brand-pink); padding-left:24px; }
+    .type-sample p { font-size:16px; color:var(--text-secondary); }
+    .footer { background:var(--navy); color:#fff; padding-block:35px; }
+    .footer p { margin:0; font-size:12px; opacity:.85; }
+    @media(max-width:1000px) { .colors-grid { grid-template-columns:repeat(4,1fr); } .steps-grid{grid-template-columns:repeat(2,1fr);} .components{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:768px) { .header-nav { display:none; } .site-head .container { min-height:68px; } .hero .container { grid-template-columns:1fr; gap:0; } .hero-content { padding-block:60px 5px; } .hero-art { padding-block:45px 60px; } .hero-art .demo-phone { transform:rotate(0); } .colors-grid{grid-template-columns:repeat(2,1fr);} .components{grid-template-columns:1fr;} }
+    @media(max-width:500px) { .steps-grid{grid-template-columns:1fr;} .actions .btn{width:100%;} .logo{font-size:20px;} }
+  </style>
+</head>
+<body>
+  <div class="concept-strip">DESIGN CONCEPT ONLY · OWNLY-INSPIRED · NOT AN OFFICIAL OR LIVE CHENNAI LAUNCH SITE</div>
+  <header class="site-head"><div class="container">
+    <div class="logo" aria-label="Ownly Together concept wordmark"><span class="logo-symbol" aria-hidden="true">◡</span><span><strong>ownly</strong> together</span></div>
+    <nav class="header-nav" aria-label="Page sections"><a href="#how">How it works</a><a href="#colors">Colours</a><a href="#components">Components</a><a href="#typography">Typography</a></nav>
+    <span class="badge-soft">Chennai · Proposed</span>
+  </div></header>
+  <main>
+    <section class="hero brand-hero" aria-labelledby="headline"><div class="container">
+      <div class="hero-content">
+        <span class="eyebrow">Group food ordering · Chennai concept</span>
+        <h1 id="headline"><span class="emphasis">Order Together.</span><br>Pay Your Share.<br>No More Chasing.</h1>
+        <p>One person starts the order. Friends join with a link, choose their own food and pay only their share.</p>
+        <div class="actions"><a class="btn btn-primary" href="#how">See how it works →</a><a class="btn btn-secondary" href="#components">Explore the design system</a></div>
+        <div class="small-note">This is a visual prototype, not a working ordering or signup service.</div>
+      </div>
+      <div class="hero-art" aria-label="Concept illustration of a group order mobile screen">
+        <div class="demo-phone">
+          <div class="phone-top"><b>ownly together</b><span class="badge-soft" style="font-size:10px">Mockup</span></div>
+          <div class="phone-heading">Office lunch crew</div>
+          <div class="phone-label">One group. Everyone's own meal.</div>
+          <div class="avatars" aria-label="Illustrative group members"><span>AK</span><span>PM</span><span>RS</span><span>+5</span></div>
+          <div class="demo-item"><span class="food-thumb" aria-hidden="true">🍚</span><div class="item-copy"><b>Veg Biryani</b><small>Arjun · Illustrative</small></div><span class="item-price">₹240</span></div>
+          <div class="demo-item"><span class="food-thumb" aria-hidden="true">🥘</span><div class="item-copy"><b>Paneer Meal</b><small>Priya · Illustrative</small></div><span class="item-price">₹280</span></div>
+          <div class="demo-item"><span class="food-thumb" aria-hidden="true">🥣</span><div class="item-copy"><b>Masala Dosa</b><small>Rahul · Illustrative</small></div><span class="item-price">₹120</span></div>
+          <div class="phone-total"><span>Your items & share (example)</span><b>₹240</b></div>
+          <div class="phone-pay">Pay my share via UPI</div>
+          <p class="phone-foot">Proposed flow. No payment is possible here.</p>
+        </div>
+      </div>
+    </div></section>
+    <section class="section" id="how"><div class="container"><span class="eyebrow">Experience language</span><h2 class="section-title">Four steps. <span class="emphasis">One happy crew.</span></h2><p class="section-caption">Playful shapes, simple icons, compact copy, rounded cards and calm information hierarchy.</p>
+      <div class="steps-grid">
+        <article class="card step-card"><div class="step-top">01</div><h3>Start a group</h3><p>The organiser sets up the meal.</p></article>
+        <article class="card step-card"><div class="step-top">02</div><h3>Share the link</h3><p>Your crew joins through a shared invite.</p></article>
+        <article class="card step-card"><div class="step-top">03</div><h3>Choose your food</h3><p>Everyone adds their own items.</p></article>
+        <article class="card step-card"><div class="step-top">04</div><h3>Pay your share</h3><p>Each person sees their individual amount.</p></article>
+      </div>
+    </div></section>
+    <section class="section brand-surface" id="colors"><div class="container"><span class="eyebrow">Colour foundations</span><h2 class="section-title">Bold pink. <span class="emphasis">Clean contrast.</span></h2><p class="section-caption">Poster-inspired visual energy, adapted for readable web UI. Dark-pink buttons keep white labels accessible.</p>
+      <div class="colors-grid">
+        <div class="card swatch"><div class="swatch-color" style="background:#F50062"></div><div class="swatch-meta"><div class="swatch-name">Brand Pink</div><div class="swatch-hex">#F50062</div></div></div>
+        <div class="card swatch"><div class="swatch-color" style="background:#C40054"></div><div class="swatch-meta"><div class="swatch-name">Action Pink</div><div class="swatch-hex">#C40054</div></div></div>
+        <div class="card swatch"><div class="swatch-color" style="background:#111D35"></div><div class="swatch-meta"><div class="swatch-name">Deep Navy</div><div class="swatch-hex">#111D35</div></div></div>
+        <div class="card swatch"><div class="swatch-color" style="background:#FFE3ED"></div><div class="swatch-meta"><div class="swatch-name">Soft Pink</div><div class="swatch-hex">#FFE3ED</div></div></div>
+        <div class="card swatch"><div class="swatch-color" style="background:#FFF9FC"></div><div class="swatch-meta"><div class="swatch-name">Page Blush</div><div class="swatch-hex">#FFF9FC</div></div></div>
+        <div class="card swatch"><div class="swatch-color" style="background:#7C3AED"></div><div class="swatch-meta"><div class="swatch-name">Violet</div><div class="swatch-hex">#7C3AED</div></div></div>
+        <div class="card swatch"><div class="swatch-color" style="background:#FF922E"></div><div class="swatch-meta"><div class="swatch-name">Food Orange</div><div class="swatch-hex">#FF922E</div></div></div>
+      </div>
+    </div></section>
+    <section class="section" id="components"><div class="container"><span class="eyebrow">UI patterns</span><h2 class="section-title">Friendly on the surface. <span class="emphasis">Precise in the details.</span></h2><p class="section-caption">Cards and actions are rounded; payment states remain explicit and accessible.</p>
+      <div class="components">
+        <article class="card"><h3>Buttons</h3><p>Strong conversion hierarchy and clear focus states.</p><div class="pair"><a class="btn btn-primary" href="#typography">Primary action</a><a class="btn btn-secondary" href="#typography">Secondary</a></div></article>
+        <article class="card"><h3>Payment status</h3><p>Never communicate status by colour alone.</p><div class="pair"><span class="sample-status status-paid">✓ Paid</span><span class="sample-status status-pending">◷ Pending</span><span class="sample-status status-failed">! Failed</span></div></article>
+        <article class="card"><h3>Feature cards</h3><p>Small, welcoming explanations with visual anchors.</p><div class="pair"><span class="icon-bubble" aria-hidden="true">↗</span><span><strong>Instant group invite</strong><br><span class="muted" style="font-size:13px">One link to bring everyone in.</span></span></div></article>
+      </div>
+    </div></section>
+    <section class="section brand-surface" id="typography"><div class="container"><span class="eyebrow">Typography & voice</span><div class="type-sample"><h2>Good food tastes <span class="emphasis">better together.</span></h2><p>Plus Jakarta Sans ExtraBold for titles. Inter for readable body text, forms and precise payment information.</p><span class="badge-soft">Rounded cards · Clear copy · Trustworthy payments</span></div></div></section>
+  </main>
+  <footer class="footer"><div class="container"><p><strong>OWNLY TOGETHER — DESIGN CONCEPT</strong> · Visual design reference only; not affiliated with an official Chennai launch. Use an approved logo before production. All illustrated menu entries and figures are placeholders.</p></div></footer>
+</body>
+</html>
