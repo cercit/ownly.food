@@ -1,0 +1,7 @@
+share_code,host,restaurant,deliver_to,status,split_rule,cut_off_at,created_at,delivery_fee,packaging_fee,taxes
+KORA24,demo.host@example.com,Tiffin Tales,office,open,proportional,2026-10-23 13:00,2026-10-23 11:30,0,0,0
+HITEC7,vikram.r@example.com,Hyderabadi Handi,office,locked,equal,2026-10-23 12:30,2026-10-23 11:00,0,0,0
+BIRY4N,demo.friend1@example.com,Biryani Bros,home,placed,proportional,2026-10-23 10:30,2026-10-23 09:00,35,20,48
+GREEN2,demo.friend2@example.com,Green Bowl Co.,home,delivered,equal,2026-10-22 11:30,2026-10-22 10:00,25,15,32
+PIZZA5,sai.t@example.com,Pizza Patio,office,delivered,proportional,2026-10-21 11:30,2026-10-21 10:00,40,25,61
+ROLL66,arjun.m@example.com,Roll Republic,home,cancelled,equal,2026-10-20 13:30,2026-10-20 12:00,0,0,0

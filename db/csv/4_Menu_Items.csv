@@ -1,0 +1,58 @@
+name,restaurant,category,price,is_veg,is_available
+Masala Dosa,Tiffin Tales,Dosa,90,True,True
+Ghee Podi Idli,Tiffin Tales,Idli,80,True,True
+Rava Dosa,Tiffin Tales,Dosa,100,True,True
+Mini Meals,Tiffin Tales,Meals,140,True,True
+Bisi Bele Bath,Tiffin Tales,Rice,110,True,True
+Medu Vada (2),Tiffin Tales,Snacks,60,True,True
+Filter Coffee,Tiffin Tales,Beverages,40,True,True
+Kesari Bath,Tiffin Tales,Desserts,50,True,True
+Chicken Dum Biryani,Biryani Bros,Biryani,249,False,True
+Mutton Biryani,Biryani Bros,Biryani,329,False,False
+Veg Dum Biryani,Biryani Bros,Biryani,199,True,True
+Egg Biryani,Biryani Bros,Biryani,189,False,True
+Chicken 65,Biryani Bros,Starters,179,False,True
+Mirchi ka Salan,Biryani Bros,Sides,69,True,True
+Raita,Biryani Bros,Sides,39,True,True
+Double ka Meetha,Biryani Bros,Desserts,89,True,True
+Paneer Tikka Bowl,Green Bowl Co.,Bowls,219,True,True
+Quinoa Buddha Bowl,Green Bowl Co.,Bowls,249,True,True
+Greek Salad,Green Bowl Co.,Salads,199,True,True
+Peanut Noodle Salad,Green Bowl Co.,Salads,189,True,True
+Hummus Wrap,Green Bowl Co.,Wraps,169,True,True
+Cold Pressed Juice,Green Bowl Co.,Beverages,119,True,True
+Oats Brownie,Green Bowl Co.,Desserts,89,True,True
+Chicken Tikka Roll,Roll Republic,Rolls,149,False,True
+Paneer Kathi Roll,Roll Republic,Rolls,129,True,True
+Double Egg Roll,Roll Republic,Rolls,99,False,True
+Mutton Seekh Roll,Roll Republic,Rolls,179,False,True
+Aloo Tikki Roll,Roll Republic,Rolls,89,True,True
+Masala Fries,Roll Republic,Sides,79,True,True
+Mint Lime Soda,Roll Republic,Beverages,59,True,True
+Benne Masala Dosa,Dosa District,Dosa,120,True,True
+Set Dosa,Dosa District,Dosa,95,True,True
+Onion Uttapam,Dosa District,Uttapam,110,True,True
+Pongal,Dosa District,Rice,90,True,True
+Vada Sambar,Dosa District,Snacks,70,True,True
+Badam Milk,Dosa District,Beverages,60,True,True
+Hyderabadi Chicken Biryani,Hyderabadi Handi,Biryani,269,False,True
+Haleem,Hyderabadi Handi,Mains,239,False,True
+Paneer Biryani,Hyderabadi Handi,Biryani,229,True,True
+Apollo Fish,Hyderabadi Handi,Starters,259,False,True
+Bagara Rice,Hyderabadi Handi,Rice,149,True,True
+Qubani ka Meetha,Hyderabadi Handi,Desserts,109,True,True
+Irani Chai,Hyderabadi Handi,Beverages,30,True,True
+Bun Maska,Chai and Chakna,Snacks,50,True,True
+Samosa (2),Chai and Chakna,Snacks,40,True,True
+Vada Pav,Chai and Chakna,Snacks,45,True,True
+Maggi Masala,Chai and Chakna,Snacks,70,True,True
+Cutting Chai,Chai and Chakna,Beverages,20,True,True
+Ginger Lemon Tea,Chai and Chakna,Beverages,30,True,True
+Osmania Biscuits,Chai and Chakna,Snacks,35,True,True
+Margherita (Medium),Pizza Patio,Pizza,249,True,True
+Farmhouse (Medium),Pizza Patio,Pizza,329,True,True
+Chicken Pepperoni (Medium),Pizza Patio,Pizza,379,False,True
+Paneer Makhani (Medium),Pizza Patio,Pizza,349,True,True
+Garlic Bread,Pizza Patio,Sides,129,True,True
+Choco Lava Cake,Pizza Patio,Desserts,99,True,True
+Coke 500 ml,Pizza Patio,Beverages,60,True,True

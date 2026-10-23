@@ -1,0 +1,17 @@
+user,type,display_label,gateway_token,is_default
+demo.host@example.com,upi,dem•••@okaxis,tok_TEST_d75632be7a31,True
+demo.host@example.com,card,Visa •••• 4242,tok_TEST_77a0c3c91789,False
+demo.friend1@example.com,upi,dem•••@okaxis,tok_TEST_777b52cd5c66,True
+demo.friend2@example.com,upi,dem•••@okaxis,tok_TEST_6d4720c5151e,True
+rohan.k@example.com,upi,roh•••@okaxis,tok_TEST_7c5afa581b14,True
+rohan.k@example.com,card,Visa •••• 4245,tok_TEST_022c96efaf4d,False
+sneha.p@example.com,upi,sne•••@okaxis,tok_TEST_d561aa0fd304,True
+arjun.m@example.com,upi,arj•••@okaxis,tok_TEST_f0df7433ef40,True
+divya.s@example.com,upi,div•••@okaxis,tok_TEST_ced5373aa405,True
+divya.s@example.com,card,Visa •••• 4248,tok_TEST_5473d7a5d229,False
+vikram.r@example.com,upi,vik•••@okaxis,tok_TEST_7a310c7f0f72,True
+pooja.s@example.com,upi,poo•••@okaxis,tok_TEST_32602600d632,True
+sai.t@example.com,upi,sai•••@okaxis,tok_TEST_61cdd5564522,True
+sai.t@example.com,card,Visa •••• 4251,tok_TEST_02487ea610c1,False
+lakshmi.p@example.com,upi,lak•••@okaxis,tok_TEST_5aa1375d3a78,True
+imran.k@example.com,upi,imr•••@okaxis,tok_TEST_6964acc233c1,True

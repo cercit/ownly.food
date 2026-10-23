@@ -1,0 +1,9 @@
+name,cuisine,area,city,lat,lng,veg_only,opens_at,closes_at,active
+Tiffin Tales,South Indian,Koramangala,Bengaluru,12.933214,77.623189,True,07:00,22:30,True
+Biryani Bros,Biryani,HSR Layout,Bengaluru,12.910733,77.64579,False,11:00,23:30,True
+Green Bowl Co.,Salads and Bowls,BTM Layout,Bengaluru,12.917873,77.611977,True,10:00,22:00,True
+Roll Republic,Rolls,Koramangala,Bengaluru,12.937289,77.628343,False,12:00,01:00,True
+Dosa District,South Indian,Indiranagar,Bengaluru,12.974982,77.638853,True,07:30,22:30,True
+Hyderabadi Handi,Hyderabadi,Gachibowli,Hyderabad,17.443992,78.351284,False,11:30,23:30,True
+Chai and Chakna,Snacks,HITEC City,Hyderabad,17.445583,78.374978,True,08:00,23:00,True
+Pizza Patio,Pizza,Madhapur,Hyderabad,17.445327,78.389703,False,11:00,00:00,True

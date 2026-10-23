@@ -1,0 +1,12 @@
+group_code,member,food_amount,delivery_share,tax_share,total,payee,method_type,status,gateway_payment_id
+BIRY4N,Karthik Iyer,218,13.29,11.6,242.89,restaurant,upi,paid,pay_TEST_3690A5DE12
+BIRY4N,Ananya Rao,158,9.63,8.41,176.04,host,card,paid,pay_TEST_DE23C04018
+BIRY4N,Arjun Menon,288,17.56,15.33,320.89,host,,pending,
+BIRY4N,Divya Shetty,238,14.51,12.67,265.18,host,upi,paid,pay_TEST_C2706050D8
+GREEN2,Meera Nair,557,13.33,10.67,581.0,restaurant,upi,paid,pay_TEST_E328542F02
+GREEN2,Ananya Rao,358,13.33,10.67,382.0,host,upi,paid,pay_TEST_6071A82FF0
+GREEN2,Sneha Patil,249,13.33,10.67,273.0,host,upi,paid,pay_TEST_A282F61F6B
+PIZZA5,Sai Teja,449,9.39,8.81,467.2,restaurant,upi,paid,pay_TEST_A44379BA20
+PIZZA5,Vikram Reddy,957,20.0,18.77,995.77,host,card,paid,pay_TEST_35D6673D38
+PIZZA5,Imran Khan,927,19.37,18.18,964.55,host,upi,paid,pay_TEST_013E779113
+PIZZA5,Pooja Sharma,777,16.24,15.24,808.48,host,upi,paid,pay_TEST_8E98BE63E6
