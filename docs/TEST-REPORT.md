@@ -32,6 +32,18 @@ Fixed this round: removed `@google/genai`, `express`, `dotenv`, `tsx`, `esbuild`
 
 Fixed this round: audit false positives (code comments, `localeCompare`). Added `scripts/browser-check.mjs` with a fixture server (`tests/fixture-server.mjs`) that answers Supabase calls from the real catalogue CSVs, so signed-in screens can be rendered here without a real email code.
 
+## Round 3: after step 4 (sign in and profile), 23 Oct 2026
+
+| Check | Result |
+|---|---|
+| `npm ci`, lint, build | Pass |
+| Backend | Pass, 80 / 80 |
+| Unit tests | Pass, 27 / 27 (added: masked UPI, card and bank labels reject full numbers; first-time name step) |
+| Live read-only | Blocked (network) |
+| Rule audit | Pass, 0 hits |
+| Browser 390 / 1440 px | Sign-in (email, code step), profile and add-address pass at both widths; only the `start` route (step 5) still fails by design |
+| Self review | Sign-in: email, 6-digit code, name step for first-time people, "send a new code", plain errors. Profile: name, optional phone, addresses with label, line 1 and 2, landmark, area, pincode check, default, delete; location asked first with a reason, consent time saved, map pin shown; payment methods save masked labels only |
+
 ## Questions for Sameer
 
 1. `@supabase/supabase-js@2.45.4` (pinned by the plan) pulls an `auth-js` version with a low-severity npm advisory (path routing on malformed input). Upgrade to the latest 2.x? Left as pinned.

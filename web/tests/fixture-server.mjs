@@ -54,4 +54,16 @@ export const scenarios = [
   { name: 'menu', hash: `/menu/${restaurants[0].id}`, expect: restaurants[0].name, waitFor: 'h2' },
   { name: 'signin', hash: '/signin', expect: 'Sign in' },
   { name: 'signed-out-start', hash: '/start', expect: 'Sign in first' },
+  { name: 'signin-code-step', hash: '/signin', expect: '6-digit code',
+    act: async page => { await page.getByLabel('Email').fill('priya@example.org'); await page.getByRole('button', { name: 'Send me a code' }).click(); await page.getByLabel('6-digit code').waitFor(); } },
+  { name: 'profile', hash: '/profile', signedIn: true, expect: 'Saved addresses',
+    state: {
+      addresses: [
+        { id: 'a1', label: 'office', label_name: 'Office', line1: 'Tower B, 5th floor', line2: null, landmark: 'Opposite the metro', area: 'OMR', city: 'Chennai', pincode: '600096', lat: 12.9442, lng: 80.2375, source: 'gps', is_default: true },
+        { id: 'a2', label: 'friend', label_name: "Rahul's flat", line1: '12 Second Street', line2: null, landmark: null, area: 'Adyar', city: 'Chennai', pincode: '600020', lat: null, lng: null, source: 'manual', is_default: false },
+      ],
+      payment_methods: [{ id: 'p1', type: 'card', display_label: 'Visa •••• 4242', is_default: true }],
+    } },
+  { name: 'profile-add-address', hash: '/profile', signedIn: true, expect: 'Address line 1',
+    act: async page => { await page.getByRole('button', { name: 'Add address' }).click(); } },
 ];
