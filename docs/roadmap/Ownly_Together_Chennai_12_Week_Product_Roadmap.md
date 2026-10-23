@@ -16,8 +16,9 @@
 
 **MVP scope**
 - Host creates a group order and shares an invitation link.
-- Up to 11 members join and select their meals.
-- Members see their individual totals and pay through UPI.
+- Up to 11 members join and select their meals (12 people including the host).
+- Host picks the split rule when starting: "Pay for what you ordered" (own dishes + equal share of shared dishes and Rapido charges) or "Split everything equally".
+- Everyone, host included, sees their individual total and pays their own share through UPI, or marks "Paid the host in cash".
 - Host tracks member and payment status.
 - Group order follows a defined cutoff and checkout process.
 - Users can reorder with their saved group.
@@ -41,7 +42,7 @@
 ### Visual Milestone Map
 
 | Milestone | W1 | W2 | W3 | W4 | W5 | W6 | W7 | W8 | W9 | W10 | W11 | W12 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Discovery | █ | █ | | | | | | | | | | |
 | Alpha | | | █ | ◆ | | | | | | | | |
 | Payment integration | | | | | █ | █ | | | | | | |
@@ -126,7 +127,7 @@
 Each cell identifies active work (█) or buffer (░). Dependencies appear in parentheses.
 
 | Team/Period | W1 | W2 | W3 | W4 | W5 | W6 | W7 | W8 | W9 | W10 | W11 | W12 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **Engineering — Frontend** | █ Scaffold | █ UI kit (Design) | █ Invite flow | █ Cart views (API) | █ Split-pay UI | █ Payment states (BE) | █ Pilot UX (Beta) | █ Error/a11y fixes | █ Telemetry/perf | █ UAT fixes | ░ Buffer | █ GA rollout |
 | **Engineering — Backend** | █ Data model | █ Auth/schema | █ Group APIs | █ Cart APIs | █ UPI integration | █ Settlement states | █ Flags/rate limits | █ Refunds/events | █ Load/observability | █ UAT fixes | ░ Runbook/buffer | █ Production ramp |
 | **Design** | █ Research | █ User flows | █ Wireframes | █ Alpha prototype | █ Checkout UX | █ Payment-copy states | █ Beta feedback | █ Accessibility | █ Design QA | █ UAT polish | ░ Buffer | █ Launch QA |
