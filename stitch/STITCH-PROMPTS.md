@@ -93,3 +93,11 @@ Twenty-two screens across mobile and desktop: sign-in, profile and addresses, re
 The screens are in this folder, one per sub-folder, each with a `screen.png` preview and the `code.html` Stitch generated. Stitch's design notes (colours and type) are in `zero_commission_food_delivery/DESIGN.md`.
 
 *Ownly and Rapido belong to their owners. This is a concept made for my IIT Roorkee × Masai product management course.*
+
+---
+
+## Version 2: the pink redesign (24 Oct 2026)
+
+Once I had a proper design system in Ownly's pink, I started a fresh Stitch project and redesigned every screen from it. I attached the design system, the Ownly logo and the implementation plan, and put the product rules and the "do not include" list in the very first prompt, so none of the earlier problems came back. The full prompts are in `prompts/stitch-redesign-pink.txt`: prompt 1 for mobile, prompt 2 for desktop, and prompt 3 for the landing page (still to run).
+
+Stitch made 26 screens, 13 for mobile and 13 for desktop: sign in, explore restaurants, menu with live cart, start a group order, join, shared cart, host checkout, order confirmation, my share and pay, live tracking, order history, profile and addresses, and the edge states (group full, link expired, dish unavailable, payment failed, empty cart). They're in `stitch_ownly_together_group_ordering/`. The yellow version 1 screens were replaced.

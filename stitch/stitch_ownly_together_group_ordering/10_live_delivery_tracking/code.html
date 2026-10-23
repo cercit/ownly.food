@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-fixed": "#400014", "error-container": "#ffdad6", "outline": "#916e73", "surface-dim": "#cedafa", "error": "#ba1a1a", "accent-orange": "#FF922E", "tertiary-fixed-dim": "#d2bbff", "surface-container": "#e9edff", "secondary-container": "#dd2365", "surface-container-low": "#f1f3ff", "page-background": "#FFF9FC", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#25005a", "primary-fixed-dim": "#ffb2bd", "on-error-container": "#93000a", "on-surface": "#0f1b33", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#5a00c6", "brand-pink-hover": "#A80047", "tertiary-container": "#8a4cfc", "border-subtle": "#F0D7E2", "warning": "#A65D00", "surface-bright": "#faf9ff", "on-background": "#0f1b33", "secondary-fixed": "#ffd9df", "background": "#faf9ff", "on-secondary-fixed-variant": "#90003c", "primary": "#b80048", "on-secondary-fixed": "#3f0016", "secondary": "#b7004e", "on-secondary-container": "#fffbff", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "surface-container-highest": "#d8e2ff", "surface-tint": "#bd004a", "text-secondary": "#576177", "surface-container-high": "#e1e8ff", "soft-pink": "#FFE3ED", "surface-variant": "#d8e2ff", "on-error": "#ffffff", "brand-blush": "#FFF1F6", "inverse-primary": "#ffb2bd", "surface": "#FFFFFF", "primary-container": "#e6005c", "secondary-fixed-dim": "#ffb1c0", "tertiary": "#712ae2", "on-primary-container": "#fffbff", "primary-fixed": "#ffd9dd", "tertiary-fixed": "#eaddff", "on-primary-fixed-variant": "#900036", "positive": "#16845A", "on-tertiary-container": "#fffbff", "inverse-on-surface": "#edf0ff", "outline-variant": "#e6bcc1", "inverse-surface": "#253049", "on-surface-variant": "#5d3f43" }, borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, spacing: { "margin-md": "1.5rem", "margin": "1rem", "space-lg": "1.5rem", "gutter-lg": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "margin-lg": "2rem", "space-xs": "0.25rem", "space-2xl": "3rem", "gutter": "1rem", "space-md": "1rem" }, fontFamily: { "display-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "body-lg": ["Inter"], "price-display": ["Plus Jakarta Sans"], "label-md": ["Inter"], "label-lg": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "label-sm": ["Inter"] }, fontSize: { "display-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "800" }], "headline-md": ["22px", { lineHeight: "28px", fontWeight: "700" }], "display-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "800" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "price-display": ["24px", { lineHeight: "28px", fontWeight: "800" }], "label-md": ["14px", { lineHeight: "18px", fontWeight: "600" }], "label-lg": ["16px", { lineHeight: "20px", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "700" }], "label-sm": ["12px", { lineHeight: "16px", fontWeight: "600" }] } } } }</script><style>@layer base { body { -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-page-background text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-page-background/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm min-w-0"><button aria-label="Go back" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:bg-brand-blush active:scale-95 transition-all flex-shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="owenly_logo.jpg" class="h-7 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WQ_Ryr6ROXpBJoPC1aYg32ZBAFINoIG_kZu6-4ISCItSb8SRJYoBn5gDtHdAieRV4KSEnQjmDwMQZBndxE7qsVDWsCm1wZq9QqpAq53tu6sRhmvhGwnycaM3yF85kKGyS2Pq0Fxwib9qgjzjXeuH_2QJPGfSBlAwHnitJoyE_98ijsSmOFiFH_DsIiCIfHVz62IsJu7HVpnzcDoyoaDVvsgsu8Mba3Fet8MXiRY72PXUM0prjcrc3Fq--A5OIIfr_-_viR54bWVQ"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate">Live Delivery Tracking</span><span class="font-label-sm text-label-sm text-text-secondary truncate">Chennai Zero-Fee Hub</span></div></div><div class="flex items-center gap-space-sm flex-shrink-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-page-background pt-16 pb-12"><div class="flex flex-col w-full pb-10">
+<!-- Top Tracking Status & Order ID Meta -->
+<div class="px-gutter pt-space-md pb-space-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface tracking-tight">Live Order Tracking</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="font-label-sm text-label-sm text-text-secondary">Order</span>
+<span class="font-label-sm text-label-sm font-semibold text-primary bg-soft-pink px-2 py-0.5 rounded-full">#OWN-94827</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-positive/10 text-positive px-3 py-1.5 rounded-full shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-positive opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-positive"></span>
+</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide uppercase">On Track</span>
+</div>
+</div>
+<!-- Interactive Chennai Live Map View Card -->
+<div class="px-gutter mb-space-md">
+<div class="relative w-full h-64 bg-surface-container-high rounded-lg overflow-hidden shadow-[0_6px_18px_rgba(17,29,53,0.08)]">
+<!-- Stylized Cartographic Canvas for Chennai OMR Corridor -->
+<svg class="absolute inset-0 w-full h-full" fill="none" viewbox="0 0 380 260" xmlns="http://www.w3.org/2000/svg">
+<!-- City Grid & Water Bodies -->
+<rect fill="#E8EDFD" height="260" width="380"></rect>
+<!-- Bay of Bengal Coastline strip -->
+<path d="M350 0C340 60 345 140 360 260H380V0H350Z" fill="#C9DAFD" opacity="0.7"></path>
+<!-- Minor Streets / Neighborhood Blocks -->
+<path d="M-20 40H320M0 90H330M-10 150H340M10 210H350" opacity="0.6" stroke="#FFFFFF" stroke-linecap="round" stroke-width="3"></path>
+<path d="M60 -10V270M150 -10V270M240 -10V270" opacity="0.6" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Buckingham Canal curve -->
+<path d="M290 0C280 80 270 180 295 260" fill="none" stroke="#B8D0FD" stroke-linecap="round" stroke-width="6"></path>
+<!-- Rajiv Gandhi Salai (OMR Road) Trunk -->
+<path d="M80 30 C120 70, 160 110, 220 180 S260 220, 290 230" stroke="#D1DCF7" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+<!-- Active Delivery Route (Mylapore -> Perungudi RMZ) -->
+<path d="M80 30 C120 70, 160 110, 220 180 S260 220, 290 230" id="delivery-track" stroke="#B80048" stroke-dasharray="6 6" stroke-linecap="round" stroke-width="4"></path>
+<!-- Landmark Label: Mylapore Hub -->
+<g transform="translate(65, 14)">
+<rect fill="#FFFFFF" filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.12))" height="20" rx="10" width="68"></rect>
+<text fill="#0F1B33" font-family="Inter" font-size="9" font-weight="600" text-anchor="middle" x="34" y="14">Mylapore Hub</text>
+</g>
+<!-- Landmark Label: RMZ Millenia OMR -->
+<g transform="translate(240, 234)">
+<rect fill="#FFFFFF" filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.12))" height="20" rx="10" width="84"></rect>
+<text fill="#0F1B33" font-family="Inter" font-size="9" font-weight="600" text-anchor="middle" x="42" y="14">RMZ Millenia OMR</text>
+</g>
+<!-- Destination Marker Pin -->
+<g transform="translate(290, 224)">
+<circle cx="0" cy="0" fill="#E6005C" fill-opacity="0.2" r="14"></circle>
+<circle cx="0" cy="0" fill="#B80048" r="7"></circle>
+<circle cx="0" cy="0" fill="#FFFFFF" r="3"></circle>
+</g>
+<!-- Animated Rapido Delivery Captain Bike Icon on OMR -->
+<g id="captain-marker" transform="translate(198, 154)">
+<circle cx="0" cy="0" fill="#B80048" fill-opacity="0.25" r="18">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="16;22;16"></animate>
+<animate attributename="opacity" dur="2s" repeatcount="indefinite" values="0.7;0.1;0.7"></animate>
+</circle>
+<circle cx="0" cy="0" fill="#B80048" r="13"></circle>
+<!-- Two wheeler symbol -->
+<g transform="translate(-8, -8) scale(0.68)">
+<path d="M19 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-7.8 3.5l1.8 2.2 2.5-.9V9h2v4.2l-3.4 1.2-1.9-2.3-2.7 1.4V17H7.5v-5.2l3.7-1.3zM5 19a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm14 0a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="#FFFFFF"></path>
+</g>
+</g>
+</svg>
+<!-- Road Badge Overlay -->
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">navigation</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Rajiv Gandhi Salai (OMR)</span>
+</div>
+<!-- Quick ETA Counter Pill -->
+<div class="absolute bottom-3 right-3 bg-surface/95 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center gap-2 shadow-md">
+<span class="material-symbols-outlined text-[18px] text-accent-orange animate-bounce">electric_moped</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-on-surface leading-tight">14 mins away</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Captain Info Safety Card (No phone numbers, No license plates, No call button) -->
+<div class="px-gutter mb-space-md">
+<div class="bg-surface rounded-lg p-space-md shadow-[0_6px_18px_rgba(17,29,53,0.06)] flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="relative w-12 h-12 rounded-full bg-soft-pink flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[28px] text-primary" style="font-variation-settings: 'FILL' 1;">sports_motorsports</span>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-positive rounded-full border-2 border-surface"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Rapido Delivery Captain</span>
+<span class="material-symbols-outlined text-[16px] text-positive" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary truncate">Assigned for Campus Collective Express</span>
+</div>
+<div class="bg-brand-blush px-2.5 py-1 rounded-full flex items-center gap-1 flex-shrink-0">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">EV Fleet</span>
+</div>
+</div>
+<!-- Delivery Target Note Block -->
+<div class="bg-surface-container-low rounded-md p-space-sm flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-primary mt-0.5 flex-shrink-0">pin_drop</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Drop-off Point</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Security Desk / Food Pickup Point, RMZ Millenia Campus 2 Main Gate</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 5-Stage Sequential Order Stepper -->
+<div class="px-gutter mb-space-md">
+<div class="bg-surface rounded-lg p-space-md shadow-[0_6px_18px_rgba(17,29,53,0.06)]">
+<div class="flex items-center justify-between mb-space-md pb-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Timeline Progress</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Step 4 of 5</span>
+</div>
+<div class="relative flex flex-col gap-6 pl-2">
+<!-- Connecting Vertical Background Line -->
+<div class="absolute left-[19px] top-3 bottom-6 w-0.5 bg-border-subtle z-0"></div>
+<!-- Progress Active Infill Line -->
+<div class="absolute left-[19px] top-3 h-[68%] w-0.5 bg-primary z-0 transition-all duration-700"></div>
+<!-- Step 1: Completed -->
+<div class="relative flex items-start gap-3.5 z-10">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Order accepted</span>
+<span class="font-label-sm text-label-sm text-text-secondary">12:45 PM</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">Mylapore Cloud Kitchen Kitchens confirmed</span>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="relative flex items-start gap-3.5 z-10">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Preparing at kitchen</span>
+<span class="font-label-sm text-label-sm text-text-secondary">12:52 PM</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">4 meal boxes packed into thermal unit</span>
+</div>
+</div>
+<!-- Step 3: Completed -->
+<div class="relative flex items-start gap-3.5 z-10">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Picked up</span>
+<span class="font-label-sm text-label-sm text-text-secondary">01:05 PM</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">Sealed in heat-insulated container</span>
+</div>
+</div>
+<!-- Step 4: Active Pulse -->
+<div class="relative flex items-start gap-3.5 z-10">
+<div class="relative w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-md">
+<span class="absolute -inset-1 rounded-full bg-primary/30 animate-ping"></span>
+<span class="material-symbols-outlined text-[15px] animate-pulse">near_me</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 bg-brand-blush p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold">On the way</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">Est. 1:22 PM</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface mt-0.5">Your Rapido Captain is on the way via Rajiv Gandhi Salai</span>
+<div class="flex items-center gap-1.5 mt-2 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">speed</span>
+<span>Reaching RMZ Millenia in ~14 mins</span>
+</div>
+</div>
+</div>
+<!-- Step 5: Pending -->
+<div class="relative flex items-start gap-3.5 z-10">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-text-secondary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 opacity-70">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-medium">Delivered</span>
+<span class="font-label-sm text-label-sm text-text-secondary">Pending</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">Handover at Campus 2 Food Hub Desk</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Group Order Items Summary Drawer / Accordion Section -->
+<div class="px-gutter mb-space-lg">
+<div class="bg-surface rounded-lg p-space-md shadow-[0_6px_18px_rgba(17,29,53,0.06)] flex flex-col gap-space-md">
+<!-- Drawer Header Strip -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-soft-pink flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Group Package</span>
+<span class="font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-bold px-2 py-0.5 rounded-full">4 Orders</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-secondary">Consolidated single-drop parcel</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface transition-transform duration-200" id="toggle-drawer-btn">
+<span class="material-symbols-outlined text-[20px]" id="chevron-icon">expand_less</span>
+</button>
+</div>
+<!-- Thermal Protection Highlight Banner -->
+<div class="bg-surface-container-low p-space-sm rounded-md flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-accent-orange text-[20px]" style="font-variation-settings: 'FILL' 1;">heat</span>
+<p class="font-body-sm text-body-sm text-on-surface">All <span class="font-semibold">4 member meals</span> bundled in 1 thermal heat-insulated Rapido pouch.</p>
+</div>
+<!-- Dynamic Item List Breakdown -->
+<div class="flex flex-col gap-space-sm transition-all duration-300" id="drawer-items">
+<!-- Member 1: You -->
+<div class="bg-brand-blush rounded-md p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold flex-shrink-0">
+              ME
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">Ghee Podi Dosa &amp; Filter Coffee</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Karthik R. • Mylapore Tiffin Corner</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-positive bg-positive/10 px-2 py-0.5 rounded-full flex-shrink-0">Packed</span>
+</div>
+<!-- Member 2 -->
+<div class="bg-surface-container-low rounded-md p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold flex-shrink-0">
+              AP
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">Chettinad Paneer Rice Bowl</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Ananya P. • Spice Kitchen</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-positive bg-positive/10 px-2 py-0.5 rounded-full flex-shrink-0">Packed</span>
+</div>
+<!-- Member 3 -->
+<div class="bg-surface-container-low rounded-md p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold flex-shrink-0">
+              SK
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">Crispy Medu Vada Combo (2)</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Suresh K. • Mylapore Tiffin Corner</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-positive bg-positive/10 px-2 py-0.5 rounded-full flex-shrink-0">Packed</span>
+</div>
+<!-- Member 4 -->
+<div class="bg-surface-container-low rounded-md p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold flex-shrink-0">
+              DM
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">South Indian Mini Tiffin Meal</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Deepak M. • Heritage Kitchen</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-positive bg-positive/10 px-2 py-0.5 rounded-full flex-shrink-0">Packed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Ping Card on Live Arrival -->
+<div class="px-gutter mb-space-lg">
+<div class="bg-brand-blush rounded-lg p-space-md flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-soft-pink flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Arrival Buzz</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Desk team will ping once bag is verified</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-brand-pink-hover text-on-primary font-label-sm text-label-sm px-4 py-2 rounded-full font-semibold transition-transform active:scale-95 shadow-sm">
+        Share ETA
+      </button>
+</div>
+</div>
+<!-- Accordion Toggle JavaScript -->
+<script>
+    (function initOrderTrackingInteractions() {
+      const toggleBtn = document.getElementById('toggle-drawer-btn');
+      const drawerItems = document.getElementById('drawer-items');
+      const chevronIcon = document.getElementById('chevron-icon');
+
+      if (toggleBtn && drawerItems && chevronIcon) {
+        let isExpanded = true;
+        toggleBtn.addEventListener('click', () => {
+          isExpanded = !isExpanded;
+          if (isExpanded) {
+            drawerItems.style.display = 'flex';
+            chevronIcon.textContent = 'expand_less';
+          } else {
+            drawerItems.style.display = 'none';
+            chevronIcon.textContent = 'expand_more';
+          }
+        });
+      }
+
+      // Gentle subtle bike pulsing vibration simulation
+      const marker = document.getElementById('captain-marker');
+      if (marker) {
+        let step = 0;
+        setInterval(() => {
+          step = (step + 1) % 4;
+          const offsets = [[198, 154], [199, 155], [198, 154], [197, 153]];
+          const [x, y] = offsets[step];
+          marker.setAttribute('transform', `translate(${x}, ${y})`);
+        }, 500);
+      }
+    })();
+  </script>
+</div></main><footer class="fixed bottom-0 w-full z-50 pb-safe bg-page-background/95 backdrop-blur-xl"><div class="bg-soft-pink py-1 px-space-sm text-center"><p class="font-label-sm text-label-sm text-primary leading-tight">Concept prototype by Sameer Mittimani. Not an official Rapido product.</p></div></footer></body></html>

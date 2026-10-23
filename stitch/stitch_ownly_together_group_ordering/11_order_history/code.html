@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-fixed": "#400014", "error-container": "#ffdad6", "outline": "#916e73", "surface-dim": "#cedafa", "error": "#ba1a1a", "accent-orange": "#FF922E", "tertiary-fixed-dim": "#d2bbff", "surface-container": "#e9edff", "secondary-container": "#dd2365", "surface-container-low": "#f1f3ff", "page-background": "#FFF9FC", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#25005a", "primary-fixed-dim": "#ffb2bd", "on-error-container": "#93000a", "on-surface": "#0f1b33", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#5a00c6", "brand-pink-hover": "#A80047", "tertiary-container": "#8a4cfc", "border-subtle": "#F0D7E2", "warning": "#A65D00", "surface-bright": "#faf9ff", "on-background": "#0f1b33", "secondary-fixed": "#ffd9df", "background": "#faf9ff", "on-secondary-fixed-variant": "#90003c", "primary": "#b80048", "on-secondary-fixed": "#3f0016", "secondary": "#b7004e", "on-secondary-container": "#fffbff", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "surface-container-highest": "#d8e2ff", "surface-tint": "#bd004a", "text-secondary": "#576177", "surface-container-high": "#e1e8ff", "soft-pink": "#FFE3ED", "surface-variant": "#d8e2ff", "on-error": "#ffffff", "brand-blush": "#FFF1F6", "inverse-primary": "#ffb2bd", "surface": "#FFFFFF", "primary-container": "#e6005c", "secondary-fixed-dim": "#ffb1c0", "tertiary": "#712ae2", "on-primary-container": "#fffbff", "primary-fixed": "#ffd9dd", "tertiary-fixed": "#eaddff", "on-primary-fixed-variant": "#900036", "positive": "#16845A", "on-tertiary-container": "#fffbff", "inverse-on-surface": "#edf0ff", "outline-variant": "#e6bcc1", "inverse-surface": "#253049", "on-surface-variant": "#5d3f43" }, borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, spacing: { "margin-md": "1.5rem", "margin": "1rem", "space-lg": "1.5rem", "gutter-lg": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "margin-lg": "2rem", "space-xs": "0.25rem", "space-2xl": "3rem", "gutter": "1rem", "space-md": "1rem" }, fontFamily: { "display-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "body-lg": ["Inter"], "price-display": ["Plus Jakarta Sans"], "label-md": ["Inter"], "label-lg": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "label-sm": ["Inter"] }, fontSize: { "display-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "800" }], "headline-md": ["22px", { lineHeight: "28px", fontWeight: "700" }], "display-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "800" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "price-display": ["24px", { lineHeight: "28px", fontWeight: "800" }], "label-md": ["14px", { lineHeight: "18px", fontWeight: "600" }], "label-lg": ["16px", { lineHeight: "20px", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "700" }], "label-sm": ["12px", { lineHeight: "16px", fontWeight: "600" }] } } } }</script><style>@layer base { body { -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-page-background text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-page-background/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm min-w-0"><img alt="owenly_logo.jpg" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WQ_Ryr6ROXpBJoPC1aYg32ZBAFINoIG_kZu6-4ISCItSb8SRJYoBn5gDtHdAieRV4KSEnQjmDwMQZBndxE7qsVDWsCm1wZq9QqpAq53tu6sRhmvhGwnycaM3yF85kKGyS2Pq0Fxwib9qgjzjXeuH_2QJPGfSBlAwHnitJoyE_98ijsSmOFiFH_DsIiCIfHVz62IsJu7HVpnzcDoyoaDVvsgsu8Mba3Fet8MXiRY72PXUM0prjcrc3Fq--A5OIIfr_-_viR54bWVQ"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold lowercase truncate">ownly together</span><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-soft-pink text-primary flex-shrink-0">Chennai</span></div><span class="font-label-sm text-label-sm text-text-secondary truncate">Active Orders</span></div></div><div class="flex items-center gap-space-sm flex-shrink-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-page-background pt-16 pb-28"><div class="flex flex-col w-full">
+<!-- Search & Filter Controls -->
+<section class="px-margin pt-space-md pb-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">history_edu</span>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Group Order History</h1>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-1 rounded-full bg-soft-pink text-primary">3 past feasts</span>
+</div>
+<!-- Search Input & Filter Pills -->
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-space-md text-text-secondary text-[20px] pointer-events-none">search</span>
+<input class="w-full h-12 pl-11 pr-space-md rounded-full bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-text-secondary shadow-sm focus:outline-none transition-shadow" id="orderSearch" placeholder="Search by restaurant, dish or friend..." type="text"/>
+</div>
+<!-- Month Filter Horizon Tabs -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-1 no-scrollbar">
+<button class="px-space-md py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm shadow-sm flex items-center gap-1 flex-shrink-0">
+<span>October 2024</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="px-space-md py-1.5 rounded-full bg-brand-blush text-primary font-label-sm text-label-sm flex-shrink-0 hover:bg-soft-pink transition-colors">
+        September
+      </button>
+<button class="px-space-md py-1.5 rounded-full bg-brand-blush text-primary font-label-sm text-label-sm flex-shrink-0 hover:bg-soft-pink transition-colors">
+        August
+      </button>
+<button class="px-space-md py-1.5 rounded-full bg-brand-blush text-text-secondary font-label-sm text-label-sm flex-shrink-0 hover:bg-soft-pink transition-colors">
+        All 2024
+      </button>
+</div>
+</section>
+<!-- Interactive Orders Container -->
+<section class="px-margin flex flex-col gap-space-lg py-space-sm">
+<!-- Card 1: Sangeetha Veg Restaurant -->
+<article class="bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all duration-200 hover:shadow-md">
+<!-- Decorative Accent Tint -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-soft-pink/40 to-transparent pointer-events-none rounded-tr-lg"></div>
+<!-- Top Row: Thumbnail + Resto details -->
+<div class="flex items-start gap-space-md">
+<img class="w-16 h-16 rounded-DEFAULT object-cover flex-shrink-0 shadow-sm" data-alt="A warm, mouth-watering spread of South Indian lunch thali served on a fresh banana leaf with crisp dosas, sambar in stainless steel katoris, and fluffy pooris under bright studio warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkMPtNyEMMBi8_LMnjRfszywVxz7FdH5q7WF4d6f0Zg1Ku-OBfHWsmhTyaEEzL6m7wxdUJEgedzL3G7g0Lzz6V5hwGw8rZkXyY3nQsCdmJPjnFY5zqafwZ_qksLPc_pxIPYAOsvkJHjupunSJGr3NedQ8XP39FhVVr2x3TTCQbrMkQ0UY35deIMgRMhVpot8qv9D6gUMaxRW8SmTS5Zb0fLZ70bJmthiNZiTdF0tioJ7U45kgNiuuP"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Sangeetha Veg</h2>
+<span class="inline-flex items-center gap-0.5 px-space-xs py-0.5 rounded-full bg-brand-blush text-primary font-label-sm text-label-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span> Mylapore
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-accent-orange">schedule</span>
+<span>Yesterday, 1:15 PM</span>
+</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low font-label-sm text-label-sm text-on-surface font-semibold tracking-wide">Room TNR742</span>
+<span class="font-body-sm text-body-sm text-text-secondary truncate">Office Lunch crew</span>
+</div>
+</div>
+</div>
+<!-- Member Avatar Roster & Share Breakdown -->
+<div class="bg-brand-blush/60 rounded-DEFAULT p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">group</span>
+<span>Members (4)</span>
+</span>
+<div class="flex items-center -space-x-2">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Arjun (Host)">A</div>
+<div class="w-7 h-7 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Priya">P</div>
+<div class="w-7 h-7 rounded-full bg-accent-orange text-surface-container-lowest flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Rahul">R</div>
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Karthik">K</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-primary">Arjun (Host)</span>, Priya, Rahul, Karthik
+        </p>
+<!-- Payment Breakdown Metric -->
+<div class="flex items-center justify-between pt-1 border-none">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-secondary">My Share Paid</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-price-display text-price-display text-on-surface tabular-nums">₹280</span>
+<span class="inline-flex items-center gap-0.5 text-positive font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Paid via UPI</span>
+</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-text-secondary">Group Total</span>
+<span class="font-label-lg text-label-lg text-on-surface tabular-nums">₹855</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-space-xs pt-1">
+<button class="w-full h-12 rounded-full bg-primary hover:bg-brand-pink-hover text-on-primary font-label-lg text-label-lg shadow-sm flex items-center justify-center gap-space-xs active:scale-[0.98] transition-all" onclick="reorderGroup('TNR742', 'Office Lunch crew', ['Arjun', 'Priya', 'Rahul', 'Karthik'])">
+<span class="material-symbols-outlined text-[20px]">replay</span>
+<span>Order again with this group</span>
+</button>
+<button class="w-full h-10 rounded-full bg-transparent hover:bg-brand-blush text-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors" onclick="downloadReceipt('TNR742')">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>Download Itemized Receipt</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Ratna Cafe -->
+<article class="bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all duration-200 hover:shadow-md">
+<div class="flex items-start gap-space-md">
+<img class="w-16 h-16 rounded-DEFAULT object-cover flex-shrink-0 shadow-sm" data-alt="Traditional South Indian breakfast with steaming hot filter coffee in a brass dabarah set alongside crisp golden medu vada dipped in vibrant coconut chutney, early morning Chennai glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Eqjd2U92xQrAJB5XYsgVel2-_I_XSJOUUe7dnK6itYl-ayAyoi3bfvJEhfKb38LWZB18LOzRKMTUwdErTiJ1zQvWN8BHZaETcqhfB7pbdxQu7Uu6VWPDVVOTT6dNMB2_9-skvmoOja8TahFGJNrrXKGpawt9VuYJ_RMZApCLzmkjEBbRu-vPcm8Vig3HnC8BygtuAObxFaluJzAI_j9nYTb22OA7B9wbasl2dkR7w2MlVfvEFcww"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Ratna Cafe</h2>
+<span class="inline-flex items-center gap-0.5 px-space-xs py-0.5 rounded-full bg-brand-blush text-primary font-label-sm text-label-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span> Adyar
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-accent-orange">schedule</span>
+<span>14 Oct, 8:45 AM</span>
+</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low font-label-sm text-label-sm text-on-surface font-semibold tracking-wide">Room ADY104</span>
+<span class="font-body-sm text-body-sm text-text-secondary truncate">Breakfast Club</span>
+</div>
+</div>
+</div>
+<!-- Member Avatar Roster & Share Breakdown -->
+<div class="bg-brand-blush/60 rounded-DEFAULT p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">group</span>
+<span>Members (3)</span>
+</span>
+<div class="flex items-center -space-x-2">
+<div class="w-7 h-7 rounded-full bg-accent-orange text-surface-container-lowest flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Rahul (Host)">R</div>
+<div class="w-7 h-7 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Sneha">S</div>
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Vikram">V</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-primary">Rahul (Host)</span>, Sneha, Vikram
+        </p>
+<!-- Payment Breakdown Metric -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-secondary">My Share Paid</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-price-display text-price-display text-on-surface tabular-nums">₹145</span>
+<span class="inline-flex items-center gap-0.5 text-positive font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Paid via GPay</span>
+</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-text-secondary">Group Total</span>
+<span class="font-label-lg text-label-lg text-on-surface tabular-nums">₹435</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-1">
+<button class="w-full h-12 rounded-full bg-primary hover:bg-brand-pink-hover text-on-primary font-label-lg text-label-lg shadow-sm flex items-center justify-center gap-space-xs active:scale-[0.98] transition-all" onclick="reorderGroup('ADY104', 'Breakfast Club', ['Rahul', 'Sneha', 'Vikram'])">
+<span class="material-symbols-outlined text-[20px]">replay</span>
+<span>Order again with this group</span>
+</button>
+</div>
+</article>
+<!-- Card 3: Dindigul Thalappakatti -->
+<article class="bg-surface-container-lowest rounded-lg p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden transition-all duration-200 hover:shadow-md">
+<div class="flex items-start gap-space-md">
+<img class="w-16 h-16 rounded-DEFAULT object-cover flex-shrink-0 shadow-sm" data-alt="Rich aromatic Seeraga Samba mutton biryani garnished with fried onions, served with egg, spicy salna gravy, and cooling onion raita under warm moody amber dining lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqwaHcyQg9SxVPclNwfRNtEyMFUY27P-zN82MsmbwmbzuV6t9kdtHOplmU422DsgcetqV-p4oWeuWxzxMXgpSaSZZheoig4KvTIKHoEJIitWdlNuqsI50SKdMDve2Nl-zrR0Iw0KKHeWf0o6O9Br4h_RPm_JEFb9Pft0O-Ous_0GlG-L9ZWjBUrPovP3ss5ztgqbsrZ7g-ugH4rkPf65Rz2aYDqAZEKI4IJxTB40UPuAdsAcWXzqvA"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Dindigul Thalappakatti</h2>
+<span class="inline-flex items-center gap-0.5 px-space-xs py-0.5 rounded-full bg-brand-blush text-primary font-label-sm text-label-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span> T. Nagar
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-accent-orange">schedule</span>
+<span>08 Oct, 8:30 PM</span>
+</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low font-label-sm text-label-sm text-on-surface font-semibold tracking-wide">Room DND902</span>
+<span class="font-body-sm text-body-sm text-text-secondary truncate">Weekend Biryani</span>
+</div>
+</div>
+</div>
+<!-- Member Avatar Roster & Share Breakdown -->
+<div class="bg-brand-blush/60 rounded-DEFAULT p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">group</span>
+<span>Members (6)</span>
+</span>
+<div class="flex items-center -space-x-2">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Arjun">A</div>
+<div class="w-7 h-7 rounded-full bg-accent-orange text-surface-container-lowest flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Rahul">R</div>
+<div class="w-7 h-7 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-label-sm text-[11px] shadow-sm ring-2 ring-surface-container-lowest" title="Divya">D</div>
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-[10px] flex items-center justify-center shadow-sm ring-2 ring-surface-container-lowest">+3</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+          Arjun, Rahul, Divya, +3 others
+        </p>
+<!-- Payment Breakdown Metric -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-secondary">My Share Paid</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-price-display text-price-display text-on-surface tabular-nums">₹340</span>
+<span class="inline-flex items-center gap-0.5 text-positive font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Paid via UPI</span>
+</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-text-secondary">Group Total</span>
+<span class="font-label-lg text-label-lg text-on-surface tabular-nums">₹2,040</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-1">
+<button class="w-full h-12 rounded-full bg-primary hover:bg-brand-pink-hover text-on-primary font-label-lg text-label-lg shadow-sm flex items-center justify-center gap-space-xs active:scale-[0.98] transition-all" onclick="reorderGroup('DND902', 'Weekend Biryani', ['Arjun', 'Rahul', 'Divya', 'Deepak', 'Meera', 'Ravi'])">
+<span class="material-symbols-outlined text-[20px]">replay</span>
+<span>Order again with this group</span>
+</button>
+</div>
+</article>
+</section>
+<!-- Interactive Modal / Re-order Toast overlay -->
+<div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-margin pointer-events-none opacity-0 transition-opacity duration-300" id="reorderDialog">
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm pointer-events-auto" id="dialogBackdrop" onclick="closeModal()"></div>
+<div class="relative bg-surface-container-lowest w-full max-w-sm rounded-lg p-space-lg shadow-xl pointer-events-auto flex flex-col gap-space-md transform translate-y-4 transition-transform duration-300" id="dialogSheet">
+<div class="flex items-center justify-between">
+<div class="w-10 h-10 rounded-full bg-soft-pink flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">celebration</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-text-secondary hover:text-on-surface" onclick="closeModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Room Recreated!</h3>
+<p class="font-body-md text-body-md text-text-secondary mt-1" id="dialogDescription">Invite alerts have been prepared for your co-eaters.</p>
+</div>
+<div class="bg-brand-blush rounded-DEFAULT p-space-md flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-text-secondary">NEW ROOM CODE</span>
+<div class="flex items-center justify-between">
+<span class="font-price-display text-price-display text-primary tracking-wider" id="newRoomCodeDisplay">CHN-9812</span>
+<button class="flex items-center gap-1 text-primary font-label-sm text-label-sm" onclick="copyCode()">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span id="copyLabel">Copy</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<button class="w-full h-12 rounded-full bg-primary hover:bg-brand-pink-hover text-on-primary font-label-lg text-label-lg shadow-sm flex items-center justify-center gap-space-xs transition-colors" onclick="closeModal()">
+<span>Enter Live Room</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Itemized Receipt Download Simulator Toast -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-full shadow-lg flex items-center gap-space-xs pointer-events-none opacity-0 transition-opacity duration-300" id="toastNotification">
+<span class="material-symbols-outlined text-positive text-[18px]">download_done</span>
+<span class="font-label-md text-label-md" id="toastMessage">Receipt downloaded to device</span>
+</div>
+<!-- Mandatory Bottom Disclaimer Banner -->
+<div class="w-full bg-soft-pink py-space-sm px-space-md mt-space-lg text-center">
+<p class="font-label-sm text-label-sm text-primary leading-tight">
+      Concept prototype by Sameer Mittimani. Not an official Rapido product.
+    </p>
+</div>
+</div>
+<script>
+  function generateRandomRoomCode() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = 'CHN-';
+    for (let i = 0; i < 4; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return code;
+  }
+
+  function reorderGroup(oldRoom, groupName, members) {
+    const newCode = generateRandomRoomCode();
+    document.getElementById('newRoomCodeDisplay').textContent = newCode;
+    document.getElementById('dialogDescription').textContent = 'Re-creating "' + groupName + '" with ' + members.length + ' companions (' + members.join(', ') + ').';
+
+    const dialog = document.getElementById('reorderDialog');
+    const sheet = document.getElementById('dialogSheet');
+    dialog.classList.remove('pointer-events-none', 'opacity-0');
+    sheet.classList.remove('translate-y-4');
+  }
+
+  function closeModal() {
+    const dialog = document.getElementById('reorderDialog');
+    const sheet = document.getElementById('dialogSheet');
+    dialog.classList.add('opacity-0', 'pointer-events-none');
+    sheet.classList.add('translate-y-4');
+  }
+
+  function copyCode() {
+    const code = document.getElementById('newRoomCodeDisplay').textContent;
+    navigator.clipboard?.writeText(code).catch(() => {});
+    const label = document.getElementById('copyLabel');
+    label.textContent = 'Copied!';
+    setTimeout(() => {
+      label.textContent = 'Copy';
+    }, 1800);
+  }
+
+  function downloadReceipt(roomId) {
+    const toast = document.getElementById('toastNotification');
+    const message = document.getElementById('toastMessage');
+    message.textContent = 'Receipt for Room ' + roomId + ' downloaded';
+    toast.classList.remove('opacity-0');
+    setTimeout(() => {
+      toast.classList.add('opacity-0');
+    }, 2400);
+  }
+
+  // Simple instantaneous search filtering for the prototype
+  document.getElementById('orderSearch')?.addEventListener('input', function(e) {
+    const val = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('article');
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      if (text.includes(val)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script></main><footer class="fixed bottom-0 w-full z-50 pb-safe bg-page-background/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(17,29,53,0.06)]"><nav class="flex justify-around items-center h-16 px-space-xs" data-active-classes="text-primary font-bold"><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] gap-0.5 text-text-secondary transition-colors" data-path="group-pools" href="#"><span class="material-symbols-outlined text-[24px]">group_work</span><span class="font-label-sm text-label-sm">Pools</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] gap-0.5 text-text-secondary transition-colors" data-path="restaurants" href="#"><span class="material-symbols-outlined text-[24px]">restaurant</span><span class="font-label-sm text-label-sm">Feasts</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] gap-0.5 transition-colors text-primary font-bold" data-path="active-orders" href="#"><span class="material-symbols-outlined text-[24px]">receipt_long</span><span class="font-label-sm text-label-sm">Orders</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] gap-0.5 text-text-secondary transition-colors" data-path="savings-wallet" href="#"><span class="material-symbols-outlined text-[24px]">savings</span><span class="font-label-sm text-label-sm">Savings</span></a></nav><div class="bg-soft-pink py-1 px-space-sm text-center"><p class="font-label-sm text-label-sm text-primary leading-tight">Concept prototype by Sameer Mittimani. Not an official Rapido product.</p></div></footer></body></html>

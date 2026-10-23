@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-fixed": "#400014", "error-container": "#ffdad6", "outline": "#916e73", "surface-dim": "#cedafa", "error": "#ba1a1a", "accent-orange": "#FF922E", "tertiary-fixed-dim": "#d2bbff", "surface-container": "#e9edff", "secondary-container": "#dd2365", "surface-container-low": "#f1f3ff", "page-background": "#FFF9FC", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#25005a", "primary-fixed-dim": "#ffb2bd", "on-error-container": "#93000a", "on-surface": "#0f1b33", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#5a00c6", "brand-pink-hover": "#A80047", "tertiary-container": "#8a4cfc", "border-subtle": "#F0D7E2", "warning": "#A65D00", "surface-bright": "#faf9ff", "on-background": "#0f1b33", "secondary-fixed": "#ffd9df", "background": "#faf9ff", "on-secondary-fixed-variant": "#90003c", "primary": "#b80048", "on-secondary-fixed": "#3f0016", "secondary": "#b7004e", "on-secondary-container": "#fffbff", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "surface-container-highest": "#d8e2ff", "surface-tint": "#bd004a", "text-secondary": "#576177", "surface-container-high": "#e1e8ff", "soft-pink": "#FFE3ED", "surface-variant": "#d8e2ff", "on-error": "#ffffff", "brand-blush": "#FFF1F6", "inverse-primary": "#ffb2bd", "surface": "#FFFFFF", "primary-container": "#e6005c", "secondary-fixed-dim": "#ffb1c0", "tertiary": "#712ae2", "on-primary-container": "#fffbff", "primary-fixed": "#ffd9dd", "tertiary-fixed": "#eaddff", "on-primary-fixed-variant": "#900036", "positive": "#16845A", "on-tertiary-container": "#fffbff", "inverse-on-surface": "#edf0ff", "outline-variant": "#e6bcc1", "inverse-surface": "#253049", "on-surface-variant": "#5d3f43" }, borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, spacing: { "margin-md": "1.5rem", "margin": "1rem", "space-lg": "1.5rem", "gutter-lg": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "margin-lg": "2rem", "space-xs": "0.25rem", "space-2xl": "3rem", "gutter": "1rem", "space-md": "1rem" }, fontFamily: { "display-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "body-lg": ["Inter"], "price-display": ["Plus Jakarta Sans"], "label-md": ["Inter"], "label-lg": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "label-sm": ["Inter"] }, fontSize: { "display-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "800" }], "headline-md": ["22px", { lineHeight: "28px", fontWeight: "700" }], "display-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "800" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "price-display": ["24px", { lineHeight: "28px", fontWeight: "800" }], "label-md": ["14px", { lineHeight: "18px", fontWeight: "600" }], "label-lg": ["16px", { lineHeight: "20px", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "700" }], "label-sm": ["12px", { lineHeight: "16px", fontWeight: "600" }] } } } }</script><style>@layer base { body { -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-page-background text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-page-background/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-sm min-w-0"><button aria-label="Go back" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:bg-brand-blush active:scale-95 transition-all flex-shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="owenly_logo.jpg" class="h-7 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1WQ_Ryr6ROXpBJoPC1aYg32ZBAFINoIG_kZu6-4ISCItSb8SRJYoBn5gDtHdAieRV4KSEnQjmDwMQZBndxE7qsVDWsCm1wZq9QqpAq53tu6sRhmvhGwnycaM3yF85kKGyS2Pq0Fxwib9qgjzjXeuH_2QJPGfSBlAwHnitJoyE_98ijsSmOFiFH_DsIiCIfHVz62IsJu7HVpnzcDoyoaDVvsgsu8Mba3Fet8MXiRY72PXUM0prjcrc3Fq--A5OIIfr_-_viR54bWVQ"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate">Pool Room Detail</span><span class="font-label-sm text-label-sm text-text-secondary truncate">Chennai Zero-Fee Hub</span></div></div><div class="flex items-center gap-space-sm flex-shrink-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-page-background pt-16 pb-12"><div class="flex flex-col w-full pb-10">
+<!-- Interactive View Switcher Tabs -->
+<div class="px-gutter pt-space-md pb-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Edge Scenarios</span>
+<span class="font-label-sm text-label-sm text-primary bg-soft-pink px-3 py-1 rounded-full">5 Presets</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Simulate live system constraints and fallback views in the collective ordering lifecycle.</p>
+<!-- Tab Carousel Pills -->
+<div class="flex gap-space-xs overflow-x-auto no-scrollbar py-space-sm" id="state-tabs">
+<button class="state-tab-btn px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap bg-primary text-on-primary shadow-sm active:scale-95 flex items-center gap-1.5" data-tab="state-full" onclick="switchState('state-full')">
+<span class="material-symbols-outlined text-[16px]">group_off</span>
+        Group Full
+      </button>
+<button class="state-tab-btn px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap bg-surface text-on-surface hover:bg-brand-blush shadow-sm active:scale-95 flex items-center gap-1.5" data-tab="state-expired" onclick="switchState('state-expired')">
+<span class="material-symbols-outlined text-[16px]">history_toggle_off</span>
+        Link Expired
+      </button>
+<button class="state-tab-btn px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap bg-surface text-on-surface hover:bg-brand-blush shadow-sm active:scale-95 flex items-center gap-1.5" data-tab="state-soldout" onclick="switchState('state-soldout')">
+<span class="material-symbols-outlined text-[16px]">no_meals</span>
+        Dish Out
+      </button>
+<button class="state-tab-btn px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap bg-surface text-on-surface hover:bg-brand-blush shadow-sm active:scale-95 flex items-center gap-1.5" data-tab="state-failed" onclick="switchState('state-failed')">
+<span class="material-symbols-outlined text-[16px]">error_outline</span>
+        Pay Failed
+      </button>
+<button class="state-tab-btn px-4 py-2 rounded-full font-label-md text-label-md transition-all whitespace-nowrap bg-surface text-on-surface hover:bg-brand-blush shadow-sm active:scale-95 flex items-center gap-1.5" data-tab="state-empty" onclick="switchState('state-empty')">
+<span class="material-symbols-outlined text-[16px]">ramen_dining</span>
+        Empty Cart
+      </button>
+</div>
+</div>
+<!-- Showcase Canvas Wrapper -->
+<div class="px-gutter flex flex-col gap-space-lg">
+<!-- STATE 1: GROUP FULL STATE -->
+<section class="state-panel flex flex-col bg-surface rounded-lg p-space-lg shadow-md transition-all" id="state-full">
+<!-- Banner Header Badge -->
+<div class="flex items-center justify-between pb-space-md">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-warning/10 text-warning font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">info</span>
+          Capacity Exceeded
+        </div>
+<span class="font-label-sm text-label-sm text-text-secondary tabular-nums">Room #TNR890</span>
+</div>
+<!-- Hero Visual Representation -->
+<div class="relative bg-brand-blush rounded-xl p-space-md flex flex-col items-center justify-center text-center overflow-hidden mb-space-md">
+<div class="w-16 h-16 rounded-full bg-soft-pink flex items-center justify-center text-primary mb-space-sm shadow-sm">
+<span class="material-symbols-outlined text-[32px]">groups_3</span>
+</div>
+<!-- Live Participant Pill Cluster -->
+<div class="flex items-center justify-center -space-x-2 my-space-xs">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center ring-2 ring-surface shadow-sm">A</div>
+<div class="w-7 h-7 rounded-full bg-tertiary text-on-tertiary font-label-sm text-label-sm flex items-center justify-center ring-2 ring-surface shadow-sm">K</div>
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center justify-center ring-2 ring-surface shadow-sm">R</div>
+<div class="w-7 h-7 rounded-full bg-accent-orange text-surface font-label-sm text-label-sm flex items-center justify-center ring-2 ring-surface shadow-sm">S</div>
+<div class="w-7 h-7 rounded-full bg-on-surface text-surface font-label-sm text-label-sm flex items-center justify-center ring-2 ring-surface shadow-sm font-bold">+8</div>
+</div>
+<div class="mt-space-xs px-3 py-0.5 rounded-full bg-surface shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface font-bold">12 of 12 seats claimed</p>
+</div>
+</div>
+<!-- State Body -->
+<div class="flex flex-col gap-space-xs text-left mb-space-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">This group is full (12 people)</h3>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          Ownly Together rooms support a maximum of 12 participants for smooth kitchen preparation and delivery. Start a new pool for additional colleagues.
+        </p>
+</div>
+<!-- Progress Meter Visual Indicator -->
+<div class="bg-surface-container-low rounded-DEFAULT p-space-md mb-space-lg flex flex-col gap-space-xs">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-text-secondary">Kitchen Batch Threshold</span>
+<span class="text-error font-bold">100% Locked</span>
+</div>
+<div class="w-full h-2 rounded-full bg-soft-pink overflow-hidden">
+<div class="h-full bg-primary rounded-full w-full"></div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full min-h-[48px] rounded-full bg-primary hover:bg-brand-pink-hover text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+        Start a New Group
+      </button>
+</section>
+<!-- STATE 2: LINK EXPIRED STATE -->
+<section class="state-panel flex flex-col bg-surface rounded-lg p-space-lg shadow-md transition-all" id="state-expired">
+<div class="flex items-center justify-between pb-space-md">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-warning/10 text-warning font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">timer_off</span>
+          Time Window Closed
+        </div>
+<span class="font-label-sm text-label-sm text-text-secondary">Cutoff 12:45 PM</span>
+</div>
+<!-- Expired Stamp Visual -->
+<div class="relative bg-brand-blush rounded-xl p-space-lg flex flex-col items-center justify-center text-center overflow-hidden mb-space-md">
+<div class="w-16 h-16 rounded-full bg-warning/15 text-warning flex items-center justify-center mb-space-sm shadow-sm">
+<span class="material-symbols-outlined text-[36px]">history_toggle_off</span>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-warning animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-warning font-bold">Cart Finalized by Host</span>
+</div>
+</div>
+<!-- State Content -->
+<div class="flex flex-col gap-space-xs text-left mb-space-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Room link has expired</h3>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          The cut-off time for <span class="font-label-md text-label-md text-on-surface">TNR742</span> has passed and the cart has been locked by the host. New additions cannot be accepted.
+        </p>
+</div>
+<!-- Quick Context Box -->
+<div class="bg-surface-container-low rounded-DEFAULT p-space-md mb-space-lg flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-soft-pink text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Sangeetha Veg - OMR Hub</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Orders sent to kitchen batching</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full min-h-[48px] rounded-full bg-soft-pink hover:bg-border-subtle text-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+        Explore Restaurants
+      </button>
+</section>
+<!-- STATE 3: DISH UNAVAILABLE STATE -->
+<section class="state-panel flex flex-col bg-surface rounded-lg p-space-lg shadow-md transition-all" id="state-soldout">
+<div class="flex items-center justify-between pb-space-md">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+          Stock Outage
+        </div>
+<span class="font-label-sm text-label-sm text-text-secondary">Sangeetha Veg</span>
+</div>
+<!-- Dish Strikethrough Card -->
+<div class="bg-brand-blush rounded-xl p-space-md mb-space-md flex items-center gap-space-md relative overflow-hidden">
+<div class="relative w-20 h-20 rounded-DEFAULT overflow-hidden shrink-0 bg-surface">
+<img class="w-full h-full object-cover opacity-40 grayscale" data-alt="Traditional South Indian Ghee Pongal served in a brass bowl with rich cashews and fresh curry leaves, soft daylight, warm food photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdwa3EeKT2ASlO871T8aPxHZ9LI4cfR1WG2FNXfUE2SCbNwYMXF26YCeHhpNHKtzIvbJrs0476dk0JRF-emod72DtY8eYUxwxmr8lDv4jjYjcBPspHV1Ep-5VsGupGZLBV3WusFdOhshg2LVSZQn_ymnT9AKiBtVI6vNbh6f8KsgPv80NalskGsUzw2Bsi2KwPggud6SnmaAWgZpcJnJ2b-dorLxWRnpv7xW3q7XYID7QpLI1EfN15"/>
+<div class="absolute inset-0 bg-on-surface/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-surface text-[24px]">block</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="inline-flex items-center gap-1 mb-1">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-label-sm text-label-sm text-error font-bold tracking-tight">OUT OF STOCK</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface line-through opacity-60 truncate">Ghee Pongal</span>
+<span class="font-label-md text-label-md text-text-secondary">₹140 • 1 portion</span>
+</div>
+</div>
+<!-- State Body -->
+<div class="flex flex-col gap-space-xs text-left mb-space-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Ghee Pongal is sold out</h3>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          Unavailable at kitchen. Choose an alternative dish or notify host to adjust collective cart timing.
+        </p>
+</div>
+<!-- Kitchen Alternative Suggestion -->
+<div class="bg-surface-container-low rounded-DEFAULT p-space-sm mb-space-lg flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-positive/10 text-positive flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold truncate">Recommended Replacement</span>
+<span class="font-body-sm text-body-sm text-text-secondary truncate">Medu Vada Combo (₹130)</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-positive shrink-0 font-bold">In Stock</span>
+</div>
+<!-- Action Button -->
+<button class="w-full min-h-[48px] rounded-full bg-primary hover:bg-brand-pink-hover text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">cached</span>
+        Replace Dish
+      </button>
+</section>
+<!-- STATE 4: PAYMENT FAILED STATE -->
+<section class="state-panel flex flex-col bg-surface rounded-lg p-space-lg shadow-md transition-all" id="state-failed">
+<div class="flex items-center justify-between pb-space-md">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">sync_problem</span>
+          UPI Gateway Timeout
+        </div>
+<span class="font-label-sm text-label-sm text-text-secondary">Ref: #TXN-49120</span>
+</div>
+<!-- Failure Visual -->
+<div class="bg-brand-blush rounded-xl p-space-lg flex flex-col items-center justify-center text-center mb-space-md">
+<div class="w-16 h-16 rounded-full bg-error-container text-error flex items-center justify-center mb-space-sm shadow-sm">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<span class="font-price-display text-price-display text-on-surface">₹248.00</span>
+<span class="font-body-sm text-body-sm text-text-secondary mt-0.5">Attempted via Google Pay UPI</span>
+</div>
+<!-- State Body -->
+<div class="flex flex-col gap-space-xs text-left mb-space-md">
+<h3 class="font-headline-sm text-headline-sm text-error">Payment failed</h3>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          Bank UPI servers timed out. Your order has not been cancelled. Your spot in the group remains reserved for 04:32 mins.
+        </p>
+</div>
+<!-- Safety Assurance Sub-panel -->
+<div class="bg-surface-container-low rounded-DEFAULT p-space-md mb-space-lg flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-positive text-[22px] shrink-0">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-surface">If money was debited from your account, it will auto-refund within 2 banking hours.</p>
+</div>
+<!-- Stacked Dual Actions -->
+<div class="flex flex-col gap-space-sm">
+<button class="w-full min-h-[48px] rounded-full bg-primary hover:bg-brand-pink-hover text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+          Retry Payment
+        </button>
+<button class="w-full min-h-[48px] rounded-full bg-soft-pink hover:bg-border-subtle text-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+          Pay via Cash to Host
+        </button>
+</div>
+</section>
+<!-- STATE 5: EMPTY CART STATE -->
+<section class="state-panel flex flex-col bg-surface rounded-lg p-space-lg shadow-md transition-all" id="state-empty">
+<div class="flex items-center justify-between pb-space-md">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-soft-pink text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">set_meal</span>
+          Tiffin Session Ready
+        </div>
+<span class="font-label-sm text-label-sm text-positive font-bold">Group Active</span>
+</div>
+<!-- Warm Playful Empty State Illustration Frame -->
+<div class="relative bg-brand-blush rounded-xl p-space-xl flex flex-col items-center justify-center text-center overflow-hidden mb-space-md">
+<!-- Floating decorative bubble sparks -->
+<div class="w-20 h-20 rounded-full bg-soft-pink flex items-center justify-center shadow-inner mb-space-md relative">
+<span class="material-symbols-outlined text-[44px] text-primary" style="font-variation-settings: 'FILL' 0;">dinner_dining</span>
+<span class="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-[12px] font-bold shadow-sm">+</span>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface/90 rounded-full shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface">No items selected yet</span>
+</div>
+</div>
+<!-- State Body -->
+<div class="flex flex-col gap-space-xs text-center mb-space-lg px-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Your plate is empty</h3>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+          Browse Sangeetha Veg menu and tap + to add your favorite tiffin. Orders combine instantly with your coworkers.
+        </p>
+</div>
+<!-- Co-rider status teaser -->
+<div class="bg-surface-container-low rounded-DEFAULT p-space-md mb-space-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">groups</span>
+<span class="font-body-sm text-body-sm text-on-surface">6 teammates have placed items</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">View Cart</span>
+</div>
+<!-- Action Button -->
+<button class="w-full min-h-[48px] rounded-full bg-primary hover:bg-brand-pink-hover text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">restaurant_menu</span>
+        Browse Menu
+      </button>
+</section>
+<!-- Edge State Guide Utility Note -->
+<div class="bg-surface rounded-DEFAULT p-space-md flex items-start gap-space-md shadow-sm">
+<div class="w-8 h-8 rounded-full bg-soft-pink text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-label-md text-label-md text-on-surface">Autonomous Healing &amp; Clear Actions</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Every terminal or edge state provides a prominent recovery button to minimize group order disruption.</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchState(targetId) {
+    // Hide all state panels or scroll smoothly
+    const panels = document.querySelectorAll('.state-panel');
+    const tabs = document.querySelectorAll('.state-tab-btn');
+    
+    tabs.forEach(tab => {
+      if(tab.getAttribute('data-tab') === targetId) {
+        tab.classList.remove('bg-surface', 'text-on-surface');
+        tab.classList.add('bg-primary', 'text-on-primary');
+      } else {
+        tab.classList.remove('bg-primary', 'text-on-primary');
+        tab.classList.add('bg-surface', 'text-on-surface');
+      }
+    });
+
+    const targetEl = document.getElementById(targetId);
+    if(targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // Gentle tactile flash effect
+      targetEl.classList.add('scale-[1.01]');
+      setTimeout(() => {
+        targetEl.classList.remove('scale-[1.01]');
+      }, 250);
+    }
+  }
+</script></main><footer class="fixed bottom-0 w-full z-50 pb-safe bg-page-background/95 backdrop-blur-xl"><div class="bg-soft-pink py-1 px-space-sm text-center"><p class="font-label-sm text-label-sm text-primary leading-tight">Concept prototype by Sameer Mittimani. Not an official Rapido product.</p></div></footer></body></html>
