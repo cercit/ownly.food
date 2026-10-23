@@ -4,7 +4,7 @@ import { createClient, type User } from '@supabase/supabase-js';
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from '../lib/config.ts';
 import { buildShareLink, readJoinParam } from '../lib/room.ts';
 import type {
-  ActivityRow, Address, AddressLabel, Group, GroupPreview, GroupView, HistoryRow, JoinedGroup, MenuItem, PayMethod,
+  ActivityRow, Address, AddressLabel, GroupView, HistoryRow, JoinedGroup, MenuItem, PayMethod,
   PaymentMethodRow, Profile, Restaurant, SplitRule, StartedGroup,
 } from '../lib/types.ts';
 
@@ -153,4 +153,3 @@ export const myGroupOrders = () => rpc<HistoryRow[]>('my_group_orders');
 export const groupActivity = (groupId: string) =>
   run<ActivityRow[]>(supabase.from('audit_log').select('at, actor_id, table_name, action, changes').eq('group_order_id', groupId).order('at') as never);
 
-export type { Group, GroupPreview };

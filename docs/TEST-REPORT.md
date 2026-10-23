@@ -66,6 +66,20 @@ Screens now wired to Supabase: sign in, explore, menu, start (split rule, code, 
 | Browser (fixture) | Pass, 120 of 120 screen/width pairs: 30 screens at 390, 768, 1024 and 1440 px, concept strip on all, no sideways scroll, no console errors |
 | Self review | One responsive app: header with pill navigation from 1024 px, bottom navigation below it; menu beside the cart from 1024 px and Menu / Cart tabs below; avatars on member cards; tracking timeline with a clock time per stage; container 1240 px wide. Layouts follow the Stitch desktop and mobile structure; the Stitch and `owny-new_*` texts for savings, pods, fees and delivery estimates were not carried over |
 
+## Round 6 (final): after step 7, clean install, 23 Oct 2026
+
+| Check | Result |
+|---|---|
+| `npm ci`, lint, build | Pass (fresh `node_modules`) |
+| Backend `db/tests/run.mjs` | Pass, 80 / 80 |
+| Unit tests (Vitest) | Pass, 36 / 36 in 5 files |
+| Live read-only (`npm run live`) | **Not run: blocked.** The cloud session's network policy does not allow `brliajwgrhsnbgxaucsu.supabase.co` (DNS fails). Run `cd web && npm run live` on your laptop: it checks 15 Chennai restaurants, 150 dishes, photos, and that `get_group`, `join_group`, `my_group_orders` and a direct insert are refused when logged out |
+| Rule audit | Pass, 0 hits in 32 files (banned words, other-city places, dashed codes, hard-coded restaurant names from the CSV, non-anon keys, browser storage) |
+| Browser 390 / 768 / 1024 / 1440 px | Pass, 120 of 120 (30 screens x 4 widths): concept strip on every screen, no sideways scroll, no console errors. Uses a fake Supabase, so it proves layout and the calls the app sends, not the real database |
+| Self review | Every changed file read. Cleaned in this round: removed the unused `motion` package, the old unused CSS classes and an unused type re-export; added a global reduced-motion rule |
+
+No round failed after round 1's expected mock-service hits. Loop ended clean.
+
 ## Questions for Sameer
 
 1. `@supabase/supabase-js@2.45.4` (pinned by the plan) pulls an `auth-js` version with a low-severity npm advisory (path routing on malformed input). Upgrade to the latest 2.x? Left as pinned.
