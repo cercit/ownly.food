@@ -62,9 +62,10 @@ export const listRestaurants = (city = null) => {
 export const getMenu = restaurantId => run(supabase.from('menu_items').select('*').eq('restaurant_id', restaurantId).order('category').order('price'));
 
 // ---------- Screen 4: start a group order (host) ----------
-// cutOff: a Date or ISO string in the future. Returns { id, share_code, existing }.
-export const startGroupOrder = (restaurantId, addressId, cutOff) =>
-  rpc('create_group_order', { p_restaurant: restaurantId, p_address: addressId, p_cut_off: new Date(cutOff).toISOString() });
+// cutOff: a Date or ISO string in the future. splitRule: 'itemised' (pay for what you ordered) or 'equal'.
+// Returns { id, share_code, split_rule, existing }.
+export const startGroupOrder = (restaurantId, addressId, cutOff, splitRule = 'itemised') =>
+  rpc('create_group_order', { p_restaurant: restaurantId, p_address: addressId, p_cut_off: new Date(cutOff).toISOString(), p_split: splitRule });
 export const shareLink = code => `${location.origin}${location.pathname}?join=${code}`;
 
 // ---------- Screen 5: join via code or link ----------
