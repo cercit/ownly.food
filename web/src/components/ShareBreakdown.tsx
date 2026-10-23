@@ -1,6 +1,6 @@
 import { rupees, splitRuleName } from '../lib/format.ts';
 import type { Group, GroupMember } from '../lib/types.ts';
-import { statusBadge } from '../ui/kit.tsx';
+import { Avatar, statusBadge } from '../ui/kit.tsx';
 
 const Line = ({ label, value, strong, hint }: { label: string; value: number; strong?: boolean; hint?: string }) => (
   <div className={`flex items-baseline justify-between gap-4 py-2 ${strong ? 'text-lg font-extrabold border-t border-[#F0D7E2] mt-1 pt-3' : ''}`}>
@@ -48,7 +48,7 @@ export function MemberShareRow({ member }: { member: GroupMember }) {
   return (
     <li className="border border-[#F0D7E2] rounded-2xl p-4 bg-white" data-testid="member-share">
       <div className="flex items-center justify-between gap-3">
-        <p className="font-extrabold">{member.name}{member.is_me && ' (you)'}{member.role === 'host' && <span className="ml-2 text-xs font-bold text-[#C40054]">Host</span>}</p>
+        <p className="font-extrabold flex items-center gap-2"><Avatar name={member.name} />{member.name}{member.is_me && ' (you)'}{member.role === 'host' && <span className="text-xs font-bold text-[#C40054]">Host</span>}</p>
         {p ? statusBadge(p.status) : null}
       </div>
       <ul className="text-sm text-[#576177] mt-2 space-y-0.5">

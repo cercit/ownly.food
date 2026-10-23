@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
 import { markDelivered } from '../api/ownly-api.ts';
-import { labelName, mmss } from '../lib/format.ts';
+import { labelName, mmss, timeOnly } from '../lib/format.ts';
 import { hrefFor } from '../lib/router.ts';
 import { TRACKING_STAGES, STAGE_START_SECONDS, isDeliveredStage, onceReporter, secondsToNextStage, stageIndex } from '../lib/tracking.ts';
 import { Card, Empty, ErrorNote, Spinner, useNow } from '../ui/kit.tsx';
@@ -60,7 +60,8 @@ export function TrackScreen({ gid }: { gid: string }) {
             return (
               <li key={s} aria-current={cur ? 'step' : undefined} className="flex items-center gap-3">
                 <span className={`size-8 rounded-full grid place-items-center text-sm font-bold ${done ? 'bg-[#16845A] text-white' : cur ? 'bg-[#C40054] text-white motion-safe:animate-pulse' : 'bg-[#F4EEF1] text-[#576177]'}`}>{done ? <Check className="size-4" aria-label="done" /> : i + 1}</span>
-                <span className={`font-bold ${cur || done ? '' : 'text-[#576177]'}`}>{s}</span>
+                <span className={`font-bold flex-1 ${cur || done ? '' : 'text-[#576177]'}`}>{s}</span>
+                <time className="text-sm text-[#576177] tabular-nums">{timeOnly(new Date(new Date(placedAt).getTime() + STAGE_START_SECONDS[i] * 1000).toISOString())}</time>
               </li>);
           })}
         </ol>

@@ -58,7 +58,40 @@ Fixed this round: audit false positives (code comments, `localeCompare`). Added 
 
 Screens now wired to Supabase: sign in, explore, menu, start (split rule, code, link, QR, copy, WhatsApp), join (preview, full at 12, closed, dashed code message, sign-in first), shared cart (menu beside cart on desktop, tabs on mobile, Shared toggle, live refresh every 5 s, countdown, lock, cancel, leave), host checkout (three charges, place), confirmation, my share and pay (demo modal: UPI, QR, card, netbanking, cash, simulate success / failure, retry), tracking (five stages from `placed_at`, `markDelivered` once), orders (in progress / past, receipt, order again, activity), group activity.
 
+## Round 5: after step 6 (layouts), 23 Oct 2026
+
+| Check | Result |
+|---|---|
+| Build, backend, unit tests, audit | Pass (see round 6 for the final full run) |
+| Browser (fixture) | Pass, 120 of 120 screen/width pairs: 30 screens at 390, 768, 1024 and 1440 px, concept strip on all, no sideways scroll, no console errors |
+| Self review | One responsive app: header with pill navigation from 1024 px, bottom navigation below it; menu beside the cart from 1024 px and Menu / Cart tabs below; avatars on member cards; tracking timeline with a clock time per stage; container 1240 px wide. Layouts follow the Stitch desktop and mobile structure; the Stitch and `owny-new_*` texts for savings, pods, fees and delivery estimates were not carried over |
+
 ## Questions for Sameer
 
 1. `@supabase/supabase-js@2.45.4` (pinned by the plan) pulls an `auth-js` version with a low-severity npm advisory (path routing on malformed input). Upgrade to the latest 2.x? Left as pinned.
 2. The tracking stage "Your Rapido Captain is on the way" comes from the plan (screen 9). "Captain" is kept only in that line; no names, plates or call button.
+3. Tracking timings are my choice, not a rule: Order accepted 0 s, Preparing 30 s, Picked up 90 s, On the way 120 s, Delivered 180 s after `placed_at` (`web/src/lib/tracking.ts`). Tell me the timings you want.
+4. Before the order is placed the app shows each person's own dishes, not a share, because shares are only worked out by `place_group` in the database (plan rule). A "preview of shares" before placing would need a new database function; not built.
+5. "Simulate failure" is a screen-only state: the database has no call that records a failed payment, so the share simply stays Pending. Add `fail_share` to the database if failures should show in the audit log.
+6. Member status ("Adding items" / "Done") and a progress bar to the cut-off are in the Stitch screens but have no database field (`get_group` has no `created_at` or member status), so they are not shown.
+7. The group activity page says "A group member" for other people: `audit_log` stores only profile ids and `get_group` does not return them. Return names from a database function if you want "Priya added a dish".
+8. "Order again with this group" opens Start at the same restaurant. There is no database list of past members to re-invite, so you share the new code again.
+9. Tracking uses each phone's own clock against `placed_at`. A phone with a wrong clock shows a different stage. A server-time offset could fix that if it matters.
+10. Dish photos and restaurant photos load from Pexels URLs in the database. If a photo URL is blank the card shows a pink block.
+11. The default image fonts (Inter, Plus Jakarta Sans) load from Google Fonts. Say if you want them bundled.
+
+## Manual test steps for the signed-in flow (needs real email codes)
+
+The cloud session cannot receive email, so Sameer runs these on a laptop after `git pull`. Use `cd web && npm ci && npm run dev` (http://localhost:3000), or two browsers / one normal and one private window for the second and third person. Allow the site address under Supabase Authentication, URL configuration, if sign-in links complain.
+
+1. **Sign up (person A, host).** Sign in, enter your email, press "Send me a code", type the 6-digit code from the email. Enter your name. Open Profile and add an address (try "Add a map pin from my location" once, and once type it by hand). Add a saved payment method: a UPI id, and a card with only the last 4 digits. Check that a full card number is refused.
+2. **Start an order with each rule.** Explore, pick a restaurant, "Start group order". Do it once with "Pay for what you ordered" and once with "Split everything equally" (cancel the first, or use a different restaurant: a second order at the same restaurant reopens the existing one). Check the room code is 6 capitals or numbers with no dash, the link ends `?join=CODE`, the QR opens the same link, "Copy link" and "Share on WhatsApp" work.
+3. **Join (person B, second browser).** Open the link signed out: you are asked to sign in, then land on the join preview (restaurant, host, cut-off, people, rule). Join. Open the link again: you go straight to the cart. Type the code in Join, and type it with a dash (`TNR-742`) to see the message.
+4. **Add dishes.** As both people add dishes with notes. As person B mark one dish Shared (itemised rule). Both carts refresh within about 5 seconds. Remove one of your own dishes.
+5. **Group full.** Sign up 11 more people (plus-addresses of one inbox work, for example you+u2@gmail.com) and join. Person 13 must see "This group is full (12 people)."
+6. **Lock and place.** As host press "Lock the cart", check person B cannot add. Go to checkout, type delivery 40, packaging 20, taxes 36 and place the order. Check the confirmation shows each person's food, shared share, charges share and total, and that the numbers match the worked example in `prompts/implementation_plan.md` section 3 when you use the same dishes; under the equal rule the whole bill divides equally.
+7. **Pay.** Everyone opens "My share and pay". Person B: "Simulate failure", then Retry, then "Simulate success" with UPI. Host: "Paid the host in cash". Check Paid / Pending changes for everyone within a few seconds, and that the note "Demo payment: no real money moves." shows.
+8. **Track.** Open Track from the confirmation or the link on both phones: both show the same stage at the same moment. After the last stage the order shows Delivered, and Orders shows "Delivered". Reload during delivery: no second "mark delivered" error.
+9. **History.** Orders shows in progress and past orders with my share and status, Receipt, "Order again with this group" (opens Start at the same restaurant), and Activity (who joined, added, paid).
+10. **Cancel.** Start another order, add a dish, cancel as host. Person B sees "The host cancelled this order."
+11. **Edge states.** Open a link for an order that was cancelled or closed (join shows "closed"); try a code that does not exist (message from the database); mark a dish unavailable only if you edit the catalogue yourself.

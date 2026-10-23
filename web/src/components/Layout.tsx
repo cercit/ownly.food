@@ -20,7 +20,7 @@ export function Layout({ route, children }: { route: Route; children: ReactNode 
     <div className="min-h-screen flex flex-col bg-[#FFF9FC] text-[#111D35]">
       <ConceptStrip />
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-[#F0D7E2]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           <a href={hrefFor({ name: 'explore' })} className="flex items-center gap-3 no-underline">
             <img src="/ownly-logo.jpg" alt="Ownly" className="size-10 rounded-2xl border border-[#F0D7E2] object-cover" />
             <span className="leading-tight">
@@ -41,7 +41,7 @@ export function Layout({ route, children }: { route: Route; children: ReactNode 
             : <a href={hrefFor({ name: 'signin' })} className="px-4 py-2 rounded-full bg-[#C40054] text-white text-sm font-bold no-underline">Sign in</a>}
         </div>
       </header>
-      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 pb-28 lg:pb-10">{children}</main>
+      <main className="flex-1 w-full max-w-[1240px] mx-auto px-4 sm:px-6 py-6 pb-28 lg:pb-10">{children}</main>
       <nav aria-label="Main" className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-[#F0D7E2] pb-[env(safe-area-inset-bottom)]">
         <div className="grid grid-cols-5 h-16">
           {NAV.map(n => {

@@ -105,3 +105,9 @@ export function useLoad<T>(fn: () => Promise<T>, deps: unknown[]) {
 export async function copyText(text: string): Promise<boolean> {
   try { await navigator.clipboard.writeText(text); return true; } catch { return false; }
 }
+
+const AVATAR_TONES = ['bg-[#C40054] text-white', 'bg-[#7C3AED] text-white', 'bg-[#FF922E] text-[#111D35]', 'bg-[#111D35] text-white', 'bg-[#16845A] text-white'];
+export function Avatar({ name, index = 0 }: { name: string | null; index?: number }) {
+  return <span aria-hidden className={`size-9 rounded-full grid place-items-center text-xs font-extrabold shrink-0 ${AVATAR_TONES[index % AVATAR_TONES.length]}`}>
+    {(name ?? '?').trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase()}</span>;
+}

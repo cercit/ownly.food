@@ -16,12 +16,12 @@ const shots = path.join(web, '.shots'); mkdirSync(shots, { recursive: true });
 const STRIP = 'Concept prototype by Sameer Mittimani. Not an official Rapido product.';
 const PORT = 4173;
 
-const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], { cwd: web, stdio: 'ignore' });
+const server = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], { cwd: web, stdio: 'ignore', detached: true });
 await new Promise(r => setTimeout(r, 2500));
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM || '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome' });
 let fail = 0, total = 0;
 try {
-  for (const [w, h] of [[390, 844], [1440, 900]]) {
+  for (const [w, h] of [[390, 844], [768, 1024], [1024, 768], [1440, 900]]) {
     for (const sc of scenarios) {
       total++;
       const ctx = await browser.newContext({ viewport: { width: w, height: h } });
@@ -46,6 +46,6 @@ try {
       await ctx.close();
     }
   }
-} finally { await browser.close(); server.kill(); }
+} finally { await browser.close(); try { process.kill(-server.pid); } catch { server.kill(); } }
 console.log(fail ? `\nBrowser check FAILED: ${fail} of ${total}` : `\nBrowser check passed: ${total} screen/width pairs`);
 process.exit(fail ? 1 : 0);

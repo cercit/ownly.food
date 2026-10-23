@@ -5,7 +5,7 @@ import { MAX_MEMBERS } from '../lib/config.ts';
 import { labelName, mmss, rupees, splitRuleName } from '../lib/format.ts';
 import { hrefFor, navigate } from '../lib/router.ts';
 import type { Group, MenuItem } from '../lib/types.ts';
-import { Badge, Button, Card, Empty, ErrorNote, Field, Modal, Spinner, VegDot, inputCls, useLoad, useNow, useToast } from '../ui/kit.tsx';
+import { Avatar, Badge, Button, Card, Empty, ErrorNote, Field, Modal, Spinner, VegDot, inputCls, useLoad, useNow, useToast } from '../ui/kit.tsx';
 import { SharePanel, useGroup } from '../ui/group.tsx';
 
 export function CartScreen({ gid }: { gid: string }) {
@@ -81,7 +81,7 @@ export function CartScreen({ gid }: { gid: string }) {
             <ul className="space-y-5">
               {g.members.filter(m => m.items.length > 0).map(m => (
                 <li key={m.member_id}>
-                  <p className="font-extrabold">{m.name}{m.is_me && ' (you)'}{m.role === 'host' && <span className="ml-2 text-xs font-bold text-[#C40054]">Host</span>}</p>
+                  <p className="font-extrabold flex items-center gap-2"><Avatar name={m.name} index={g.members.indexOf(m)} />{m.name}{m.is_me && ' (you)'}{m.role === 'host' && <span className="text-xs font-bold text-[#C40054]">Host</span>}</p>
                   <ul className="mt-1 divide-y divide-[#F5E6ED]">
                     {m.items.map(i => (
                       <li key={i.id} className="py-2 flex items-start gap-2">
