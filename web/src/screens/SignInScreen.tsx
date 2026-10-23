@@ -58,7 +58,7 @@ export function SignInScreen({ next }: { next?: string }) {
 
   return (
     <Card className="max-w-md mx-auto">
-      <h1 className="text-2xl sm:text-3xl font-extrabold">{showName ? 'What should we call you?' : 'Sign in to Ownly Together'}</h1>
+      <h1 className="text-2xl sm:text-3xl font-extrabold">{showName ? 'What is your name?' : 'Sign in to Ownly Together'}</h1>
       {step === 'email' && !showName && <>
         <p className="text-[#576177] mt-2">Enter your email. We send you a 6-digit code. No password, and new people sign up the same way.</p>
         <form onSubmit={send} className="mt-5 space-y-4" noValidate>
