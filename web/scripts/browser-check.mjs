@@ -38,6 +38,8 @@ try {
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       const textOk = sc.expect ? await page.getByText(sc.expect).first().isVisible().catch(() => false) : true;
       await page.screenshot({ path: path.join(shots, `${sc.name}-${w}.png`), fullPage: false });
+      const verifyMsg = sc.verify ? sc.verify(state) : null;
+      if (verifyMsg) errors.push(verifyMsg);
       const ok = stripOk && overflow <= 1 && !errors.length && textOk;
       if (!ok) fail++;
       console.log(`${ok ? 'ok  ' : 'FAIL'} ${String(w).padStart(4)}px ${sc.name}${stripOk ? '' : '  [no concept strip]'}${overflow > 1 ? `  [sideways scroll ${overflow}px]` : ''}${textOk ? '' : `  [missing "${sc.expect}"]`}${errors.length ? '  [' + errors[0].slice(0, 120) + ']' : ''}`);

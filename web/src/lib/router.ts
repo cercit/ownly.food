@@ -19,7 +19,7 @@ export function parseHash(hash: string): Route {
   switch (seg[0]) {
     case 'menu': return seg[1] ? { name: 'menu', rid: seg[1] } : { name: 'explore' };
     case 'start': return { name: 'start', rid: seg[1] };
-    case 'join': return { name: 'join', code: seg[1] };
+    case 'join': return { name: 'join', code: seg[1] ? decodeURIComponent(seg[1]) : undefined };
     case 'g': {
       const screen = seg[2] as (typeof GROUP_SCREENS)[number];
       if (seg[1] && GROUP_SCREENS.includes(screen)) return { name: screen, gid: seg[1] };
@@ -37,7 +37,7 @@ export function hrefFor(r: Route): string {
     case 'explore': return '#/';
     case 'menu': return `#/menu/${r.rid}`;
     case 'start': return r.rid ? `#/start/${r.rid}` : '#/start';
-    case 'join': return r.code ? `#/join/${r.code}` : '#/join';
+    case 'join': return r.code ? `#/join/${encodeURIComponent(r.code)}` : '#/join';
     case 'orders': return '#/orders';
     case 'profile': return '#/profile';
     case 'signin': return r.next ? `#/signin?next=${encodeURIComponent(r.next)}` : '#/signin';

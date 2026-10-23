@@ -27,3 +27,23 @@ describe('tracking clock', () => {
     expect(isDeliveredStage(stageIndex(placed, at(500)))).toBe(true);
   });
 });
+
+import { onceReporter } from '../src/lib/tracking.ts';
+
+describe('markDelivered is reported once', () => {
+  it('calls once even when asked many times, including at the same moment', async () => {
+    let calls = 0;
+    const report = onceReporter(async () => { calls++; });
+    await Promise.all([report(), report(), report()]);
+    await report();
+    expect(calls).toBe(1);
+  });
+  it('tries again only after a failure', async () => {
+    let calls = 0;
+    const report = onceReporter(async () => { calls++; if (calls === 1) throw new Error('offline'); });
+    expect(await report()).toBe(false);
+    expect(await report()).toBe(true);
+    expect(await report()).toBe(false);
+    expect(calls).toBe(2);
+  });
+});

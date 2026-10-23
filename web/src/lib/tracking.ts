@@ -25,3 +25,13 @@ export function secondsToNextStage(placedAt: string | Date, now: number | Date =
   const at = t0 + STAGE_START_SECONDS[idx + 1] * 1000;
   return Math.max(0, Math.ceil((at - (now instanceof Date ? now.getTime() : now)) / 1000));
 }
+
+/** Runs `run` at most once at a time and never again after it succeeds. Retries only after a failure. */
+export function onceReporter(run: () => Promise<unknown>) {
+  let state: 'idle' | 'busy' | 'done' = 'idle';
+  return async (): Promise<boolean> => {
+    if (state !== 'idle') return false;
+    state = 'busy';
+    try { await run(); state = 'done'; return true; } catch { state = 'idle'; return false; }
+  };
+}
