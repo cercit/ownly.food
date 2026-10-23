@@ -168,47 +168,11 @@
 <div class="flex items-center justify-between pb-3">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary text-[20px]">receipt_long</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Verified Honest Bill</h3>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Order Bill Summary</h3>
 </div>
 
 </div>
-<div class="space-y-2.5 pt-1">
-<div class="flex justify-between font-body-md text-body-md">
-<span class="text-on-surface-variant">Total Items (5 items)</span>
-<span class="text-on-surface font-semibold">₹1,038</span>
-</div>
-<!-- Packaging Fee -->
-<div class="flex justify-between items-center font-body-md text-body-md"><span class="text-on-surface-variant">Packaging Fee</span><span class="text-tertiary font-bold">₹0 Free</span></div>
-<!-- Platform Fee -->
-<div class="flex justify-between items-center font-body-md text-body-md"><span class="text-on-surface-variant">Platform Fee</span><span class="text-tertiary font-bold">₹0 Free</span></div>
-<!-- Surge Fee -->
-<div class="flex justify-between items-center font-body-md text-body-md"><span class="text-on-surface-variant">Surge / Weather Fee</span><span class="text-tertiary font-bold">₹0 Free</span></div>
-<!-- Delivery Fee -->
-<div class="flex justify-between items-center font-body-md text-body-md">
-<div>
-<div class="flex items-center gap-1"><span class="text-on-surface-variant">Delivery Fee (Rapido)</span></div>
-<p class="font-body-sm text-body-sm text-text-muted">Fair split: 4 members = ₹10 / person</p>
-</div>
-<span class="text-on-surface font-semibold">₹40</span>
-</div>
-<!-- Taxes -->
-<div class="flex justify-between font-body-md text-body-md">
-<span class="text-on-surface-variant">Restaurant Taxes (GST 5%)</span>
-<span class="text-on-surface font-semibold">₹52</span>
-</div>
-<!-- Divider line using background color -->
-<div class="w-full h-px bg-surface-container my-2"></div>
-<!-- Grand Total -->
-<div class="flex justify-between items-baseline pt-1">
-<div>
-<span class="font-headline-sm text-headline-sm text-on-surface">Grand Total</span>
-<p class="font-body-sm text-body-sm text-text-muted">All-inclusive collective total</p>
-</div>
-<div class="text-right">
-<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-extrabold">₹1,130</span>
-</div>
-</div>
-</div>
+<div class="space-y-2.5 pt-1"><div class="flex justify-between font-body-md text-body-md"><span class="text-on-surface-variant">Total Items (5 items)</span><span class="text-on-surface font-semibold">₹1,038</span></div><div class="flex justify-between items-center font-body-md text-body-md"><span class="text-on-surface-variant">Rapido Delivery Fee</span><span class="text-on-surface font-semibold">₹40</span></div><div class="flex justify-between font-body-md text-body-md"><span class="text-on-surface-variant">Taxes (GST 5%)</span><span class="text-on-surface font-semibold">₹52</span></div><div class="w-full h-px bg-surface-container my-2"></div><div class="flex justify-between items-baseline pt-1"><div><span class="font-headline-sm text-headline-sm text-on-surface">Grand Total</span><p class="font-body-sm text-body-sm text-text-muted">All-inclusive collective total</p></div><div class="text-right"><span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-extrabold">₹1,130</span></div></div></div>
 <!-- Group Savings Callout Strip -->
 
 </div>
@@ -281,7 +245,7 @@
 </button>
 </div>
 </div>
-</div>
+<div class="px-gutter-mobile py-space-md text-center"><p class="font-body-sm text-body-sm text-text-muted">Concept prototype by Sameer Mittimani. Not an official Rapido product.</p></div></div>
 <script>
   function updatePaymentMode(radio) {
     const parentOptions = document.querySelectorAll('.payment-option');

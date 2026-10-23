@@ -2,7 +2,7 @@
 
 Ownly Together is a group-ordering idea for Ownly, Rapido's zero-commission food app. Ownly runs in Bengaluru and Hyderabad but hasn't reached Chennai yet, so I designed Ownly Together as the way it launches there. Friends or office colleagues order from one restaurant, each person adds their own food, and the app splits the bill so nobody has to chase anyone on UPI the next day.
 
-I designed every screen in Google Stitch with seven prompts. Each prompt built on the one before it: first the brief, then the full set of screens, then desktop, then payments, then what happens after the order is placed, then moving the whole design to Chennai, and last, holding every screen to the product rules. These are the prompts I used.
+I designed every screen in Google Stitch with eight prompts. Each prompt built on the one before it: first the brief, then the full set of screens, then desktop, then payments, then what happens after the order is placed, then moving the whole design to Chennai, then holding every screen to the product rules, and a final clean-up pass. These are the prompts I used.
 
 ---
 
@@ -71,6 +71,18 @@ I designed every screen in Google Stitch with seven prompts. Each prompt built o
 > 7. Remove the bag capacity gauge.
 >
 > Keep the design, colours and layout the same.
+
+## Prompt 8: final clean-up
+
+> Almost there. Fix these remaining items on every screen:
+> 1. Replace every "Rapido Direct" with "Rapido".
+> 2. Remove all fee and price claims: "₹0 Fees", "No markup", "0% platform fees", "No inflated markups or surge fees", "Zero packaging markup", "0% eaten by intermediaries", "₹10 to Rapido direct runner". Show Rapido's delivery, packaging and taxes as plain amounts split equally.
+> 3. Remove "Hyderabad, Telangana 500081" from the footer. Chennai only.
+> 4. Room code has no dash anywhere: TNR742, not TNR-742 or PAR-742. Update the share, copy and WhatsApp messages too, and replace "Paradise Biryani" in them with the Chennai restaurant on screen.
+> 5. Remove company names, CIN and GSTIN numbers, and "22,000+ restaurants". Footer should only say: "Concept prototype by Sameer Mittimani. Not an official Rapido product."
+> 6. Add the concept strip to the mobile Razorpay payment screen.
+>
+> Keep everything else the same.
 
 ---
 
