@@ -139,6 +139,53 @@ await asUser(stranger);
 await throwsLike(`select pay_share($1, 'upi')`, [s1.id], /nothing to pay/, 'S3 blocked: a non-member cannot pay');
 ok(+(await one(`select count(*) n from group_orders`)).n === 0, 'a stranger cannot read any group order');
 
+// ---------- 05: Chennai catalogue, photos, host split rule ----------
+await db.exec('reset role');
+await db.exec(readFileSync(path.join(here, '..', '04_security_tidy.sql'), 'utf8').replace(/^\uFEFF/, ''));
+await db.exec(readFileSync(path.join(here, '..', '05_chennai_split_images.sql'), 'utf8'));
+await db.exec(readFileSync(path.join(here, '..', '05_chennai_split_images.sql'), 'utf8'));
+console.log('applied 04 + 05 (05 twice, to prove it can be re-run)');
+const k = await one(`select (select count(*) from restaurants) r, (select count(*) from menu_items) m,
+  (select count(*) from restaurants where city <> 'Chennai') old, (select count(*) from group_orders) g,
+  (select count(*) from menu_items where coalesce(image_url, '') = '') noimg, (select count(*) from restaurants where coalesce(image_url, '') = '') rnoimg,
+  (select count(*) from menu_items where not is_available) na`);
+ok(+k.r === 15 && +k.m === 150 && +k.old === 0, `catalogue is Chennai only: ${k.r} restaurants, ${k.m} dishes`);
+ok(+k.noimg === 0 && +k.rnoimg === 0, 'every restaurant and dish has a photo');
+ok(+k.na === 3, '3 dishes marked unavailable');
+ok(+k.g === 0, 'old test orders on Bengaluru restaurants were cleared with them');
+ok(+(await one(`select count(*) n from restaurants r where veg_only and exists (select 1 from menu_items m where m.restaurant_id = r.id and not m.is_veg)`)).n === 0,
+  'no veg-only restaurant lists a non-veg dish');
+
+await asAnon();
+ok(+(await one(`select count(*) n from menu_items where image_url like 'https://images.pexels.com/%'`)).n === 150, 'logged-out visitors see dishes with photos');
+await throwsLike(`select create_group_order(gen_random_uuid(), gen_random_uuid(), now() + interval '1 hour')`, [], /permission denied/, 'logged-out visitors cannot start a group order');
+
+// equal split: 3 people, food 600 (one person 600, two have nothing), charges 90 -> 690 / 3 = 230 each
+await asUser(host);
+const che = (await one(`select r.id, (select id from menu_items where restaurant_id = r.id and is_available order by price desc limit 1) dish,
+  (select price from menu_items where restaurant_id = r.id and is_available order by price desc limit 1) price
+  from restaurants r where r.name = 'Anjappar - Adyar'`));
+const eq = (await one(`select create_group_order($1, $2, now() + interval '1 hour', 'equal') j`, [che.id, office])).j;
+ok(eq.split_rule === 'equal' && eq.existing === false, `host starts a group with "split everything equally" (${eq.share_code})`);
+const dflt = (await one(`select create_group_order((select id from restaurants where name = 'Ratna Cafe - Mylapore'), $1, now() + interval '1 hour') j`, [office])).j;
+ok(dflt.split_rule === 'itemised', 'without a choice, the split defaults to "pay for what you ordered"');
+await one(`select add_item($1, $2, 1, null, false)`, [eq.id, che.dish]);
+await asUser(f1); await one(`select join_group($1)`, [eq.share_code]);
+await asUser(many[0]); await one(`select join_group($1)`, [eq.share_code]);
+ok((await one(`select get_group(null, $1) j`, [eq.share_code])).j.split_rule === 'equal', 'members see which split rule the host chose');
+await asUser(stranger);
+const pv = (await one(`select get_group(null, $1) j`, [eq.share_code])).j;
+ok(pv.split_rule === 'equal' && pv.image_url && pv.is_member === false, 'the join preview shows the split rule and restaurant photo');
+await asUser(host);
+await one(`select place_group($1, 40, 20, 30)`, [eq.id]);
+const eqp = (await one(`select get_group($1) j`, [eq.id])).j;
+const bill = +che.price + 90, each = Math.round(bill / 3 * 100) / 100;
+const totals = eqp.members.map(m => +m.payment.total);
+ok(eqp.members.filter(m => m.role !== 'host').every(m => +m.payment.total === each), `equal split: each member pays ₹${each} of ₹${bill}`);
+ok(Math.abs(totals.reduce((a, b) => a + b, 0) - bill) < 0.001, `equal split: shares add up exactly to ₹${bill}`);
+ok(eqp.members.every(m => m.payment.status === 'pending'), 'equal split: everyone, host included, starts as pending');
+ok(eqp.members.flatMap(m => m.items).every(i => i.image_url), 'cart items carry their photos');
+
 await db.exec('reset role');
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

@@ -1,0 +1,11 @@
+Also update the implementation plan and the app for these points (on top of the Chennai changes):
+
+1. Remove the "6-member / ₹2,000 threshold". The only limit is 12 people per group. There's no limit on order value.
+2. Remove every price comparison with other apps: "₹249 vs ₹420", "₹390 saved", the savings banners and the collective savings dashboard. Show Ownly's own price only.
+3. Remove "₹0 packaging", "₹0 platform toll", "₹0 surge" and the fixed "₹40 delivery split 4 ways". The host enters Rapido's delivery fee, packaging and taxes for that order, and each is split equally across everyone in the group.
+4. Taxes: no "proportional 5% GST". Taxes are one amount, split equally like the other charges.
+5. Tracking: no rider name, number plate or call button. Show "Your Rapido Captain is on the way" with the five stages.
+6. Remove the "1-tap reviewer credentials" and the localStorage-only store. Sign-in is real email + 6-digit code, and data comes through ownly-api.js (I'll connect it to Supabase).
+7. Don't use made-up Rapido product names like "Rapido Express Saver" or "Rapido Direct". Just say "Rapido".
+
+Keep: the "Even Pool" split option (call it "Split everything equally"), the QR code to join, the cut-off timer, the Simulate success / failure buttons on the demo payment, and the colours and font.

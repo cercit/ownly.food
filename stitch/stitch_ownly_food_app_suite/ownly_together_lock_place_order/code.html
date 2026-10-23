@@ -1,0 +1,317 @@
+<!DOCTYPE html><html class="h-full" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_stack" name="shell-type"><title>Checkout Flow - Ownly Together</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#00210e", "surface-container-high": "#e1e9f7", "tertiary": "#006d3b", "error-container": "#ffdad6", "on-error": "#ffffff", "on-primary-container": "#6d5500", "on-primary": "#ffffff", "on-secondary-container": "#fffbff", "badge-green-tint": "#E8F7EE", "error": "#ba1a1a", "inverse-primary": "#f0c12a", "on-surface": "#141c26", "surface": "#f8f9ff", "surface-dim": "#d3dae9", "border-subtle": "#E5E9EE", "primary-fixed": "#ffe08f", "on-primary-fixed": "#241a00", "on-primary-fixed-variant": "#584400", "background": "#f8f9ff", "on-secondary-fixed": "#410003", "on-background": "#141c26", "on-secondary": "#ffffff", "on-tertiary": "#ffffff", "on-surface-variant": "#4e4633", "secondary-fixed-dim": "#ffb3ac", "tertiary-container": "#73e59c", "surface-container-low": "#eff4ff", "outline-variant": "#d1c5ad", "tertiary-fixed-dim": "#6add94", "outline": "#807661", "on-error-container": "#93000a", "surface-cream": "#FAFAF7", "badge-crimson-tint": "#FDECEE", "surface-bright": "#f8f9ff", "primary": "#755b00", "text-muted": "#606D7C", "surface-container": "#e6eefd", "secondary-container": "#db3231", "on-tertiary-fixed-variant": "#00522b", "on-tertiary-container": "#006637", "surface-container-lowest": "#ffffff", "tertiary-fixed": "#87faae", "badge-yellow-tint": "#FFF8E1", "on-secondary-fixed-variant": "#93000f", "surface-container-highest": "#dbe3f1", "secondary-fixed": "#ffdad6", "primary-fixed-dim": "#f0c12a", "primary-container": "#f9c933", "surface-tint": "#755b00", "inverse-surface": "#29313c", "secondary": "#b7131c", "surface-card": "#FFFFFF", "surface-variant": "#dbe3f1", "inverse-on-surface": "#eaf1ff" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "space-md": "1rem", "margin-mobile": "1rem", "space-xl": "2.5rem", "space-lg": "1.5rem", "margin": "2rem", "gutter-mobile": "0.75rem", "gutter": "1rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-lg-mobile": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"] }, "fontSize": { "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "800" }], "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "headline-xl-mobile": ["30px", { "lineHeight": "36px", "fontWeight": "800" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-xl": ["40px", { "lineHeight": "48px", "fontWeight": "800" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;min-height:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;font-family:'Plus Jakarta Sans',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-mobile flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Go back" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-high transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Checkout Flow</h1></div><div class="flex items-center gap-space-xs"><button aria-label="Share room" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[20px]">share</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface"><div class="flex flex-col w-full pb-36">
+<!-- Concept Prototype Pill Banner -->
+<div class="px-gutter-mobile pt-space-xs pb-space-sm flex justify-center">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-badge-yellow-tint text-on-surface shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">CONCEPT PROTOTYPE</span>
+<span class="text-text-muted text-[10px] font-bold">· S1 Host Checkout</span>
+</div>
+</div>
+<!-- Host Context Header Strip -->
+<div class="px-gutter-mobile mb-space-sm">
+<div class="bg-surface-card rounded-DEFAULT p-space-md shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm font-extrabold shadow-sm flex-shrink-0">
+          S
+        </div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Sameer</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-badge-yellow-tint text-primary font-label-sm text-label-sm font-bold">Host</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted truncate">Dindigul Thalappakatti, T. Nagar · Room #TNR742</p>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-badge-green-tint px-2.5 py-1 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[16px]" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-sm text-label-sm text-tertiary">4 / 4 Ready</span>
+</div>
+</div>
+</div>
+<!-- Locked Status Banner -->
+<div class="px-gutter-mobile mb-space-md">
+<div class="bg-primary-container/20 rounded-DEFAULT p-space-md shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-primary-container/25 pointer-events-none"></div>
+<div class="flex items-start gap-space-sm relative z-10">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center flex-shrink-0 shadow-sm mt-0.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Order Locked by Host</h2>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-card text-on-surface font-extrabold shadow-sm">TNR742</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">
+            All 4 members have submitted their items. Edits are locked to prevent cart mismatches.
+          </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bag Capacity & Single Trip Safety Badge -->
+
+<!-- Final Itemized Group Roster -->
+<div class="px-gutter-mobile mb-space-lg">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Roster Breakdown (5 items)</h3>
+<span class="font-body-sm text-body-sm text-text-muted">4 People</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Person 1: Sameer (Host) -->
+<div class="bg-surface-card rounded-DEFAULT p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-2 mb-2 bg-surface-cream rounded-md px-2.5 py-1.5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-sm text-label-sm font-bold">
+              S
+            </div>
+<span class="font-label-md text-label-md text-on-surface font-bold">Sameer</span>
+<span class="text-[10px] font-bold text-primary bg-badge-yellow-tint px-1.5 py-0.2 rounded">YOU · HOST</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">₹249</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-2 min-w-0">
+<span class="mt-1 w-3 h-3 rounded-sm bg-badge-crimson-tint flex items-center justify-center flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</span>
+<div class="min-w-0">
+<p class="font-body-md text-body-md text-on-surface font-bold leading-tight truncate">1x Special Royal Chicken Biryani</p>
+<div class="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full bg-surface-container text-text-muted">
+<span class="material-symbols-outlined text-[13px]">sticky_note_2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant italic">Note: Extra salan</span>
+</div>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-semibold flex-shrink-0">₹249</span>
+</div>
+</div>
+<!-- Person 2: Priya (Flatmate) -->
+<div class="bg-surface-card rounded-DEFAULT p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-2 mb-2 bg-surface-cream rounded-md px-2.5 py-1.5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold">
+              P
+            </div>
+<span class="font-label-md text-label-md text-on-surface font-bold">Priya</span>
+<span class="text-[10px] font-medium text-text-muted bg-surface-container px-1.5 py-0.2 rounded">Flatmate</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">₹429</span>
+</div>
+<div class="space-y-2.5">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-2 min-w-0">
+
+<div class="min-w-0">
+<p class="font-body-md text-body-md text-on-surface font-bold leading-tight truncate">1x Paneer Dum Biryani Handi</p>
+<div class="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full bg-surface-container text-text-muted">
+<span class="material-symbols-outlined text-[13px]">sticky_note_2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant italic">Note: Less oil</span>
+</div>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-semibold flex-shrink-0">₹319</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm pt-1"><span class="text-on-surface-variant">Packaging Fee</span><span class="text-tertiary font-bold">₹0 Free</span></div>
+</div>
+</div>
+<!-- Person 3: Rahul (Colleague) -->
+<div class="bg-surface-card rounded-DEFAULT p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-2 mb-2 bg-surface-cream rounded-md px-2.5 py-1.5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold">
+              R
+            </div>
+<span class="font-label-md text-label-md text-on-surface font-bold">Rahul</span>
+<span class="text-[10px] font-medium text-text-muted bg-surface-container px-1.5 py-0.2 rounded">Colleague</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">₹300</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-2 min-w-0">
+<span class="mt-1 w-3 h-3 rounded-sm bg-badge-crimson-tint flex items-center justify-center flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</span>
+<div class="min-w-0">
+<p class="font-body-md text-body-md text-on-surface font-bold leading-tight truncate">2x Mini Chicken Dum Biryani</p>
+<p class="font-body-sm text-body-sm text-text-muted">₹150 each</p>
+</div>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-semibold flex-shrink-0">₹300</span>
+</div>
+</div>
+<!-- Person 4: Ananya (Member) -->
+<div class="bg-surface-card rounded-DEFAULT p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-2 mb-2 bg-surface-cream rounded-md px-2.5 py-1.5">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold">
+              A
+            </div>
+<span class="font-label-md text-label-md text-on-surface font-bold">Ananya</span>
+<span class="text-[10px] font-medium text-text-muted bg-surface-container px-1.5 py-0.2 rounded">Member</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">₹60</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-2 min-w-0">
+
+<p class="font-body-md text-body-md text-on-surface font-medium leading-tight truncate">1x Extra Mirchi Ka Salan</p>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-semibold flex-shrink-0">₹60</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Verified Honest Bill Summary (Verbatim Zero Charges) -->
+<div class="px-gutter-mobile mb-space-lg">
+<div class="bg-surface-card rounded-DEFAULT p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">receipt_long</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Verified Honest Bill</h3>
+</div>
+
+</div>
+<div class="space-y-2.5 pt-1">
+<div class="flex justify-between font-body-md text-body-md">
+<span class="text-on-surface-variant">Total Items (5 items)</span>
+<span class="text-on-surface font-semibold">₹1,038</span>
+</div>
+<!-- Packaging Fee -->
+<div class="flex justify-between items-center font-body-md text-body-md"><span class="text-on-surface-variant">Packaging Fee</span><span class="text-tertiary font-bold">₹0 Free</span></div>
+<!-- Platform Fee -->
+<div class="flex justify-between items-center font-body-md text-body-md"><span class="text-on-surface-variant">Platform Fee</span><span class="text-tertiary font-bold">₹0 Free</span></div>
+<!-- Surge Fee -->
+<div class="flex justify-between items-center font-body-md text-body-md"><span class="text-on-surface-variant">Surge / Weather Fee</span><span class="text-tertiary font-bold">₹0 Free</span></div>
+<!-- Delivery Fee -->
+<div class="flex justify-between items-center font-body-md text-body-md">
+<div>
+<div class="flex items-center gap-1"><span class="text-on-surface-variant">Delivery Fee (Rapido)</span></div>
+<p class="font-body-sm text-body-sm text-text-muted">Fair split: 4 members = ₹10 / person</p>
+</div>
+<span class="text-on-surface font-semibold">₹40</span>
+</div>
+<!-- Taxes -->
+<div class="flex justify-between font-body-md text-body-md">
+<span class="text-on-surface-variant">Restaurant Taxes (GST 5%)</span>
+<span class="text-on-surface font-semibold">₹52</span>
+</div>
+<!-- Divider line using background color -->
+<div class="w-full h-px bg-surface-container my-2"></div>
+<!-- Grand Total -->
+<div class="flex justify-between items-baseline pt-1">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Grand Total</span>
+<p class="font-body-sm text-body-sm text-text-muted">All-inclusive collective total</p>
+</div>
+<div class="text-right">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-extrabold">₹1,130</span>
+</div>
+</div>
+</div>
+<!-- Group Savings Callout Strip -->
+
+</div>
+</div>
+<!-- Delivery Destination & Map Preview -->
+<div class="px-gutter-mobile mb-space-lg">
+<div class="bg-surface-card rounded-DEFAULT p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Delivery Location</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">Host Address</span>
+</div>
+<div class="w-full h-32 bg-cover bg-center rounded-DEFAULT overflow-hidden relative shadow-inner mb-2" data-location="Tidel Park, Rajiv Gandhi Salai, Taramani / OMR, Chennai" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCu07SyO2tgbT6Q0dJ3xBRmFsTL-wgXuWPGCTYqR3OIi-AjZJtS4NAvP1CamemosaYJzwGobbRNswhK1sBTlIIVggWBq1Qyga-Krmb2TZsjU8vDHl-XKtVGWj3zWyZ0H_90_Uhr42JxAIYovSUGkzo8IJdBBE3Pta0EBRcZDWlM25RDB57OpPKwYRsopwDU-nCMjsf9wk9l_RQCg6WMAWOPVXDeXBJZO5cKQz972zL9gnehL4zPWzLu&quot;);">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent flex items-end p-2.5">
+<span class="text-inverse-on-surface font-label-md text-label-md font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary-container">pin_drop</span> Tidel Park, Rajiv Gandhi Salai, Taramani / OMR, Chennai</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Estimated Prep &amp; Drop: 28-34 mins once confirmed.</p>
+</div>
+</div>
+<!-- Payment Mode (PRD: Razorpay Test Mode) -->
+<div class="px-gutter-mobile mb-space-lg">
+<div class="bg-surface-card rounded-DEFAULT p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Host Payment Method</h3>
+<span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-badge-yellow-tint text-on-surface">PRD Test Gateway</span>
+</div>
+<div class="space-y-space-sm" id="payment-options">
+<!-- Option 1: Selected Razorpay Test -->
+<label class="payment-option cursor-pointer flex items-start gap-space-sm p-space-sm rounded-DEFAULT bg-surface-container-low transition-all">
+<input checked="" class="mt-1 accent-primary flex-shrink-0" name="payment_mode" onchange="updatePaymentMode(this)" type="radio" value="razorpay">
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold">Razorpay Test Gateway</span>
+
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Simulate instant Card / UPI settlement. No real money deducted.
+            </p>
+</div>
+</label>
+<!-- Option 2: Collect Offline -->
+<label class="payment-option cursor-pointer flex items-start gap-space-sm p-space-sm rounded-DEFAULT bg-surface-cream transition-all">
+<input class="mt-1 accent-primary flex-shrink-0" name="payment_mode" onchange="updatePaymentMode(this)" type="radio" value="cash">
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold">Collect Cash / Settle Offline</span>
+<span class="font-label-sm text-label-sm text-text-muted bg-surface-container px-2 py-0.5 rounded-full font-medium">Peer Split</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Host pays delivery partner on arrival; flatmates settle with you directly.
+            </p>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Bottom Floating CTA Sticky Dock -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-surface-card/95 backdrop-blur-md px-gutter-mobile py-space-sm shadow-[0_-4px_20px_rgba(0,0,0,0.06)] pb-safe">
+<div class="max-w-md mx-auto flex flex-col gap-1.5">
+<div class="flex items-center justify-between px-1">
+<span class="font-body-sm text-body-sm text-text-muted">4 orders locked · Dindigul Thalappakatti</span>
+<span class="font-label-md text-label-md text-on-surface font-extrabold">Final: ₹1,130</span>
+</div>
+<button class="w-full py-3.5 px-space-md rounded-full bg-primary-container text-on-primary-fixed hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(249,201,51,0.4)]" id="place-order-btn" onclick="handlePlaceOrder()">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-lg text-label-lg font-bold">Confirm &amp; Place Order (₹1,130)</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  function updatePaymentMode(radio) {
+    const parentOptions = document.querySelectorAll('.payment-option');
+    parentOptions.forEach(opt => {
+      opt.classList.remove('bg-surface-container-low');
+      opt.classList.add('bg-surface-cream');
+    });
+    const currentContainer = radio.closest('.payment-option');
+    if (currentContainer) {
+      currentContainer.classList.remove('bg-surface-cream');
+      currentContainer.classList.add('bg-surface-container-low');
+    }
+  }
+
+  function handlePlaceOrder() {
+    const btn = document.getElementById('place-order-btn');
+    if (!btn) return;
+    btn.disabled = true;
+    btn.innerHTML = `
+      <span class="inline-block animate-spin material-symbols-outlined text-[20px]">progress_activity</span>
+      <span class="font-label-lg text-label-lg font-bold">Routing to Kitchen &amp; Rapido...</span>
+    `;
+
+    setTimeout(() => {
+      btn.classList.remove('bg-primary-container', 'text-on-primary-fixed');
+      btn.classList.add('bg-badge-green-tint', 'text-tertiary');
+      btn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px]">check_circle</span>
+        <span class="font-label-lg text-label-lg font-bold">Order #PAR-742 Placed!</span>
+      `;
+    }, 1200);
+  }
+</script></main></body></html>

@@ -1,0 +1,151 @@
+restaurant_name,name,category,price,is_veg,is_available,image_url,source
+Murugan Idli Shop - T. Nagar,Idli 3 Pcs,Tiffin,114,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Ghee Podi Idli 1pcs,Tiffin,77,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Mini Podi Idli,Tiffin,182,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Sambar Idli,Tiffin,120,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Medhu Vadai,Tiffin,61,true,true,https://images.pexels.com/photos/20422135/pexels-photo-20422135.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Plain Dosai,Tiffin,163,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Ghee Dosai,Tiffin,230,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Ghee Podi Dosai,Tiffin,265,true,false,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Ghee Masala Dosai,Tiffin,269,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+Murugan Idli Shop - T. Nagar,Onion Uthappam,Tiffin,234,true,true,,https://www.swiggy.com/city/chennai/murugan-idli-shop-ramanathan-street-t-nagar-rest478675
+McDonald's - T. Nagar,McAloo Tikki Burger with Cheese,Burgers,105,true,true,https://images.pexels.com/photos/20722041/pexels-photo-20722041.jpeg,https://www.swiggy.com/city/chennai/mcdonalds-pondy-bazzar-t-nagar-rest93242
+McDonald's - T. Nagar,Mexican McAloo Tikki with Cheese,Burgers,105,true,true,https://images.pexels.com/photos/20722041/pexels-photo-20722041.jpeg,https://www.swiggy.com/city/chennai/mcdonalds-pondy-bazzar-t-nagar-rest93242
+McDonald's - T. Nagar,McSpicy Paneer Burger,Burgers,225,true,true,https://images.pexels.com/photos/20722041/pexels-photo-20722041.jpeg,est
+McDonald's - T. Nagar,McSpicy Chicken Burger,Burgers,225,false,true,,est
+McDonald's - T. Nagar,Signature Whole Muscle Chicken Burger,Burgers,229,false,true,,https://www.swiggy.com/city/chennai/mcdonalds-pondy-bazzar-t-nagar-rest93242
+McDonald's - T. Nagar,McChicken Burger Combo,Combos,325,false,true,,https://www.swiggy.com/city/chennai/mcdonalds-pondy-bazzar-t-nagar-rest93242
+McDonald's - T. Nagar,McSpicy Paneer Burger Combo,Combos,355,true,true,,https://www.swiggy.com/city/chennai/mcdonalds-pondy-bazzar-t-nagar-rest93242
+McDonald's - T. Nagar,Mexican McAloo Tikki Double Patty Burger Combo,Combos,255,true,true,,https://www.swiggy.com/city/chennai/mcdonalds-pondy-bazzar-t-nagar-rest93242
+McDonald's - T. Nagar,McAloo Tikki Burger Happy Meal,Combos,225,true,true,,https://www.swiggy.com/city/chennai/mcdonalds-pondy-bazzar-t-nagar-rest93242
+McDonald's - T. Nagar,Fries (Regular),Starters,110,true,true,,est
+Sangeetha Veg Restaurant - Adyar,Kadubu Idly (2 Nos),Tiffin,180,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-gandhi-nagar-adyar-rest14835
+Sangeetha Veg Restaurant - Adyar,Ghee Podi Dosa,Tiffin,230,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,est
+Sangeetha Veg Restaurant - Adyar,Masala Dosa,Tiffin,200,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,est
+Sangeetha Veg Restaurant - Adyar,South Indian Meals,Combos,300,true,true,,est
+Sangeetha Veg Restaurant - Adyar,Veg Manchurian,Chinese,384,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-gandhi-nagar-adyar-rest14835
+Sangeetha Veg Restaurant - Adyar,Sweet Pongal,Desserts,143,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-gandhi-nagar-adyar-rest14835
+Sangeetha Veg Restaurant - Adyar,Rasa Malai,Desserts,156,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-gandhi-nagar-adyar-rest14835
+Sangeetha Veg Restaurant - Adyar,Basundhi,Desserts,156,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-gandhi-nagar-adyar-rest14835
+Sangeetha Veg Restaurant - Adyar,Gulab Jamun,Desserts,114,true,true,https://images.pexels.com/photos/7449105/pexels-photo-7449105.jpeg,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-gandhi-nagar-adyar-rest14835
+Sangeetha Veg Restaurant - Adyar,Special Coffee,Beverages,75,true,true,,est
+Anjappar - Adyar,Mutton Biriyani,Biryani,429,false,true,https://images.pexels.com/photos/4224314/pexels-photo-4224314.jpeg,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Vegetable Biriyani,Biryani,290,true,true,,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Chicken Meals,Combos,320,false,true,,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Chicken '65' (b/l),Starters,235,false,true,,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Tandoori Chicken,Starters,280,false,true,,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Chicken Tikka,Starters,390,false,true,,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Anjappar Poricha Kozhi,Starters,420,false,true,,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Egg Masala,Mains,179,false,true,,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Idly (2pc),Tiffin,75,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Anjappar - Adyar,Idiyappam (1 Pc),Tiffin,35,true,true,,https://www.swiggy.com/city/chennai/anjappar-adyar-rest5688
+Pind - Velachery,Vegetable Seekh Kebab,Starters,350,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Royal Mix Paneer Tikka,Starters,404,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Paneer Butter Masala,Mains,379,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Kadhai Paneer,Mains,379,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Palak Paneer,Mains,369,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Sarson Ka Saag Te Makki Di Roti Combo,Combos,467,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Family Naan,Breads,233,true,true,https://images.pexels.com/photos/20446413/pexels-photo-20446413.jpeg,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Khasta Roti,Breads,99,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Veg Pulao,Rice,279,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pind - Velachery,Special Dum Biryani,Biryani,309,true,true,,https://www.swiggy.com/city/chennai/pind-vijayanagar-velachery-rest5849
+Pizza Hut - Velachery,Margherita,Pizza,149,true,true,https://images.pexels.com/photos/14590497/pexels-photo-14590497.jpeg,https://www.swiggy.com/city/chennai/pizza-hut-velachery-rest34889
+Pizza Hut - Velachery,Corn & Cheese,Pizza,229,true,true,https://images.pexels.com/photos/14590497/pexels-photo-14590497.jpeg,https://www.swiggy.com/city/chennai/pizza-hut-velachery-rest34889
+Pizza Hut - Velachery,Veggie Feast,Pizza,229,true,true,https://images.pexels.com/photos/14590497/pexels-photo-14590497.jpeg,https://www.swiggy.com/city/chennai/pizza-hut-velachery-rest34889
+Pizza Hut - Velachery,Classic Corn,Pizza,105,true,true,https://images.pexels.com/photos/14590497/pexels-photo-14590497.jpeg,https://www.swiggy.com/city/chennai/pizza-hut-velachery-rest34889
+Pizza Hut - Velachery,Chicken Pepperoni,Pizza,399,false,true,,est
+Pizza Hut - Velachery,Garlic Bread,Breads,149,true,true,,est
+Pizza Hut - Velachery,Classic White Sauce Pasta Veg,Mains,279,true,true,,https://www.swiggy.com/city/chennai/pizza-hut-velachery-rest34889
+Pizza Hut - Velachery,Italian Red Sauce Pasta Veg,Mains,229,true,true,,https://www.swiggy.com/city/chennai/pizza-hut-velachery-rest34889
+Pizza Hut - Velachery,Choco Volcano,Desserts,119,true,true,,https://www.swiggy.com/city/chennai/pizza-hut-velachery-rest34889
+Pizza Hut - Velachery,Brow-wow-nie,Desserts,109,true,true,https://images.pexels.com/photos/13215205/pexels-photo-13215205.jpeg,https://www.swiggy.com/city/chennai/pizza-hut-velachery-rest34889
+Geetham Veg Restaurant - OMR,Ghee Roast,Tiffin,230,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/geetham-veg-restaurant-thoraipakkam-rest558031
+Geetham Veg Restaurant - OMR,Butter Roast,Tiffin,230,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/geetham-veg-restaurant-thoraipakkam-rest558031
+Geetham Veg Restaurant - OMR,Podi Uthappam,Tiffin,170,true,true,,https://www.swiggy.com/city/chennai/geetham-veg-restaurant-thoraipakkam-rest558031
+Geetham Veg Restaurant - OMR,Ghee Onion Rava Dosa,Tiffin,230,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/geetham-veg-restaurant-thoraipakkam-rest558031
+Geetham Veg Restaurant - OMR,Ghee Onion Rava Masala Dosa,Tiffin,255,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/geetham-veg-restaurant-thoraipakkam-rest558031
+Geetham Veg Restaurant - OMR,Ghee Pongal,Tiffin,150,true,true,,est
+Geetham Veg Restaurant - OMR,Curd Rice,Rice,140,true,true,,est
+Geetham Veg Restaurant - OMR,Kuzhi Paniyaram Sweet (6 Pcs),Desserts,160,true,true,,est
+Geetham Veg Restaurant - OMR,Chikoo Milkshake,Beverages,280,true,true,,https://www.swiggy.com/city/chennai/geetham-veg-restaurant-thoraipakkam-rest558031
+Geetham Veg Restaurant - OMR,Ghee Mysore Pak (500 Gms),Desserts,514,true,true,,https://www.swiggy.com/city/chennai/geetham-veg-restaurant-thoraipakkam-rest558031
+Dindigul Thalappakatti - OMR,Thalappakatti Naidu Mutton Biryani,Biryani,399,false,true,https://images.pexels.com/photos/4224314/pexels-photo-4224314.jpeg,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Thalappakatti Chicken 65 Biryani,Biryani,375,false,true,https://images.pexels.com/photos/4224314/pexels-photo-4224314.jpeg,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Thalappakatti Mutton Kola Biryani,Biryani,375,false,true,https://images.pexels.com/photos/4224314/pexels-photo-4224314.jpeg,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Thalappakatti Egg Biryani,Biryani,285,false,true,,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Thalappakatti Mushroom Biryani,Biryani,300,true,true,,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Thalappakatti Veg Biryani,Biryani,290,true,true,,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Thalappakatti Paneer Biryani,Biryani,330,true,true,,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Thalappakatti Guntur Chicken Biryani,Biryani,370,false,true,https://images.pexels.com/photos/4224314/pexels-photo-4224314.jpeg,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Thalappakatti Guntur Mushroom Biryani,Biryani,330,true,true,,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Dindigul Thalappakatti - OMR,Chicken Biryani Jumbo (serves 3),Biryani,969,false,true,https://images.pexels.com/photos/4224314/pexels-photo-4224314.jpeg,https://www.swiggy.com/city/chennai/dindigul-thalappakatti-since-1957-omr-old-mahabalipuram-road-rest8497
+Chinese Wok - Anna Nagar,Desi Chilli Potato - Mini,Starters,189,true,true,,https://www.swiggy.com/city/chennai/chinese-wok-10th-main-road-annanagar-rest549855
+Chinese Wok - Anna Nagar,Veg Wheat Momo With Momo Chutney,Starters,307,true,true,,https://www.swiggy.com/city/chennai/chinese-wok-10th-main-road-annanagar-rest549855
+Chinese Wok - Anna Nagar,Chicken Wheat Momo With Momo Chutney,Starters,337,false,true,,https://www.swiggy.com/city/chennai/chinese-wok-10th-main-road-annanagar-rest549855
+Chinese Wok - Anna Nagar,Classic Salted Fries,Starters,148,true,true,,https://www.swiggy.com/city/chennai/chinese-wok-10th-main-road-annanagar-rest549855
+Chinese Wok - Anna Nagar,Fries + Schezwan Sprinkler,Starters,148,true,true,,https://www.swiggy.com/city/chennai/chinese-wok-10th-main-road-annanagar-rest549855
+Chinese Wok - Anna Nagar,Veg Manchow Soup with Crispy Noodles,Chinese,179,true,true,,est
+Chinese Wok - Anna Nagar,Chowmein Chicken - Half (500 ml),Chinese,249,false,true,https://images.pexels.com/photos/30676160/pexels-photo-30676160.jpeg,est
+Chinese Wok - Anna Nagar,Chicken Manchurian Gravy - Half,Chinese,269,false,true,,est
+Chinese Wok - Anna Nagar,Hunan Chicken Dry - Mini,Chinese,229,false,false,,est
+Chinese Wok - Anna Nagar,Veg Hakka Noodles - Half,Chinese,229,true,true,https://images.pexels.com/photos/30676160/pexels-photo-30676160.jpeg,est
+Cream Stone Ice Cream - Anna Nagar,Oreo Shot Ice Cream,Desserts,210,true,true,https://images.pexels.com/photos/9227722/pexels-photo-9227722.jpeg,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,Almond Nutella Fudge,Desserts,250,true,true,https://images.pexels.com/photos/9227722/pexels-photo-9227722.jpeg,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,La-Ferrero Ice Cream,Desserts,250,true,true,https://images.pexels.com/photos/9227722/pexels-photo-9227722.jpeg,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,Coffee Craze,Desserts,230,true,true,https://images.pexels.com/photos/9227722/pexels-photo-9227722.jpeg,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,Lotus Biscoff Ice Cream,Desserts,250,true,true,,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,Tiramisu Ice Cream,Desserts,230,true,true,,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,Sugar Free Choco Brownie,Desserts,230,true,true,https://images.pexels.com/photos/13215205/pexels-photo-13215205.jpeg,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,Classic Cold Coffee,Beverages,230,true,true,,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,Oreo Cold Coffee,Beverages,250,true,true,,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Cream Stone Ice Cream - Anna Nagar,Ferrero Delight Thick Shake,Beverages,245,true,true,,https://www.swiggy.com/city/chennai/cream-stone-ice-cream-anna-nagar-rest10172
+Bombay Brasserie - Nungambakkam,Nawabi Veg Biryani,Biryani,635,true,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Himalayan Cheese Mushrooms,Starters,570,true,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Grilled Anardaana Paneer,Starters,640,true,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Indori Bhutta Scramble,Starters,450,true,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Fiery Thecha Prawns,Starters,670,false,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Calcutta Club Fish Fry,Starters,820,false,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Kashmiri Mutton Seekh Kebab with Naan,Mains,900,false,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Chur Chur Paratha,Breads,165,true,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Lachedar Burnt Garlic Naan,Breads,150,true,true,https://images.pexels.com/photos/20446413/pexels-photo-20446413.jpeg,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Bombay Brasserie - Nungambakkam,Kaapi Misu,Desserts,415,true,true,,https://www.swiggy.com/city/chennai/bombay-brasserie-nungambakkam-rest9923
+Sandy's Chocolate Laboratory - Nungambakkam,Tiny Chocolate Cake,Desserts,400,false,false,,est
+Sandy's Chocolate Laboratory - Nungambakkam,Nutella Tiramisu,Desserts,450,false,true,,est
+Sandy's Chocolate Laboratory - Nungambakkam,Triple Chocolate Brownie,Desserts,350,false,true,https://images.pexels.com/photos/13215205/pexels-photo-13215205.jpeg,est
+Sandy's Chocolate Laboratory - Nungambakkam,Milo Tiramisu,Desserts,494,false,true,,https://www.swiggy.com/city/chennai/sandys-chocolate-laboratory-nungambakkam-rest9058
+Sandy's Chocolate Laboratory - Nungambakkam,Chocolate Croissant,Desserts,221,true,true,,https://www.swiggy.com/city/chennai/sandys-chocolate-laboratory-nungambakkam-rest9058
+Sandy's Chocolate Laboratory - Nungambakkam,Chicken Drums - 4 Pcs,Starters,555,false,true,,https://www.swiggy.com/city/chennai/sandys-chocolate-laboratory-nungambakkam-rest9058
+Sandy's Chocolate Laboratory - Nungambakkam,Tiny Cake Shake,Beverages,475,false,true,,https://www.swiggy.com/city/chennai/sandys-chocolate-laboratory-nungambakkam-rest9058
+Sandy's Chocolate Laboratory - Nungambakkam,Mocha,Beverages,350,true,true,https://images.pexels.com/photos/16536171/pexels-photo-16536171.jpeg,https://www.swiggy.com/city/chennai/sandys-chocolate-laboratory-nungambakkam-rest9058
+Sandy's Chocolate Laboratory - Nungambakkam,Americano,Beverages,245,true,true,,https://www.swiggy.com/city/chennai/sandys-chocolate-laboratory-nungambakkam-rest9058
+Sandy's Chocolate Laboratory - Nungambakkam,Iced Mocha,Beverages,375,true,true,,https://www.swiggy.com/city/chennai/sandys-chocolate-laboratory-nungambakkam-rest9058
+Ratna Cafe - Mylapore,Plain Idly (2),Tiffin,82,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Sambar Idly (2),Tiffin,120,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Ghee Pongal,Tiffin,110,true,true,,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Medhu Vadai,Tiffin,69,true,true,https://images.pexels.com/photos/20422135/pexels-photo-20422135.jpeg,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Onion Rava Dosa,Tiffin,180,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Podi Masala Dosa,Tiffin,180,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Plain Oothappam,Tiffin,130,true,true,,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Onion Podi Oothappam,Tiffin,200,true,true,,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Badam Halwa (1pc),Desserts,80,true,true,,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Ratna Cafe - Mylapore,Spl Filter Coffee,Beverages,75,true,true,,https://www.swiggy.com/city/chennai/ratna-cafe-estd-1948-south-mada-street-mylapore-rest32920
+Nithya Amirtham - Mylapore,Idli(2 Pcs),Tiffin,79,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Plain Dosa,Tiffin,143,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Ghee Dosa,Tiffin,207,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Ghee Masala Dosa,Tiffin,231,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Masala Dosa,Tiffin,176,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Onion Rava Dosa,Tiffin,184,true,true,https://images.pexels.com/photos/35351659/pexels-photo-35351659.jpeg,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Poori(2 Pcs),Tiffin,153,true,true,,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Idiyappam(3 Pcs),Tiffin,153,true,true,,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Chole Poori,Tiffin,207,true,true,,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Nithya Amirtham - Mylapore,Guntur Podi Idli(2 Pcs),Tiffin,143,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/nithya-amirtham-mylapore-rest17443
+Sangeetha Veg Restaurant - Mylapore,Idly,Tiffin,80,true,true,https://images.pexels.com/photos/36854501/pexels-photo-36854501.jpeg,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Pongal,Tiffin,125,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Medhu Vadai [1 Pc],Tiffin,70,true,true,https://images.pexels.com/photos/20422135/pexels-photo-20422135.jpeg,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Sambar Vadai,Tiffin,85,true,true,https://images.pexels.com/photos/20422135/pexels-photo-20422135.jpeg,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Poori With Sd [3 Pcs],Tiffin,150,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Chapathi With Sd,Breads,150,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Parotta With Sd,Breads,150,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Mini Tiffin,Combos,240,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Rava Kitchadi,Tiffin,105,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742
+Sangeetha Veg Restaurant - Mylapore,Rava Kesari,Desserts,120,true,true,,https://www.swiggy.com/city/chennai/sangeetha-veg-restaurant-mylapore-south-mada-street-rest15742

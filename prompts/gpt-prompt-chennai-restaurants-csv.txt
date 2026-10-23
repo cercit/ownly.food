@@ -1,0 +1,44 @@
+﻿Search the web and build restaurant and menu data for a food-delivery prototype set in Chennai, India. I need two CSV files.
+
+WHAT TO FIND
+- At least 15 real, currently open restaurants in Chennai that deliver, spread across these areas: T. Nagar, Adyar, Velachery, OMR, Anna Nagar, Nungambakkam and Mylapore (2 or 3 per area).
+- A mix of cuisines: South Indian / Chettinad, biryani, North Indian, Chinese / Indo-Chinese, pizza / fast food, cafe / desserts, and at least 3 pure-veg places.
+- About 150 dishes in total (8 to 12 per restaurant), using each restaurant's real, well-known dishes.
+- Prices in rupees as they appear on Swiggy, Zomato or the restaurant's own menu. Round to the nearest rupee. If you can't find a price, give a realistic one and put "est" in the source column.
+
+FILE 1: restaurants.csv
+Columns, in this order:
+name,cuisine,area,city,lat,lng,veg_only,opens_at,closes_at,active,image_url,source
+
+- city is always Chennai
+- lat and lng: the restaurant's approximate location, with 6 decimal places
+- veg_only: true or false
+- opens_at and closes_at: 24-hour time as HH:MM, e.g. 11:00 and 23:00
+- active: true
+- image_url: see IMAGES below
+- source: the URL where you found it
+
+FILE 2: menu_items.csv
+Columns, in this order:
+restaurant_name,name,category,price,is_veg,is_available,image_url,source
+
+- restaurant_name must match the name in restaurants.csv exactly
+- category is one of: Starters, Mains, Biryani, Breads, Rice, Tiffin, Pizza, Burgers, Chinese, Desserts, Beverages, Combos
+- price: a whole number in rupees, with no ₹ sign
+- is_veg: true or false
+- is_available: true for all items except 2 or 3 across the whole file, so the app can show "unavailable"
+- source: a URL, or "est" when the price is estimated
+
+IMAGES
+- Use only free-licence photos from Unsplash or Pexels. Never use photos from Swiggy, Zomato, Google Maps or the restaurant's own site.
+- image_url must be a direct image link (starting https://images.unsplash.com/ or https://images.pexels.com/) that opens as a picture on its own.
+- Restaurants: a photo matching the cuisine (for example a South Indian thali for a Chettinad place).
+- Dishes: a photo of that dish or the closest match (for example any chicken biryani photo for Chicken Biryani). The same photo can be reused for similar dishes.
+- If you can't find a fitting free photo, leave image_url empty.
+
+RULES
+- Real restaurants and real dishes only. Don't invent restaurants.
+- Plain CSV, with a header row, comma-separated. Put any value containing a comma in double quotes.
+- No personal data: no owner names or phone numbers.
+- Give each file in its own code block so I can copy it.
+- After the files, list any restaurant or price you weren't sure about.

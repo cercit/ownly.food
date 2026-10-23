@@ -1,0 +1,60 @@
+Thanks, the structure is good. Please make these changes across the whole app, desktop and mobile.
+
+1. CITY: CHENNAI
+Ownly isn't in Chennai yet. This concept is how Ownly launches there, with group ordering as the hook. Change every city reference, address, map and sample to Chennai. Use areas such as T. Nagar, Adyar, Velachery, OMR, Anna Nagar, Nungambakkam and Mylapore. Remove all Bengaluru and Hyderabad references, including "Paradise Biryani" and the "Ownly Hyderabad" home. Use placeholder restaurant data for now. I'll send a CSV of Chennai restaurants and menus next.
+
+2. REAL SIGN-IN, NO PERSONAS
+Remove the persona switcher (Sameer, Priya, Rahul, Ananya). There are no demo accounts. Anyone can sign up and try it.
+Add a Sign In screen as screen 1: enter email, then the 6-digit code sent to that email. No passwords.
+Each person sees the app as themselves. Whether you're the host or a member depends on the group order: whoever started it is the host.
+
+3. ROOM CODE
+The code is exactly 6 capital letters or numbers with no dash, for example PAR742 (not PAR-742). The share link is the site address plus ?join=PAR742.
+
+4. HOST CHOOSES THE SPLIT RULE
+When starting a group order, the host picks one of two split rules:
+  a) "Pay for what you ordered" (default): each person pays their own dishes at full price, plus an equal share of any dish marked Shared, plus an equal share of Rapido's charges.
+  b) "Split everything equally": the whole bill (food plus charges) divided equally by the number of people.
+Show the chosen rule in the cart, at checkout and on every payment screen, so members know how their number was worked out.
+
+5. RAPIDO CHARGES: NO "ABSORBED FEES"
+Remove "absorbed fees" and any fee discount. Delivery, packaging and taxes are whatever Rapido charges for that one order, and they're split equally across everyone in the group. Show them as three plain lines.
+
+6. REMOVE
+- The bag capacity gauge
+- Discount comparisons on Explore
+
+7. GROUP RULES
+- Up to 12 people per group, the host included. Person 13 sees "This group is full (12 people)".
+- No limit on order value.
+- One restaurant per group order.
+- Only the host can lock, place or cancel the order.
+- Everyone pays their own share, the host included. Show Paid or Pending next to every name.
+
+8. ADD AN ORDER CONFIRMATION SCREEN
+After the host places the order, show a confirmation page: a short summary of who ordered what, each person's share, and the share link front and centre with "Copy link" and "Share on WhatsApp" buttons.
+
+9. TRACKING STAGES
+Use these five stages: Order accepted → Preparing → Picked up → On the way → Delivered. Anyone in the group can open tracking from the link. This is a prototype, so the stages can step forward on a timer.
+
+10. PAYMENT (DEMO)
+Keep the Razorpay-style modal: UPI apps, QR, card and netbanking, plus "Paid the host in cash". Keep a clear note on the payment screen: "Demo payment: no real money moves." Never ask for or store full card numbers, CVVs or UPI PINs.
+
+11. ON EVERY SCREEN
+A thin strip reading: "Concept prototype by Sameer Mittimani. Not an official Rapido product."
+
+12. CODE STRUCTURE
+Keep all data calls (sign-in, restaurants, menus, group orders, cart, payments) in one file called ownly-api.js, with a function per action. I'll connect it to Supabase myself. For now it can use local mock data.
+
+Final screen list:
+1 Sign In (email + code)
+2 Explore Kitchens (Chennai)
+3 Start Group Order (restaurant, address, cut-off time, split rule)
+4 Join Room (code or link)
+5 Shared Cart
+6 Host Checkout (lock and place)
+7 Order Confirmation + share link
+8 My Share + Razorpay demo payment
+9 Live Tracking
+10 Order History (with "Order again with this group")
+11 Profile + saved addresses (home, office, friend, other; map pin after the user allows location)
