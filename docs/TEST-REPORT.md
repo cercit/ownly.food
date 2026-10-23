@@ -18,6 +18,20 @@ Commands (from `web/`): `npm ci && npm run lint && npm run build`, `npm test`, `
 
 Fixed this round: removed `@google/genai`, `express`, `dotenv`, `tsx`, `esbuild`, `metadata.json`, the AI Studio asset folder and the Gemini `.env.example`; removed the `user-scalable=no` zoom lock; concept strip now reads exactly "Concept prototype by Sameer Mittimani. Not an official Rapido product."; removed invented ratings, prep times, "Direct kitchen tariffs", "Express Rush", "Privacy Guard" and delivery-time claims from the old screens; removed seed restaurants, menus, addresses and history.
 
+## Round 2: after step 3 (connect), 23 Oct 2026
+
+| Check | Result |
+|---|---|
+| `npm ci`, lint, build | Pass |
+| Backend `db/tests/run.mjs` | Pass, 80 / 80 |
+| Unit tests (`npm test`) | Pass, 19 / 19: room code (`TNR742` ok, `TNR-742` and wrong lengths rejected with a message, `?join=` read and built), tracking clock (same stage for two clocks, boundaries, next-stage countdown), router |
+| Live read-only | Blocked (network), script ready |
+| Rule audit | Pass, 0 hits in 17 files (mock service deleted) |
+| Browser 390 / 1440 px | Explore, menu and sign-in pages show the concept strip with no sideways scroll; `signin` and `start` routes are not built yet (step 4/5), so those two scenarios fail by design |
+| Self review | Typed API wrappers match `app/ownly-api.js` names; errors turned into plain words |
+
+Fixed this round: audit false positives (code comments, `localeCompare`). Added `scripts/browser-check.mjs` with a fixture server (`tests/fixture-server.mjs`) that answers Supabase calls from the real catalogue CSVs, so signed-in screens can be rendered here without a real email code.
+
 ## Questions for Sameer
 
 1. `@supabase/supabase-js@2.45.4` (pinned by the plan) pulls an `auth-js` version with a low-severity npm advisory (path routing on malformed input). Upgrade to the latest 2.x? Left as pinned.

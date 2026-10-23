@@ -1,311 +1,71 @@
-import React, { useState, useEffect } from 'react';
-import {
-  listRestaurants,
-  getMenu,
-  Restaurant,
-  MenuItem,
-  CHENNAI_AREAS
-} from '../services/ownly-api.ts';
+import { useMemo, useState } from 'react';
+import { Leaf } from 'lucide-react';
+import { listRestaurants } from '../api/ownly-api.ts';
+import { CHENNAI_AREAS } from '../lib/config.ts';
+import { hrefFor } from '../lib/router.ts';
+import { Badge, Empty, ErrorNote, Spinner, useLoad } from '../ui/kit.tsx';
 
-interface ExploreScreenProps {
-  onStartGroupOrder: (restaurantId: string) => void;
-  onJoinRoom: () => void;
-}
+const hhmm = (t: string | null) => (t ? t.slice(0, 5) : '');
 
-export const ExploreScreen: React.FC<ExploreScreenProps> = ({
-  onStartGroupOrder,
-  onJoinRoom
-}) => {
-  const [selectedArea, setSelectedArea] = useState<string>('All Areas');
-  const [vegOnly, setVegOnly] = useState<boolean>(false);
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+export function ExploreScreen() {
+  const { data, error, loading, reload } = useLoad(() => listRestaurants('Chennai'), []);
+  const [area, setArea] = useState<string>('All');
+  const [cuisine, setCuisine] = useState<string>('All');
+  const [vegOnly, setVegOnly] = useState(false);
 
-  // Menu preview modal state
-  const [activeMenuRestaurant, setActiveMenuRestaurant] = useState<Restaurant | null>(null);
-  const [activeMenuItems, setActiveMenuItems] = useState<MenuItem[]>([]);
-  const [menuLoading, setMenuLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    loadRestaurants();
-  }, [selectedArea]);
-
-  const loadRestaurants = async () => {
-    setLoading(true);
-    const list = await listRestaurants(selectedArea === 'All Areas' ? undefined : selectedArea);
-    setRestaurants(list);
-    setLoading(false);
-  };
-
-  const handleOpenMenu = async (restaurant: Restaurant) => {
-    setActiveMenuRestaurant(restaurant);
-    setMenuLoading(true);
-    const items = await getMenu(restaurant.id);
-    setActiveMenuItems(items);
-    setMenuLoading(false);
-  };
-
-  const filteredRestaurants = restaurants.filter((r) => {
-    if (vegOnly && !r.is_pure_veg) {
-      return false;
-    }
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      return (
-        r.name.toLowerCase().includes(q) ||
-        r.cuisine.toLowerCase().includes(q) ||
-        r.area.toLowerCase().includes(q)
-      );
-    }
-    return true;
-  });
+  const cuisines = useMemo(() => ['All', ...new Set((data ?? []).flatMap(r => r.cuisine.split('/').map(c => c.trim())))].sort((a, b) => (a === 'All' ? -1 : b === 'All' ? 1 : a.localeCompare(b))), [data]);
+  const shown = (data ?? []).filter(r =>
+    (area === 'All' || r.area === area) &&
+    (cuisine === 'All' || r.cuisine.split('/').map(c => c.trim()).includes(cuisine)) &&
+    (!vegOnly || r.veg_only));
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 pb-24 lg:pb-12">
-      {/* Chennai Launch Hero Banner with Ownly brand tokens */}
-      <div className="relative overflow-hidden brand-hero rounded-3xl p-6 sm:p-10 shadow-[0_6px_18px_rgba(17,29,53,0.06)] border border-[#F0D7E2] mb-8">
-        <div className="max-w-3xl flex flex-col gap-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFE3ED] text-[#C40054] text-xs font-bold w-fit">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F50062] animate-pulse"></span>
-            <span>Group food ordering · Chennai concept</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#111D35] tracking-tight leading-tight">
-            <span className="text-[#C40054]">Order Together.</span><br />
-            Pay Your Share. No More Chasing.
-          </h1>
-
-          <p className="text-base sm:text-lg text-[#576177] leading-relaxed max-w-2xl">
-            One person starts the order. Friends join with a link, choose their own food and pay only their share.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3 pt-3">
-            <button
-              onClick={() => onStartGroupOrder('rest_sangeetha')}
-              className="h-12 px-7 rounded-full bg-[#C40054] hover:bg-[#A80047] active:scale-98 text-white font-bold text-sm shadow-[0_9px_24px_rgba(196,0,84,0.22)] flex items-center gap-2 transition-all cursor-pointer"
-            >
-              <span className="material-symbols-outlined text-[18px]">group_add</span>
-              <span>Start a Group Order</span>
-            </button>
-
-            <button
-              onClick={onJoinRoom}
-              className="h-12 px-6 rounded-full bg-white hover:bg-[#FFF1F6] border border-[#F0D7E2] text-[#111D35] font-bold text-sm flex items-center gap-2 transition-colors cursor-pointer shadow-xs"
-            >
-              <span className="material-symbols-outlined text-[18px] text-[#C40054]">pin</span>
-              <span>Join with 6-Digit Code</span>
-            </button>
-          </div>
-
-          <div className="pt-2 text-xs text-[#576177] flex items-center gap-2">
-            <span>✓ Up to 12 members per room</span>
-            <span>•</span>
-            <span>✓ Host chooses split rule</span>
-          </div>
-        </div>
+    <div>
+      <div className="rounded-3xl p-6 sm:p-10 mb-6 border border-[#F0D7E2] bg-[radial-gradient(circle_at_85%_28%,#FFD3E3_0,transparent_40%),linear-gradient(160deg,#FFFFFF,#FFF1F6)]">
+        <p className="text-xs font-extrabold tracking-widest uppercase text-[#C40054]">A new way to order together · Chennai concept</p>
+        <h1 className="text-3xl sm:text-5xl font-extrabold mt-2 leading-tight"><span className="text-[#C40054]">Order together.</span> Pay your share.</h1>
+        <p className="text-[#576177] mt-3 max-w-xl">Pick a restaurant, start a group order and share the code. Everyone adds their own food and pays their own share.</p>
       </div>
 
-      {/* Filter Toolbar: Search, Veg Toggle, and Area Pills */}
-      <div className="flex flex-col gap-4 mb-6">
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-          {/* Search Input */}
-          <div className="relative flex-1 max-w-md">
-            <span className="material-symbols-outlined absolute left-3.5 top-3 text-[#576177] text-[20px]">
-              search
-            </span>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search Sangeetha, Biryani, Mylapore..."
-              className="w-full h-11 pl-10 pr-4 bg-white border border-[#F0D7E2] rounded-full text-xs sm:text-sm font-medium text-[#111D35] placeholder:text-[#576177] focus:outline-none focus:border-[#C40054] focus:ring-2 focus:ring-[#FFE3ED]"
-            />
-          </div>
-
-          {/* Veg-Only Toggle */}
-          <button
-            onClick={() => setVegOnly(!vegOnly)}
-            className={`h-11 px-4 rounded-full text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer border ${
-              vegOnly
-                ? 'bg-[#E5F6ED] text-[#125F43] border-[#16845A]'
-                : 'bg-white text-[#576177] border-[#F0D7E2] hover:border-[#C40054]'
-            }`}
-          >
-            <span className="w-3.5 h-3.5 rounded-xs border border-[#16845A] flex items-center justify-center">
-              <span className="w-2 h-2 rounded-full bg-[#16845A]"></span>
-            </span>
-            <span>Pure Vegetarian Only</span>
-          </button>
-        </div>
-
-        {/* Chennai Area Horizontal Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
-          {CHENNAI_AREAS.map((area) => (
-            <button
-              key={area}
-              onClick={() => setSelectedArea(area)}
-              className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
-                selectedArea === area
-                  ? 'bg-[#C40054] text-white shadow-xs'
-                  : 'bg-white text-[#576177] border border-[#F0D7E2] hover:text-[#111D35] hover:bg-[#FFF1F6]'
-              }`}
-            >
-              {area}
-            </button>
-          ))}
-        </div>
+      <div className="flex flex-wrap items-center gap-2 mb-3" role="group" aria-label="Filter by area">
+        {['All', ...CHENNAI_AREAS].map(a => (
+          <button key={a} onClick={() => setArea(a)} aria-pressed={area === a}
+            className={`px-4 min-h-11 rounded-full text-sm font-bold border cursor-pointer ${area === a ? 'bg-[#C40054] text-white border-[#C40054]' : 'bg-white border-[#F0D7E2] text-[#576177] hover:bg-[#FFF1F6]'}`}>{a === 'All' ? 'All areas' : a}</button>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-center gap-3 mb-6">
+        <label className="text-sm font-bold flex items-center gap-2">Cuisine
+          <select value={cuisine} onChange={e => setCuisine(e.target.value)} className="min-h-11 px-3 rounded-xl border-[1.5px] border-[#F0D7E2] bg-white font-normal">
+            {cuisines.map(c => <option key={c}>{c}</option>)}</select></label>
+        <label className="text-sm font-bold flex items-center gap-2 cursor-pointer min-h-11">
+          <input type="checkbox" checked={vegOnly} onChange={e => setVegOnly(e.target.checked)} className="size-5 accent-[#16845A]" />
+          <Leaf className="size-4 text-[#16845A]" aria-hidden /> Veg only</label>
       </div>
 
-      {/* Restaurant Cards Grid */}
-      {loading ? (
-        <div className="py-20 text-center text-sm text-[#576177]">Loading Chennai kitchens...</div>
-      ) : filteredRestaurants.length === 0 ? (
-        <div className="py-16 text-center bg-white rounded-3xl border border-[#F0D7E2] p-8">
-          <span className="material-symbols-outlined text-[36px] text-[#576177] mb-2">restaurant</span>
-          <p className="text-sm font-bold text-[#111D35]">No restaurants found matching your filter</p>
-          <p className="text-xs text-[#576177] mt-1">Try selecting "All Areas" or clear the search query.</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredRestaurants.map((restaurant) => (
-            <div
-              key={restaurant.id}
-              className="bg-white rounded-2xl overflow-hidden border border-[#F0D7E2] shadow-[0_6px_18px_rgba(17,29,53,0.06)] hover:shadow-[0_10px_30px_rgba(17,29,53,0.1)] transition-all flex flex-col justify-between"
-            >
-              <div>
-                {/* Photo Header */}
-                <div className="relative h-44 w-full bg-[#FFF1F6] overflow-hidden">
-                  <img
-                    src={restaurant.image_url}
-                    alt={restaurant.name}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5">
-                    {restaurant.is_pure_veg && (
-                      <span className="px-2.5 py-1 rounded-full bg-[#E5F6ED] text-[#125F43] text-[10px] font-extrabold uppercase border border-[#16845A]/20">
-                        Pure Veg
-                      </span>
-                    )}
-                  </div>
-
-
-                  <div className="absolute bottom-2 left-3 right-3">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#111D35]/80 backdrop-blur-xs text-white text-[11px] font-semibold">
-                      {restaurant.area}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Details */}
-                <div className="p-4 flex flex-col gap-1.5">
-                  <h3 className="font-extrabold text-base text-[#111D35] tracking-tight truncate">
-                    {restaurant.name}
-                  </h3>
-                  <p className="text-xs text-[#576177] line-clamp-1">{restaurant.cuisine}</p>
-                  <p className="text-[11px] text-[#576177]/80 line-clamp-1">{restaurant.address}</p>
-                </div>
+      {loading && <Spinner label="Loading restaurants" />}
+      {error && <ErrorNote message={error} onRetry={reload} />}
+      {!loading && !error && shown.length === 0 && <Empty title="No restaurants match" hint="Try another area or cuisine." />}
+      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {shown.map(r => (
+          <li key={r.id} className="bg-white border border-[#F0D7E2] rounded-3xl overflow-hidden shadow-[0_6px_18px_rgba(17,29,53,0.06)] flex flex-col">
+            <div className="aspect-[16/10] bg-[#FFE3ED]">
+              {r.image_url && <img src={r.image_url} alt={r.name} loading="lazy" className="w-full h-full object-cover" />}
+            </div>
+            <div className="p-4 flex-1 flex flex-col">
+              <div className="flex items-start justify-between gap-2">
+                <h2 className="text-lg font-extrabold leading-snug">{r.name}</h2>
+                {r.veg_only && <Badge tone="paid">Veg only</Badge>}
               </div>
-
-              {/* Action Buttons */}
-              <div className="p-4 pt-0 grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => handleOpenMenu(restaurant)}
-                  className="py-2.5 px-3 rounded-full bg-white hover:bg-[#FFF1F6] border border-[#F0D7E2] text-[#111D35] text-xs font-bold flex items-center justify-center gap-1 transition-colors cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-[16px] text-[#C40054]">menu_book</span>
-                  <span>View Menu</span>
-                </button>
-
-                <button
-                  onClick={() => onStartGroupOrder(restaurant.id)}
-                  className="py-2.5 px-3 rounded-full bg-[#C40054] hover:bg-[#A80047] active:scale-98 text-white text-xs font-bold flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-[16px]">group_add</span>
-                  <span>Start Group</span>
-                </button>
+              <p className="text-sm text-[#576177] mt-1">{r.cuisine} · {r.area}</p>
+              {r.opens_at && r.closes_at && <p className="text-xs text-[#576177] mt-1">Open {hhmm(r.opens_at)} to {hhmm(r.closes_at)}</p>}
+              <div className="mt-4 grid grid-cols-2 gap-2 pt-1 mt-auto">
+                <a href={hrefFor({ name: 'menu', rid: r.id })} className="min-h-11 rounded-full border-[1.5px] border-[#F0D7E2] grid place-items-center text-sm font-bold text-[#111D35] no-underline hover:bg-[#FFF1F6]">View menu</a>
+                <a href={hrefFor({ name: 'start', rid: r.id })} className="min-h-11 rounded-full bg-[#C40054] grid place-items-center text-sm font-bold text-white no-underline hover:bg-[#A80047]">Start group order</a>
               </div>
             </div>
-          ))}
-        </div>
-      )}
-
-      {/* Menu Preview Modal */}
-      {activeMenuRestaurant && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="w-full max-w-xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] border border-[#F0D7E2]">
-            {/* Header */}
-            <div className="p-5 border-b border-[#F0D7E2] flex items-center justify-between bg-[#FFF9FC]">
-              <div>
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#C40054] bg-[#FFE3ED] px-2 py-0.5 rounded-full">
-                  {activeMenuRestaurant.area}
-                </span>
-                <h3 className="text-lg font-extrabold text-[#111D35] mt-1">{activeMenuRestaurant.name}</h3>
-              </div>
-              <button
-                onClick={() => setActiveMenuRestaurant(null)}
-                className="w-8 h-8 rounded-full bg-white border border-[#F0D7E2] text-[#111D35] flex items-center justify-center hover:bg-[#FFF1F6] transition-colors"
-              >
-                <span className="material-symbols-outlined text-[18px]">close</span>
-              </button>
-            </div>
-
-            {/* Menu Items List */}
-            <div className="flex-1 overflow-y-auto p-5 divide-y divide-[#F0D7E2]">
-              {menuLoading ? (
-                <div className="py-12 text-center text-xs text-[#576177]">Loading dishes...</div>
-              ) : (
-                activeMenuItems.map((item) => (
-                  <div key={item.id} className="py-3.5 flex items-start justify-between gap-3 first:pt-0 last:pb-0">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-1.5">
-                        <span
-                          className={`w-3.5 h-3.5 rounded-xs border flex items-center justify-center shrink-0 ${
-                            item.is_veg ? 'border-[#16845A]' : 'border-[#A32234]'
-                          }`}
-                        >
-                          <span
-                            className={`w-1.5 h-1.5 rounded-full ${
-                              item.is_veg ? 'bg-[#16845A]' : 'bg-[#A32234]'
-                            }`}
-                          ></span>
-                        </span>
-                        <h4 className="text-sm font-bold text-[#111D35]">{item.name}</h4>
-                      </div>
-                      <p className="text-xs text-[#576177] mt-1 line-clamp-2">{item.description}</p>
-                      <div className="mt-1 font-extrabold text-sm text-[#C40054] font-mono">₹{item.price}</div>
-                    </div>
-
-                    <img
-                      src={item.image_url}
-                      alt={item.name}
-                      className="w-16 h-16 rounded-xl object-cover shrink-0 border border-[#F0D7E2]"
-                      loading="lazy"
-                    />
-                  </div>
-                ))
-              )}
-            </div>
-
-            {/* Modal Bottom CTA */}
-            <div className="p-4 bg-[#FFF9FC] border-t border-[#F0D7E2] flex items-center justify-between gap-3">
-              <span className="text-xs text-[#576177] font-medium">Ready to order with your squad?</span>
-              <button
-                onClick={() => {
-                  const rId = activeMenuRestaurant.id;
-                  setActiveMenuRestaurant(null);
-                  onStartGroupOrder(rId);
-                }}
-                className="py-2.5 px-6 rounded-full bg-[#C40054] hover:bg-[#A80047] font-bold text-xs text-white shadow-sm flex items-center gap-1.5 cursor-pointer"
-              >
-                <span>Start Group Order</span>
-                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
+}

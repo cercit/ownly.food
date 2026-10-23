@@ -25,7 +25,7 @@ const banned = [
   ['made-up product names', /Rapido Direct|Express Saver|\bPod\b|Rapido Courier/i],
   ['commute / co-riders', /commute|co-?rider/i],
   ['company identifiers', /\bCIN\b|GSTIN|Pvt\.?\s*Ltd|Private Limited/i],
-  ['price comparison', /compar(e|ison)|cheaper than|vs\.? (swiggy|zomato)/i],
+  ['price comparison', /\bcompar(e|ison)|cheaper than|vs\.? (swiggy|zomato)/i],
   ['made-up statistics', />\s*\d+(\.\d+)?\s?%|\d+% (of|off|faster|more)|\b\d+\+? (happy|users|customers)|rating|prep_time|\bmins? delivery\b/i],
   ['other-city places', /hyderabad|bengaluru|bangalore|koramangala|\bHSR\b|\bBTM\b|gachibowli/i],
   ['gemini / server', /gemini|genai|express\(|dotenv|process\.env/i],
@@ -51,7 +51,8 @@ for (const f of files) {
   const rel = path.relative(web, f);
   const lines = readFileSync(f, 'utf8').split('\n');
   lines.forEach((line, i) => {
-    for (const [label, re] of [...banned, ...nameChecks, ...keyChecks]) {
+    const isComment = /^\s*(\/\/|\/\*|\*)/.test(line);   // comments are not shown to anyone
+    for (const [label, re] of [...(isComment ? [] : banned), ...nameChecks, ...keyChecks]) {
       if (re.test(line)) { hits++; console.log(`HIT  ${rel}:${i + 1}  [${label}]  ${line.trim().slice(0, 120)}`); }
     }
     for (const m of line.matchAll(/eyJ[\w-]+\.[\w-]+\.[\w-]+/g)) {
