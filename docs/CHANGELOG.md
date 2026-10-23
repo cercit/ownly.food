@@ -13,6 +13,13 @@ Sameer runs each script in the Supabase SQL editor. Claude checks it afterwards 
 | `04_security_tidy.sql` | Logged-out visitors can't run the order functions | Covered | Run 23 Oct 2026, checked |
 | `ownly_together_supabase.sql` (01 + 02 + 03) | 9 tables, row-level security, 16 functions, sign-up trigger, first catalogue | 36 / 36 pass | Run 23 Oct 2026, checked |
 
+## Supabase dashboard settings
+
+| Date | Setting |
+|---|---|
+| 24 Oct 2026 | Email templates "Confirm sign up" and "Magic Link" show the 6-digit code (`{{ .Token }}`), subject "Your Ownly Together code"; Email OTP length 6 (Sameer) |
+| 23 Oct 2026 | Custom SMTP via Gmail, sender "ownly-sam" (Sameer) |
+
 ## Product decisions (Sameer)
 
 | Date | Decision |
@@ -29,7 +36,6 @@ Sameer runs each script in the Supabase SQL editor. Claude checks it afterwards 
 
 ## Still open
 
-- Supabase email templates: add `{{ .Token }}` to "Confirm signup" and "Magic Link" (Sameer, dashboard)
 - Site URL and redirect URLs once the app is deployed
 - Only the host can lock, place or cancel; one restaurant per group (built this way, not yet confirmed by Sameer)
 - AI Studio front-end export; then wire to `app/ownly-api.js`, apply the pink design system, deploy
