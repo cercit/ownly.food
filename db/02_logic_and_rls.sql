@@ -84,8 +84,7 @@ language sql stable as $$
 $$;
 
 -- ---------- S1: start a group order ----------
-create or replace function create_group_order(p_restaurant uuid, p_address uuid, p_cut_off timestamptz,
-                                              p_split split_rule default 'proportional')
+create or replace function create_group_order(p_restaurant uuid, p_address uuid, p_cut_off timestamptz)
 returns json language plpgsql security definer set search_path = public, extensions as $$
 declare uid uuid := me(); r restaurants; g group_orders; existing group_orders;
 begin
@@ -101,8 +100,8 @@ begin
   if existing.id is not null then
     return json_build_object('id', existing.id, 'share_code', existing.share_code, 'existing', true);
   end if;
-  insert into group_orders (share_code, host_id, restaurant_id, delivery_address_id, cut_off_at, split_rule)
-  values (new_share_code(), uid, p_restaurant, p_address, p_cut_off, p_split) returning * into g;
+  insert into group_orders (share_code, host_id, restaurant_id, delivery_address_id, cut_off_at)
+  values (new_share_code(), uid, p_restaurant, p_address, p_cut_off) returning * into g;
   insert into group_members (group_order_id, user_id, role) values (g.id, uid, 'host');
   return json_build_object('id', g.id, 'share_code', g.share_code, 'existing', false);
 end $$;
@@ -131,7 +130,7 @@ begin
   return json_build_object('group_order_id', g.id, 'member_id', m.id, 'already', false);
 end $$;
 
-create or replace function add_item(p_group uuid, p_menu_item uuid, p_qty int default 1, p_notes text default null)
+create or replace function add_item(p_group uuid, p_menu_item uuid, p_qty int default 1, p_notes text default null, p_shared boolean default false)
 returns uuid language plpgsql security definer set search_path = public, extensions as $$
 declare g group_orders; mi menu_items; mem uuid; new_id uuid;
 begin
@@ -142,11 +141,8 @@ begin
   select * into mi from menu_items where id = p_menu_item;
   if mi.id is null or mi.restaurant_id <> g.restaurant_id then raise exception 'That dish is not on this restaurant''s menu'; end if;
   if not mi.is_available then raise exception '% is not available right now', mi.name; end if;
-  if group_value(p_group) + mi.price * p_qty > g.max_value then
-    raise exception 'This would take the order over ₹% (one rider bag). Start a second group order.', g.max_value;
-  end if;
-  insert into order_items (group_order_id, member_id, menu_item_id, qty, unit_price, notes)
-  values (p_group, mem, p_menu_item, p_qty, mi.price, p_notes) returning id into new_id;
+  insert into order_items (group_order_id, member_id, menu_item_id, qty, unit_price, notes, is_shared)
+  values (p_group, mem, p_menu_item, p_qty, mi.price, p_notes, coalesce(p_shared, false)) returning id into new_id;
   return new_id;
 end $$;
 
@@ -186,7 +182,12 @@ end $$;
 
 create or replace function place_group(p_group uuid, p_delivery numeric, p_packaging numeric default 0, p_taxes numeric default 0)
 returns void language plpgsql security definer set search_path = public, extensions as $$
-declare g group_orders; food_total numeric; n int; extras numeric; m record; d numeric; t numeric; host_mem uuid;
+-- Split rule (Sameer, 23 Oct 2026):
+--   your own dishes        -> you pay their full price
+--   dishes marked shared   -> split equally across everyone in the group
+--   Rapido charges (delivery + packaging + taxes) -> split equally across everyone in the group
+-- Everyone, including the host, pays their share on the (demo) payment screen.
+declare g group_orders; food_total numeric; shared_total numeric; n int; charges numeric; m record; sh numeric; ch numeric; host_mem uuid;
 begin
   select * into g from group_orders where id = p_group;
   if g.host_id is distinct from me() then raise exception 'Only the host can place the order'; end if;
@@ -196,32 +197,26 @@ begin
   update group_orders set status = 'placed', placed_at = now(), delivery_fee = p_delivery,
          packaging_fee = p_packaging, taxes = p_taxes where id = p_group;
 
-  -- only members with items pay; delivery + packaging and taxes are split by the host's rule
-  select count(distinct member_id) into n from order_items where group_order_id = p_group;
-  extras := p_delivery + p_packaging;
+  select count(*) into n from group_members where group_order_id = p_group and status = 'joined';
+  select coalesce(sum(qty * unit_price), 0) into shared_total from order_items where group_order_id = p_group and is_shared;
+  charges := p_delivery + p_packaging + p_taxes;
+  sh := round(shared_total / n, 2);
+  ch := round(charges / n, 2);
   for m in
-    select gm.id, gm.role, coalesce(sum(oi.qty * oi.unit_price), 0) as food
-      from group_members gm join order_items oi on oi.member_id = gm.id
-     where gm.group_order_id = p_group group by gm.id, gm.role
+    select gm.id, coalesce(sum(oi.qty * oi.unit_price) filter (where not oi.is_shared), 0) as own
+      from group_members gm left join order_items oi on oi.member_id = gm.id
+     where gm.group_order_id = p_group and gm.status = 'joined' group by gm.id
   loop
-    if g.split_rule = 'equal' then
-      d := round(extras / n, 2); t := round(p_taxes / n, 2);
-    else
-      d := round(extras * m.food / food_total, 2); t := round(p_taxes * m.food / food_total, 2);
-    end if;
-    insert into payments (group_order_id, member_id, food_amount, delivery_share, tax_share, total, payee, status, method_type, paid_at)
-    values (p_group, m.id, m.food, d, t, m.food + d + t,
-            case when m.role = 'host' then 'restaurant' else 'host' end::payee_type,
-            case when m.role = 'host' then 'paid' else 'pending' end::pay_status,
-            case when m.role = 'host' then 'upi' end::pay_method,
-            case when m.role = 'host' then now() end);
+    insert into payments (group_order_id, member_id, food_amount, shared_share, delivery_share, tax_share, total, payee, status)
+    values (p_group, m.id, m.own, sh, ch, 0, m.own + sh + ch, 'host', 'pending');
   end loop;
 
-  -- rounding pennies go to the host so the shares add up exactly to the bill
+  -- rounding paise go to the host so the shares add up exactly to the bill
   select id into host_mem from group_members where group_order_id = p_group and role = 'host';
-  update payments set total = total + ((food_total + extras + p_taxes) - (select sum(total) from payments where group_order_id = p_group)),
-                      delivery_share = delivery_share + ((food_total + extras + p_taxes) - (select sum(total) from payments where group_order_id = p_group))
+  update payments set total = total + ((food_total + charges) - (select sum(total) from payments where group_order_id = p_group)),
+                      delivery_share = delivery_share + ((food_total + charges) - (select sum(total) from payments where group_order_id = p_group))
    where group_order_id = p_group and member_id = host_mem;
+  update payments set payee = 'restaurant' where group_order_id = p_group and member_id = host_mem;
 end $$;
 
 create or replace function cancel_group(p_group uuid)
@@ -267,18 +262,18 @@ begin
             from restaurants r, profiles p where r.id = g.restaurant_id and p.id = g.host_id);
   end if;
   return json_build_object(
-    'id', g.id, 'share_code', g.share_code, 'status', g.status, 'cut_off_at', g.cut_off_at, 'split_rule', g.split_rule,
+    'id', g.id, 'share_code', g.share_code, 'status', g.status, 'cut_off_at', g.cut_off_at,
     'delivery_fee', g.delivery_fee, 'packaging_fee', g.packaging_fee, 'taxes', g.taxes,
-    'max_members', g.max_members, 'max_value', g.max_value, 'food_total', group_value(g.id), 'is_member', true,
+    'max_members', g.max_members, 'food_total', group_value(g.id), 'is_member', true,
     'is_host', g.host_id = me(),
     'restaurant', (select json_build_object('id', id, 'name', name, 'cuisine', cuisine, 'area', area) from restaurants where id = g.restaurant_id),
     'deliver_to', (select json_build_object('label', label, 'label_name', label_name, 'area', area, 'city', city) from addresses where id = g.delivery_address_id),
     'members', (select coalesce(json_agg(json_build_object('member_id', gm.id, 'name', p.full_name, 'role', gm.role,
                   'is_me', gm.user_id = me(),
                   'items', (select coalesce(json_agg(json_build_object('id', oi.id, 'dish', mi.name, 'qty', oi.qty,
-                              'unit_price', oi.unit_price, 'notes', oi.notes, 'is_veg', mi.is_veg) order by oi.created_at), '[]')
+                              'unit_price', oi.unit_price, 'notes', oi.notes, 'is_veg', mi.is_veg, 'is_shared', oi.is_shared) order by oi.created_at), '[]')
                             from order_items oi join menu_items mi on mi.id = oi.menu_item_id where oi.member_id = gm.id),
-                  'payment', (select json_build_object('food', food_amount, 'delivery_share', delivery_share, 'tax_share', tax_share,
+                  'payment', (select json_build_object('food', food_amount, 'shared_share', shared_share, 'charges_share', delivery_share, 'tax_share', tax_share,
                               'total', total, 'status', status, 'method', method_type, 'reference', gateway_payment_id, 'paid_at', paid_at)
                             from payments where member_id = gm.id)) order by gm.role, gm.joined_at), '[]')
                 from group_members gm join profiles p on p.id = gm.user_id

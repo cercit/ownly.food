@@ -44,8 +44,8 @@ Targets are set after a 2-week baseline. No numbers are invented here.
 - Members join with the link and add their own items with notes.
 - A live shared cart showing who added what and the running total.
 - The host locks the order at or before the cut-off, then places it.
-- Automatic split: each person's food, plus their share of delivery, packaging and taxes (split equally or in proportion to food total, the host's choice).
-- Pay your share: UPI or card in test mode, or "paid the host in cash". Paid and pending status for everyone.
+- Automatic split: your own dishes at full price; any dish marked **shared** split equally across everyone in the group; Rapido's charges (delivery, packaging, taxes) split equally across everyone.
+- Pay your share on a payment screen with a clear **demo** warning (UPI, card or "paid the host in cash"). Everyone pays, including the host. Paid and pending status for everyone.
 - Group order history, with "Reorder with the same group".
 
 **We don't (this version):**
@@ -53,7 +53,7 @@ Targets are set after a 2-week baseline. No numbers are invented here.
 - No orders from multiple restaurants in one group.
 - No changes to rider pay, dispatch or routing.
 - No real payments. Razorpay test mode only, and no card numbers, CVVs or UPI PINs stored.
-- No group larger than 6 people or ₹2,000 (one rider bag). Above that, the app suggests two orders.
+- No group larger than 12 people. No limit on order value, and no limit on sign-ups.
 - No recurring office-lunch subscriptions (Phase 2).
 
 ## 5. User stories and acceptance criteria
@@ -67,12 +67,12 @@ As a host, I want to start a group order and share a link, so my friends add the
 **S2 · Join and add items (member)**
 As a member, I want to join from a link and add my items, so the host doesn't have to type my order.
 - *Happy path:* Given an open group order, when I open the link and log in with email OTP, then I join it and can add items with notes.
-- *Blocked:* Given the order is locked, full (6 people) or over ₹2,000, when I try to join or add, then I see the reason and nothing is added.
+- *Blocked:* Given the order is locked or full (12 people), when I try to join or add, then I see the reason and nothing is added.
 - *Already done:* Given I already joined, when I open the link again, then I go straight to my items. I'm not added twice.
 
 **S3 · Split and pay (all)**
 As a member, I want to see and pay only my share, so nobody has to chase anyone.
-- *Happy path:* Given the order is placed, when I open it, then I see my food total plus my share of delivery and taxes, and can pay in test mode.
+- *Happy path:* Given the order is placed, when I open it, then I see my own dishes, my share of shared dishes and my share of Rapido's charges, and can pay on the demo payment screen.
 - *Blocked:* Given payment fails, then my share stays "pending" with a retry button, and the host sees who is pending.
 - *Already done:* Given I already paid, when I tap Pay again, then I see "Paid" with the reference, and no second charge.
 
@@ -90,7 +90,7 @@ As a member, I want to see and pay only my share, so nobody has to chase anyone.
 - Screens designed in Google Stitch.
 - Front end built with Google AI Studio, on Supabase (email OTP auth, database and row-level security).
 - Hosted on GitHub Pages, with Ownly branding and a "concept prototype" strip on every screen.
-- Demo accounts so reviewers can try it in 30 seconds.
+- Anyone can sign up with email OTP and try it. No demo accounts.
 
 **Screens:**
 1. Email OTP login
@@ -107,11 +107,11 @@ As a member, I want to see and pay only my share, so nobody has to chase anyone.
 
 | Risk | Mitigation |
 |---|---|
-| Large group orders strain riders (bag size, wait time) | 6-person / ₹2,000 cap. Track complaints as a counter metric |
+| Large group orders strain riders (bag size, wait time) | 12-person cap. Track complaints as a counter metric |
 | Unpaid shares sour friendships, and users blame the app | Clear pending status, one-tap reminders, "paid in cash" option |
 | Restaurants mis-pack itemised orders | Items grouped by person on the restaurant ticket |
 | The problem is smaller than assumed | Before Phase 2: 10 interviews with office and hostel organisers, plus a WhatsApp-poll survey (n ≈ 50) on how often they order as a group and how long repayment takes |
-| Brand confusion | Concept strip on every screen, test-mode payments, demo accounts |
+| Brand confusion | Concept strip on every screen, demo warning on the payment screen |
 
 ## 8. Sprint plan: build and launch tonight (23 Oct)
 
@@ -119,10 +119,10 @@ As a member, I want to see and pay only my share, so nobody has to chase anyone.
 |---|---|---|---|
 | 7:00–7:45 pm | Stitch: 9 screens, Ownly look, concept strip | Sameer | Screens exported |
 | 7:45–8:30 | Supabase: run schema SQL, row-level security, load demo CSVs | Claude + Sameer | Tables filled, rules tested |
-| 8:30–9:00 | Auth: email OTP on, redirect URL set, 3 demo accounts | Sameer (dashboard) | OTP email arrives, login works |
+| 8:30–9:00 | Auth: email OTP on, code in the email template, redirect URL set | Sameer (dashboard) | OTP email arrives, login works |
 | 9:00–11:00 | AI Studio: build the front end from the Stitch screens and the Supabase client | Sameer + Claude | S1–S3 happy paths work |
 | 11:00–11:45 | Test the 9 acceptance criteria and fix | Claude + Sameer | All 9 pass |
 | 11:45–12:15 am | Deploy to GitHub Pages, smoke test on a phone | Claude | Live link works on phone and laptop |
-| 12:15–12:30 | README, demo-account card, screenshots | Claude | Repo ready to share |
+| 12:15–12:30 | README and screenshots | Claude | Repo ready to share |
 
 Not tonight: Softr/Airtable course version (tomorrow, same CSVs), the pitch email to Rapido, and the walkthrough video.

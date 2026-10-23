@@ -1,6 +1,6 @@
 label_name,user,label,line1,line2,landmark,area,city,pincode,lat,lng,gps_accuracy_m,source,is_default
 Home,demo.host@example.com,home,"Flat 662, Sunrise Residency",10th Main,Near the metro,Koramangala,Bengaluru,560034,12.933967,77.627259,20,gps,True
-Office,demo.host@example.com,office,"Prestige Tech Park, Tower B",2th Main,Near the metro,Bellandur,Bengaluru,560103,12.925143,77.672349,35,gps,False
+Office,demo.host@example.com,office,"Prestige Tech Park, Tower B",2nd Main,Near the metro,Bellandur,Bengaluru,560103,12.925143,77.672349,35,gps,False
 Rohan's flat,demo.host@example.com,friend,"House 73, 6th Cross",,Gate with the blue door,Koramangala,Bengaluru,560034,12.937625,77.621184,15,manual,False
 Home,demo.friend1@example.com,home,"Flat 723, Silver Oak Residency",6th Main,Opposite the park,HSR Layout,Bengaluru,560102,12.914289,77.644995,35,gps,True
 Office,demo.friend1@example.com,office,"Prestige Tech Park, Tower B",17th Main,Opposite the park,Bellandur,Bengaluru,560103,12.928273,77.677594,35,manual,False
@@ -10,15 +10,15 @@ Office,demo.friend2@example.com,office,Koramangala Co-work Hub,5th Main,Next to 
 Home,rohan.k@example.com,home,"Flat 171, Silver Oak Residency",14th Main,Behind the bus stop,Koramangala,Bengaluru,560034,12.932507,77.625501,20,gps,True
 Office,rohan.k@example.com,office,"Prestige Tech Park, Tower B",11th Main,Opposite the park,Bellandur,Bengaluru,560103,12.929482,77.677475,20,gps,False
 Home,sneha.p@example.com,home,"Flat 874, Sunrise Residency",18th Main,Opposite the park,Indiranagar,Bengaluru,560038,12.977588,77.640115,35,gps,True
-Office,sneha.p@example.com,office,Koramangala Co-work Hub,2th Main,Near the metro,Koramangala,Bengaluru,560034,12.932406,77.627828,20,gps,False
-Home,arjun.m@example.com,home,"Flat 108, Sunrise Residency",1th Main,Opposite the park,HSR Layout,Bengaluru,560102,12.915192,77.647519,12,gps,True
-Office,arjun.m@example.com,office,HSR Startup Block,3th Main,Near the metro,HSR Layout,Bengaluru,560102,12.913326,77.646357,12,manual,False
+Office,sneha.p@example.com,office,Koramangala Co-work Hub,2nd Main,Near the metro,Koramangala,Bengaluru,560034,12.932406,77.627828,20,gps,False
+Home,arjun.m@example.com,home,"Flat 108, Sunrise Residency",1st Main,Opposite the park,HSR Layout,Bengaluru,560102,12.915192,77.647519,12,gps,True
+Office,arjun.m@example.com,office,HSR Startup Block,3rd Main,Near the metro,HSR Layout,Bengaluru,560102,12.913326,77.646357,12,manual,False
 Home,divya.s@example.com,home,"Flat 612, Sunrise Residency",6th Main,Near the metro,BTM Layout,Bengaluru,560076,12.913615,77.607002,35,gps,True
 Office,divya.s@example.com,office,HSR Startup Block,18th Main,Opposite the park,HSR Layout,Bengaluru,560102,12.914525,77.645014,20,gps,False
 Home,vikram.r@example.com,home,"Flat 881, Sunrise Residency",9th Main,Next to the bakery,Gachibowli,Hyderabad,500032,17.441069,78.351251,12,gps,True
-Office,vikram.r@example.com,office,"Cyber Towers, Wing 2",2th Main,Next to the bakery,HITEC City,Hyderabad,500081,17.444982,78.379471,35,manual,False
-Sai's apartment,vikram.r@example.com,friend,"House 62, 2th Cross",,Gate with the blue door,Gachibowli,Hyderabad,500032,17.440705,78.346207,15,manual,False
-Home,pooja.s@example.com,home,"Flat 546, Sunrise Residency",1th Main,Next to the bakery,Madhapur,Hyderabad,500081,17.447326,78.3915,35,gps,True
+Office,vikram.r@example.com,office,"Cyber Towers, Wing 2",2nd Main,Next to the bakery,HITEC City,Hyderabad,500081,17.444982,78.379471,35,manual,False
+Sai's apartment,vikram.r@example.com,friend,"House 62, 2nd Cross",,Gate with the blue door,Gachibowli,Hyderabad,500032,17.440705,78.346207,15,manual,False
+Home,pooja.s@example.com,home,"Flat 546, Sunrise Residency",1st Main,Next to the bakery,Madhapur,Hyderabad,500081,17.447326,78.3915,35,gps,True
 Office,pooja.s@example.com,office,"Cyber Towers, Wing 2",16th Main,Behind the bus stop,HITEC City,Hyderabad,500081,17.440595,78.374563,8,manual,False
 Home,sai.t@example.com,home,"Flat 304, Silver Oak Residency",8th Main,Opposite the park,Gachibowli,Hyderabad,500032,17.443386,78.348444,35,gps,True
 Office,sai.t@example.com,office,Financial District Plaza,11th Main,Opposite the park,Gachibowli,Hyderabad,500032,17.437489,78.350086,12,gps,False

@@ -1,42 +1,47 @@
-group_code,member,dish,qty,unit_price,notes
-KORA24,Ananya Rao,Medu Vada (2),1,60,
-KORA24,Ananya Rao,Kesari Bath,1,50,Less spicy
-KORA24,Karthik Iyer,Medu Vada (2),1,60,Pack separately
-KORA24,Rohan Kulkarni,Medu Vada (2),1,60,Pack separately
-KORA24,Rohan Kulkarni,Masala Dosa,1,90,Less spicy
-KORA24,Rohan Kulkarni,Kesari Bath,1,50,Less spicy
-KORA24,Sneha Patil,Medu Vada (2),1,60,
-HITEC7,Vikram Reddy,Bagara Rice,1,149,No onion
-HITEC7,Vikram Reddy,Hyderabadi Chicken Biryani,1,269,
-HITEC7,Pooja Sharma,Haleem,1,239,Pack separately
-HITEC7,Pooja Sharma,Apollo Fish,1,259,
-HITEC7,Lakshmi Prasad,Apollo Fish,1,259,No onion
-HITEC7,Lakshmi Prasad,Irani Chai,1,30,
-BIRY4N,Karthik Iyer,Chicken 65,1,179,Less spicy
-BIRY4N,Karthik Iyer,Raita,1,39,Less spicy
-BIRY4N,Ananya Rao,Mirchi ka Salan,1,69,
-BIRY4N,Ananya Rao,Double ka Meetha,1,89,Less spicy
-BIRY4N,Arjun Menon,Double ka Meetha,1,89,Pack separately
-BIRY4N,Arjun Menon,Veg Dum Biryani,1,199,
-BIRY4N,Divya Shetty,Veg Dum Biryani,1,199,
-BIRY4N,Divya Shetty,Raita,1,39,No onion
-GREEN2,Meera Nair,Oats Brownie,1,89,Less spicy
-GREEN2,Meera Nair,Quinoa Buddha Bowl,1,249,Pack separately
-GREEN2,Meera Nair,Paneer Tikka Bowl,1,219,Extra chutney
-GREEN2,Ananya Rao,Peanut Noodle Salad,1,189,Extra chutney
-GREEN2,Ananya Rao,Hummus Wrap,1,169,Less spicy
-GREEN2,Sneha Patil,Quinoa Buddha Bowl,1,249,
-PIZZA5,Sai Teja,Farmhouse (Medium),1,329,No onion
-PIZZA5,Sai Teja,Coke 500 ml,2,60,
-PIZZA5,Vikram Reddy,Farmhouse (Medium),1,329,
-PIZZA5,Vikram Reddy,Margherita (Medium),1,249,
-PIZZA5,Vikram Reddy,Chicken Pepperoni (Medium),1,379,
-PIZZA5,Imran Khan,Farmhouse (Medium),1,329,
-PIZZA5,Imran Khan,Paneer Makhani (Medium),1,349,Extra chutney
-PIZZA5,Imran Khan,Margherita (Medium),1,249,Pack separately
-PIZZA5,Pooja Sharma,Choco Lava Cake,1,99,Pack separately
-PIZZA5,Pooja Sharma,Paneer Makhani (Medium),1,349,Extra chutney
-PIZZA5,Pooja Sharma,Farmhouse (Medium),1,329,Extra chutney
-ROLL66,Arjun Menon,Masala Fries,1,79,Pack separately
-ROLL66,Arjun Menon,Double Egg Roll,1,99,
-ROLL66,Divya Shetty,Double Egg Roll,1,99,Pack separately
+group_code,member,dish,qty,unit_price,is_shared,notes
+KORA24,Ananya Rao,Medu Vada (2),1,60,False,
+KORA24,Ananya Rao,Kesari Bath,1,50,True,
+KORA24,Karthik Iyer,Filter Coffee,1,40,False,
+KORA24,Karthik Iyer,Rava Dosa,1,100,False,Pack separately
+KORA24,Rohan Kulkarni,Bisi Bele Bath,1,110,False,
+KORA24,Rohan Kulkarni,Filter Coffee,1,40,False,Extra chutney
+KORA24,Sneha Patil,Rava Dosa,1,100,False,Pack separately
+KORA24,Sneha Patil,Bisi Bele Bath,1,110,False,
+KORA24,Arjun Menon,Kesari Bath,1,50,True,
+KORA24,Divya Shetty,Mini Meals,1,140,False,No onion
+KORA24,Divya Shetty,Ghee Podi Idli,1,80,False,No onion
+KORA24,Divya Shetty,Kesari Bath,1,50,True,Extra chutney
+KORA24,Meera Nair,Mini Meals,1,140,False,
+KORA24,Vikram Reddy,Medu Vada (2),1,60,False,Less spicy
+KORA24,Vikram Reddy,Rava Dosa,1,100,False,Extra chutney
+KORA24,Vikram Reddy,Bisi Bele Bath,1,110,False,Extra chutney
+HITEC7,Vikram Reddy,Paneer Biryani,1,229,False,Pack separately
+HITEC7,Vikram Reddy,Bagara Rice,1,149,False,
+HITEC7,Pooja Sharma,Qubani ka Meetha,1,109,True,Pack separately
+HITEC7,Pooja Sharma,Haleem,1,239,False,
+HITEC7,Lakshmi Prasad,Qubani ka Meetha,1,109,False,No onion
+HITEC7,Lakshmi Prasad,Paneer Biryani,1,229,False,
+HITEC7,Lakshmi Prasad,Hyderabadi Chicken Biryani,1,269,False,
+BIRY4N,Karthik Iyer,Raita,1,39,False,Pack separately
+BIRY4N,Karthik Iyer,Mirchi ka Salan,1,69,True,Extra chutney
+BIRY4N,Ananya Rao,Chicken Dum Biryani,1,249,False,
+BIRY4N,Ananya Rao,Veg Dum Biryani,1,199,False,Pack separately
+BIRY4N,Arjun Menon,Chicken Dum Biryani,1,249,False,Extra chutney
+BIRY4N,Divya Shetty,Veg Dum Biryani,1,199,False,No onion
+BIRY4N,Divya Shetty,Double ka Meetha,1,89,False,Less spicy
+GREEN2,Meera Nair,Quinoa Buddha Bowl,1,249,False,
+GREEN2,Meera Nair,Paneer Tikka Bowl,1,219,False,Extra chutney
+GREEN2,Ananya Rao,Quinoa Buddha Bowl,1,249,False,
+GREEN2,Ananya Rao,Peanut Noodle Salad,1,189,False,Extra chutney
+GREEN2,Ananya Rao,Paneer Tikka Bowl,1,219,False,Pack separately
+GREEN2,Sneha Patil,Cold Pressed Juice,1,119,False,Pack separately
+GREEN2,Sneha Patil,Peanut Noodle Salad,1,189,False,Extra chutney
+GREEN2,Sneha Patil,Quinoa Buddha Bowl,1,249,False,Extra chutney
+PIZZA5,Sai Teja,Choco Lava Cake,1,99,True,Less spicy
+PIZZA5,Vikram Reddy,Choco Lava Cake,1,99,True,Extra chutney
+PIZZA5,Imran Khan,Margherita (Medium),1,249,False,Less spicy
+PIZZA5,Pooja Sharma,Choco Lava Cake,1,99,True,Pack separately
+ROLL66,Arjun Menon,Double Egg Roll,1,99,False,Pack separately
+ROLL66,Arjun Menon,Mint Lime Soda,1,59,False,
+ROLL66,Divya Shetty,Mint Lime Soda,1,59,False,
+ROLL66,Divya Shetty,Double Egg Roll,1,99,False,Less spicy

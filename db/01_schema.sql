@@ -6,7 +6,6 @@ create extension if not exists pgcrypto;
 create type address_label   as enum ('home', 'office', 'friend', 'other');
 create type location_source as enum ('gps', 'manual');
 create type order_status    as enum ('open', 'locked', 'placed', 'delivered', 'cancelled');
-create type split_rule      as enum ('equal', 'proportional');
 create type member_role     as enum ('host', 'member');
 create type member_status   as enum ('joined', 'left');
 create type pay_method      as enum ('upi', 'card', 'netbanking', 'cash');
@@ -81,12 +80,10 @@ create table group_orders (
   delivery_address_id uuid not null references addresses(id),
   cut_off_at          timestamptz not null,
   status              order_status not null default 'open',
-  split_rule          split_rule not null default 'proportional',
   delivery_fee        numeric(8,2) not null default 0 check (delivery_fee >= 0),
   packaging_fee       numeric(8,2) not null default 0 check (packaging_fee >= 0),
   taxes               numeric(8,2) not null default 0 check (taxes >= 0),
-  max_members         int not null default 6 check (max_members between 2 and 6),
-  max_value           numeric(8,2) not null default 2000,
+  max_members         int not null default 12 check (max_members between 2 and 12),
   created_at          timestamptz not null default now(),
   placed_at           timestamptz,
   delivered_at        timestamptz
@@ -110,6 +107,7 @@ create table order_items (
   qty            int not null check (qty between 1 and 20),
   unit_price     numeric(8,2) not null check (unit_price > 0),
   notes          text,
+  is_shared      boolean not null default false,  -- shared dish: cost split across everyone in the group
   created_at     timestamptz not null default now()
 );
 
@@ -129,7 +127,8 @@ create table payments (
   group_order_id     uuid not null references group_orders(id) on delete cascade,
   member_id          uuid not null references group_members(id) on delete cascade,
   food_amount        numeric(8,2) not null default 0,
-  delivery_share     numeric(8,2) not null default 0,
+  shared_share       numeric(8,2) not null default 0,  -- my part of shared dishes
+  delivery_share     numeric(8,2) not null default 0,  -- Rapido charges / people
   tax_share          numeric(8,2) not null default 0,
   total              numeric(8,2) not null default 0,
   payee              payee_type not null default 'host',

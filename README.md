@@ -8,14 +8,14 @@ Group ordering for Ownly, Rapido's zero-commission food app: friends or office c
 |---|---|
 | `PRD.md` | Problem, users, north star, do and don't, stories with acceptance criteria, risks, sprint |
 | `schema.md` | The 9 tables at a glance |
-| `db/ownly_together_supabase.sql` | Everything for Supabase in one file: tables, privacy rules, functions, demo data |
+| `db/ownly_together_supabase.sql` | Everything for Supabase in one file: tables, privacy rules, functions, restaurant catalogue |
 | `db/01_schema.sql`, `02_logic_and_rls.sql`, `03_seed.sql` | The same SQL in three parts |
 | `db/csv/` | 9 CSVs for the Airtable / Softr course version |
 | `db/make_seed.py` | Regenerates the demo data |
-| `db/tests/run.mjs` | 30 local checks on in-memory Postgres (PGlite) |
+| `db/tests/run.mjs` | 36 local checks on in-memory Postgres (PGlite) |
 
 ## Functions the app calls
-`create_group_order`, `join_group`, `add_item`, `remove_item`, `leave_group`, `lock_group`, `place_group`, `cancel_group`, `pay_share`, `get_group`, `my_group_orders`. Login is Supabase email OTP. A new login links to the demo profile with the same email.
+`create_group_order`, `join_group`, `add_item`, `remove_item`, `leave_group`, `lock_group`, `place_group`, `cancel_group`, `pay_share`, `get_group`, `my_group_orders`. Login is Supabase email OTP; the first login creates the profile.
 
-## Demo accounts
-`demo.host@example.com`, `demo.friend1@example.com` and `demo.friend2@example.com`. Create them in Supabase > Authentication > Users > Add user (with a password, auto-confirm), because OTP emails can't reach example.com. Real users log in with email OTP.
+## Sign-up
+Anyone can sign up with email OTP. There are no demo accounts and no sign-up limit. Group orders hold up to 12 people. Payments are demo only, and the payment screen says so.
