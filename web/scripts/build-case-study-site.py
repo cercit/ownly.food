@@ -145,7 +145,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 @media (max-width:520px){.rules{grid-template-columns:1fr}header.top .pill:not(.primary):not(.theme-toggle){display:none}header.top .pill{min-height:40px;padding:0 14px;font-size:14px}.theme-toggle{width:40px;padding:0}.brand b{font-size:16px}.brand img{width:32px;height:32px}}
 """
 
-html = re.sub(r'<style>.*?</style>', '<style>' + STYLE + '</style>', html, flags=re.S)
+html = re.sub(r'<style>.*?</style>', lambda m: '<style>' + STYLE + '</style>', html, count=1, flags=re.S)  # first block only; the nav block stays
 
 # Same theme key as cercit.github.io/me, so a reader's light/dark choice carries across both sites.
 THEME_BOOT = ('<script>try{var t=localStorage.getItem("sameer-portfolio-theme");if(t==="light"||t==="dark")'

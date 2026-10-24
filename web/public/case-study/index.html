@@ -50,7 +50,7 @@ nav.journey ol{list-style:none;margin:0 auto;padding:12px 20px;display:flex;gap:
 nav.journey a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;border:1px solid transparent}
 nav.journey a:hover{background:var(--blush);color:var(--navy);border-color:var(--line)}
 nav.journey .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--pink-soft);color:var(--pink-dark);font-size:12px;font-weight:800}
-section.step{padding:72px 0;border-bottom:1px solid var(--line);scroll-margin-top:64px}
+section.step{padding:72px 0;border-bottom:1px solid var(--line);scroll-margin-top:124px}
 section.step:nth-of-type(even){background:#fff}
 .head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
 .head .n{font-family:"Plus Jakarta Sans";font-weight:800;color:var(--pink);font-size:15px;font-variant-numeric:tabular-nums}
@@ -106,6 +106,45 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 }
 @media (max-width:520px){.rules{grid-template-columns:1fr}header.top .pill:not(.primary){display:none}header.top .pill{min-height:40px;padding:0 14px;font-size:14px}.brand b{font-size:16px}.brand img{width:32px;height:32px}}
 </style>
+<style id="journey-nav">
+/* Section navigation: one slim pinned bar (where you are, four stages, prev/next, all sections) */
+nav.journey{position:sticky;top:64px;z-index:15;background:var(--surface);border-bottom:1px solid var(--line);overflow:visible}
+nav.journey .bar{display:flex;align-items:center;gap:16px;height:56px}
+nav.journey .where{margin:0;flex:1;min-width:0;display:flex;align-items:baseline;gap:8px;font-weight:700;white-space:nowrap;overflow:hidden}
+nav.journey .where #label{overflow:hidden;text-overflow:ellipsis}
+nav.journey .where .count{font-size:13px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+nav.journey .where .sep{color:var(--line)}
+nav.journey .stages{display:flex;gap:4px}
+nav.journey .stage{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:none;border:0;padding:8px 12px;border-radius:999px;cursor:pointer;position:relative}
+nav.journey .stage:hover{color:var(--navy);background:var(--blush)}
+nav.journey .stage[aria-current="true"]{color:var(--pink-dark)}
+nav.journey .stage[aria-current="true"]::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:var(--pink-dark)}
+nav.journey .ctrl{display:flex;align-items:center;gap:6px}
+nav.journey .ctrl button{font:inherit;cursor:pointer;border:1.5px solid var(--line);background:var(--surface);color:var(--navy);border-radius:999px;min-height:40px}
+nav.journey .ctrl button:hover{border-color:var(--pink-dark)}
+nav.journey .ctrl .icon{width:40px;font-size:20px;line-height:1}
+nav.journey .ctrl .icon:disabled{opacity:.35;cursor:default;border-color:var(--line)}
+nav.journey .ctrl .all{padding:0 14px;font-size:14px;font-weight:700}
+nav.journey .panel{border-top:1px solid var(--line);background:var(--surface);box-shadow:0 18px 30px rgba(17,29,53,.08)}
+nav.journey .panel .cols{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:24px;padding:18px 20px 22px}
+nav.journey .panel .stage-name{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-dark)}
+nav.journey .panel ol{list-style:none;margin:0;padding:0;display:grid;gap:2px;max-width:none;white-space:normal}
+nav.journey .panel .col:first-child ol{grid-template-columns:1fr 1fr;column-gap:16px}
+nav.journey .panel a{border:0;display:flex;align-items:center;gap:10px;min-height:40px;padding:0 10px;border-radius:12px;text-decoration:none;color:var(--navy);font-weight:600;font-size:14.5px}
+nav.journey .panel a:hover{background:var(--blush)}
+nav.journey .panel a[aria-current="true"]{background:var(--pink-soft);color:var(--pink-dark)}
+nav.journey .panel .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--blush);color:var(--muted);font-size:12px;font-weight:800;flex:none}
+nav.journey .panel a[aria-current="true"] .n{background:var(--pink-dark);color:var(--on-accent,#fff)}
+nav.journey .progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--pink-dark)}
+@media (max-width:900px){
+  nav.journey .stages{display:none}
+  nav.journey .bar{gap:10px;height:56px}
+  nav.journey .where{font-size:15px}
+  nav.journey .panel .cols{grid-template-columns:1fr 1fr;gap:16px;max-height:70vh;overflow-y:auto}
+  nav.journey .panel .col:first-child{grid-column:1/-1}
+}
+@media (max-width:520px){nav.journey .ctrl .all{padding:0 12px}nav.journey .ctrl .all span{display:none}nav.journey .panel .col:first-child ol{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <div class="strip">Concept prototype by Sameer Mittimani. Not an official Rapido product.</div>
@@ -131,21 +170,12 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
   <div class="fact"><b>₹1,210.25</b><span>three-device test bill, split to the paisa</span></div>
 </div></div></section>
 
-<nav class="journey" aria-label="Case study sections"><ol>
-  <li><a href="#problem"><span class="n">1</span>Problem</a></li>
-  <li><a href="#concept"><span class="n">2</span>Concept</a></li>
-  <li><a href="#research"><span class="n">3</span>Research</a></li>
-  <li><a href="#personas"><span class="n">4</span>Personas</a></li>
-  <li><a href="#journey"><span class="n">5</span>Journey</a></li>
-  <li><a href="#market"><span class="n">6</span>Market</a></li>
-  <li><a href="#competitors"><span class="n">7</span>Competitors</a></li>
-  <li><a href="#product"><span class="n">8</span>Product</a></li>
-  <li><a href="#design"><span class="n">9</span>Design</a></li>
-  <li><a href="#build"><span class="n">10</span>Build</a></li>
-  <li><a href="#test"><span class="n">11</span>Test</a></li>
-  <li><a href="#roadmap"><span class="n">12</span>Roadmap</a></li>
-  <li><a href="#launch"><span class="n">13</span>Launch</a></li>
-</ol></nav>
+<nav class="journey" aria-label="Case study sections"><div class="bar wrap">
+  <p class="where"><span class="count" id="count">1 of 13</span><span class="sep" aria-hidden="true">·</span><span id="label">The problem</span></p>
+  <div class="stages" role="group" aria-label="Stages"><button type="button" class="stage" data-first="problem">Discover</button><button type="button" class="stage" data-first="product">Define</button><button type="button" class="stage" data-first="build">Build</button><button type="button" class="stage" data-first="roadmap">Launch</button></div>
+  <div class="ctrl"><button type="button" class="icon" id="prev" aria-label="Previous section">‹</button><button type="button" class="icon" id="next" aria-label="Next section">›</button>
+  <button type="button" class="all" id="all" aria-expanded="false" aria-controls="panel">All sections <span aria-hidden="true">▾</span></button></div>
+</div><div class="panel" id="panel" hidden><div class="wrap cols"><div class="col"><p class="stage-name">Discover</p><ol><li><a href="#problem" data-i="0"><span class="n">1</span>The problem</a></li><li><a href="#concept" data-i="1"><span class="n">2</span>Concept and one-pager</a></li><li><a href="#research" data-i="2"><span class="n">3</span>User research</a></li><li><a href="#personas" data-i="3"><span class="n">4</span>Personas</a></li><li><a href="#journey" data-i="4"><span class="n">5</span>Customer journey</a></li><li><a href="#market" data-i="5"><span class="n">6</span>Market sizing</a></li><li><a href="#competitors" data-i="6"><span class="n">7</span>Competitors</a></li></ol></div><div class="col"><p class="stage-name">Define</p><ol><li><a href="#product" data-i="7"><span class="n">8</span>Product rules</a></li><li><a href="#design" data-i="8"><span class="n">9</span>Design</a></li></ol></div><div class="col"><p class="stage-name">Build</p><ol><li><a href="#build" data-i="9"><span class="n">10</span>Build</a></li><li><a href="#test" data-i="10"><span class="n">11</span>Testing</a></li></ol></div><div class="col"><p class="stage-name">Launch</p><ol><li><a href="#roadmap" data-i="11"><span class="n">12</span>Roadmap</a></li><li><a href="#launch" data-i="12"><span class="n">13</span>Go-to-market</a></li></ol></div></div></div><div class="progress" id="progress"></div></nav>
 
 <main>
 <section class="step" id="problem"><div class="wrap">
@@ -371,6 +401,58 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
     v.querySelector('p').textContent = img.alt; v.showModal();
   }));
   v.addEventListener('click', e => { if (e.target === v) v.close(); });
+
+  // Section navigation: where you are, four stages, prev/next, all sections, progress
+  const nav = document.querySelector('nav.journey'), panel = document.getElementById('panel'), allBtn = document.getElementById('all');
+  const links = [...panel.querySelectorAll('a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+  const names = links.map(a => a.textContent.replace(/^\d+/, '').trim());
+  const stages = [...nav.querySelectorAll('.stage')];
+  const stageOf = i => stages.findLastIndex(b => links.findIndex(a => a.getAttribute('href') === '#' + b.dataset.first) <= i);
+  let current = -1;
+  const show = i => {
+    if (i === current) return; current = i;
+    links.forEach((a, k) => k === i ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current'));
+    stages.forEach((b, k) => k === stageOf(i) ? b.setAttribute('aria-current', 'true') : b.removeAttribute('aria-current'));
+    document.getElementById('count').textContent = (i + 1) + (matchMedia('(max-width:520px)').matches ? '/' : ' of ') + links.length;
+    document.getElementById('label').textContent = names[i];
+    document.getElementById('prev').disabled = i === 0;
+    document.getElementById('next').disabled = i === links.length - 1;
+  };
+  const offset = () => document.querySelector('header.top').offsetHeight + nav.querySelector('.bar').offsetHeight;
+  const posOf = el => el.getBoundingClientRect().top + window.scrollY - offset();
+  const onScroll = () => {
+    let i = 0;
+    sections.forEach((s, k) => { if (s.getBoundingClientRect().top - offset() <= 24) i = k; });
+    show(i);
+    const start = posOf(sections[0]), end = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = Math.max(0, Math.min(100, (window.scrollY - start) / Math.max(1, end - start) * 100)) + '%';
+  };
+  const closePanel = () => { panel.hidden = true; allBtn.setAttribute('aria-expanded', 'false'); };
+  const smooth = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  const go = i => {
+    i = Math.max(0, Math.min(links.length - 1, i));
+    closePanel();
+    const el = sections[i];
+    window.scrollTo({ top: posOf(el), behavior: smooth() });
+    history.replaceState(null, '', '#' + el.id);
+    // images above may finish loading and push the page; re-aim once scrolling settles
+    let last = -1, still = 0;
+    const settle = () => { const y = window.scrollY; still = Math.abs(y - last) < 1 ? still + 1 : 0; last = y;
+      if (still < 3) return requestAnimationFrame(settle);
+      if (Math.abs(posOf(el) - y) > 4) window.scrollTo({ top: posOf(el), behavior: 'auto' }); };
+    requestAnimationFrame(settle);
+  };
+  links.forEach((a, k) => a.addEventListener('click', e => { e.preventDefault(); go(k); }));
+  stages.forEach(b => b.addEventListener('click', () => go(links.findIndex(a => a.getAttribute('href') === '#' + b.dataset.first))));
+  document.getElementById('prev').addEventListener('click', () => go(current - 1));
+  document.getElementById('next').addEventListener('click', () => go(current + 1));
+  allBtn.addEventListener('click', () => { panel.hidden = !panel.hidden; allBtn.setAttribute('aria-expanded', String(!panel.hidden)); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) { closePanel(); allBtn.focus(); } });
+  document.addEventListener('click', e => { if (!panel.hidden && !nav.contains(e.target)) closePanel(); });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
 </script>
 </body>
 </html>
