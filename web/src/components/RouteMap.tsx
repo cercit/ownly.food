@@ -24,9 +24,16 @@ export function RouteMap({ from, to, progress, fromLabel, toLabel }: { from: Poi
     L.circleMarker([from.lat, from.lng], { radius: 10, color: '#fff', weight: 3, fillColor: '#C40054', fillOpacity: 1 }).addTo(m).bindTooltip(fromLabel, { permanent: true, direction: 'top', offset: [0, -10] });
     L.circleMarker([to.lat, to.lng], { radius: 10, color: '#fff', weight: 3, fillColor: '#16845A', fillOpacity: 1 }).addTo(m).bindTooltip(toLabel, { permanent: true, direction: 'top', offset: [0, -10] });
     captain.current = L.circleMarker([from.lat, from.lng], { radius: 8, color: '#fff', weight: 3, fillColor: '#111D35', fillOpacity: 1 }).addTo(m).bindTooltip('Rapido Captain', { direction: 'bottom' });
-    m.fitBounds(L.latLngBounds([[from.lat, from.lng], [to.lat, to.lng]]), { padding: [48, 48], maxZoom: 15 });
+    const bounds = L.latLngBounds([[from.lat, from.lng], [to.lat, to.lng]]);
+    const fit = () => { m.invalidateSize(); m.fitBounds(bounds, { padding: [48, 48], maxZoom: 15 }); };
+    fit();
+    // Leaflet measures its box once; if the page is still laying out (fonts, images, cards), the map shows grey
+    // tiles and the pins fall outside the view. Re-measure and re-fit whenever the box changes size.
+    const ro = new ResizeObserver(() => fit());
+    ro.observe(box.current);
+    const late = setTimeout(fit, 300);
     map.current = m;
-    return () => { m.remove(); map.current = null; captain.current = null; };
+    return () => { ro.disconnect(); clearTimeout(late); m.remove(); map.current = null; captain.current = null; };
   }, [from.lat, from.lng, to.lat, to.lng, fromLabel, toLabel]);
 
   useEffect(() => {

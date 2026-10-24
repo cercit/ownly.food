@@ -2,8 +2,9 @@ export const CONCEPT_TEXT = 'Concept prototype by Sameer Mittimani. Not an offic
 
 export function ConceptStrip() {
   return (
-    <div data-testid="concept-strip" className="w-full bg-[#111D35] text-white text-[11px] sm:text-xs py-2 px-4 text-center font-semibold select-none">
-      {CONCEPT_TEXT}
+    <div data-testid="concept-strip" className="w-full bg-[#111D35] text-white text-[11px] sm:text-xs py-2 px-4 text-center font-semibold">
+      <span className="select-none">{CONCEPT_TEXT}</span>{' '}
+      <a href="./case-study/index.html" className="text-[#FFB3CF] underline underline-offset-2 hover:text-white">How it was built</a>
     </div>
   );
 }

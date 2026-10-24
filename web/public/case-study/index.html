@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ownly Together case study</title>
+<meta name="description" content="How Sameer Mittimani took a group-ordering idea for Ownly's Chennai launch from problem to a working, tested prototype: research, personas, journey, market sizing, PRD, design, build and launch plan.">
+<link rel="icon" href="../ownly-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#F50062;--pink-dark:#C40054;--pink-hover:#A80047;--pink-soft:#FFE3ED;--blush:#FFF1F6;
+  --page:#FFF9FC;--surface:#FFFFFF;--navy:#111D35;--muted:#576177;--line:#F0D7E2;
+  --green:#16845A;--green-soft:#E5F6ED;--amber:#A65D00;--amber-soft:#FFF1D9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--page);color:var(--navy);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Plus Jakarta Sans",Inter,sans-serif;line-height:1.15;letter-spacing:-.02em;margin:0;text-wrap:balance}
+a{color:var(--pink-dark)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pink-dark);outline-offset:3px;border-radius:8px}
+.strip{background:var(--navy);color:#fff;text-align:center;font-size:12px;font-weight:600;padding:6px 16px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy)}
+.brand img{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);object-fit:cover}
+.brand b{font-family:"Plus Jakarta Sans";font-weight:800;font-size:18px;white-space:nowrap}.brand b span{color:var(--pink-dark)}
+.pill{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid var(--line);background:#fff;color:var(--navy)}
+.pill:hover{background:var(--blush);border-color:var(--pink-dark)}
+.pill.primary{background:var(--pink-dark);border-color:var(--pink-dark);color:#fff;box-shadow:0 9px 24px rgba(196,0,84,.18)}
+.pill.primary:hover{background:var(--pink-hover)}
+.hero{background:radial-gradient(circle at 85% 20%,#FFD3E3 0,transparent 40%),linear-gradient(160deg,#fff,var(--blush));border-bottom:1px solid var(--line)}
+.hero .wrap{padding:64px 20px 56px;display:grid;gap:40px;grid-template-columns:1.1fr .9fr;align-items:center}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-dark)}
+.hero h1{font-size:clamp(36px,5.4vw,60px);font-weight:800;margin:12px 0 16px}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero p.lede{font-size:19px;color:var(--muted);max-width:56ch;margin:0 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero figure{margin:0}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+.fact{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.fact b{display:block;font-family:"Plus Jakarta Sans";font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+.fact span{font-size:13px;color:var(--muted)}
+nav.journey{border-bottom:1px solid var(--line);background:#fff;overflow-x:auto}
+nav.journey ol{list-style:none;margin:0 auto;padding:12px 20px;display:flex;gap:8px;max-width:1120px;white-space:nowrap}
+nav.journey a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;border:1px solid transparent}
+nav.journey a:hover{background:var(--blush);color:var(--navy);border-color:var(--line)}
+nav.journey .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--pink-soft);color:var(--pink-dark);font-size:12px;font-weight:800}
+section.step{padding:72px 0;border-bottom:1px solid var(--line);scroll-margin-top:64px}
+section.step:nth-of-type(even){background:#fff}
+.head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.head .n{font-family:"Plus Jakarta Sans";font-weight:800;color:var(--pink);font-size:15px;font-variant-numeric:tabular-nums}
+.step h2{font-size:clamp(28px,3.6vw,40px);font-weight:800}
+.q{color:var(--muted);font-size:18px;margin:6px 0 28px;max-width:62ch}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.two.flip>:first-child{order:2}
+.prose p{margin:0 0 14px;max-width:62ch}
+.prose ul{margin:0 0 14px;padding-left:20px}.prose li{margin:6px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 10px 30px rgba(17,29,53,.06)}
+.shot{display:block;padding:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;cursor:zoom-in;width:100%;box-shadow:0 10px 30px rgba(17,29,53,.08)}
+.shot img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+figure{margin:0}
+table{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.r,th.r{text-align:right}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:#fff}
+.note{font-size:14px;background:var(--amber-soft);color:#855000;border-radius:14px;padding:10px 14px;margin-top:14px}
+.ok{font-size:14px;background:var(--green-soft);color:#125F43;border-radius:14px;padding:10px 14px;margin-top:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{font-size:13px;font-weight:600;background:var(--pink-soft);color:var(--pink-dark);border-radius:999px;padding:4px 12px}
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.phones .shot{aspect-ratio:9/16;border-radius:24px}
+.phones .shot img{height:100%;object-fit:cover;object-position:top}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rule{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.rule b{display:block;font-family:"Plus Jakarta Sans";font-size:17px;margin-bottom:4px}
+.rule span{font-size:14px;color:var(--muted)}
+.fix{display:grid;gap:12px}
+.fix div{background:#fff;border:1px solid var(--line);border-left:0;border-radius:16px;padding:14px 16px}
+.fix b{display:block}
+.fix span{font-size:14px;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tool{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:14px}
+.tool b{display:block;font-size:15px}
+footer{padding:48px 0 64px;text-align:center;color:var(--muted);font-size:14px}
+footer .cta{justify-content:center;margin-bottom:18px}
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);max-height:94vh}
+dialog::backdrop{background:rgba(17,29,53,.82)}
+dialog img{display:block;max-width:100%;max-height:88vh;border-radius:12px;background:#fff}
+dialog p{color:#fff;text-align:center;font-size:14px;margin:8px 0 0}
+dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--navy);font-size:22px;cursor:pointer}
+@media (max-width:900px){
+  .hero .wrap,.two,.grid2{grid-template-columns:1fr}
+  .two.flip>:first-child{order:0}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .rules{grid-template-columns:1fr 1fr}
+  .phones{grid-template-columns:repeat(2,1fr)}
+  section.step{padding:52px 0}
+}
+@media (max-width:520px){.rules{grid-template-columns:1fr}header.top .pill:not(.primary){display:none}header.top .pill{min-height:40px;padding:0 14px;font-size:14px}.brand b{font-size:16px}.brand img{width:32px;height:32px}}
+</style>
+</head>
+<body>
+<div class="strip">Concept prototype by Sameer Mittimani. Not an official Rapido product.</div>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../"><img src="../ownly-logo.jpg" alt=""><b><span>ownly</span> together</b></a>
+  <div class="cta"><a class="pill" href="https://github.com/cercit/ownly.food">Code on GitHub</a><a class="pill primary" href="../">Try the prototype</a></div>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <p class="eyebrow">Product case study · Chennai launch concept</p>
+    <h1>Order together. <em>Pay your share.</em> No more chasing.</h1>
+    <p class="lede">Ownly is Rapido's zero-commission food app. It runs in Bengaluru and Hyderabad but not yet in Chennai. I designed group ordering as the way it launches there, then built and tested a working prototype, from the research plan to a live app on a real database.</p>
+    <div class="cta"><a class="pill primary" href="../">Open the live prototype</a><a class="pill" href="#problem">Read the case study</a></div>
+  </div>
+  <figure><button class="shot" data-full="img/app-confirmed.webp" aria-label="Open screenshot of the order confirmation"><img src="img/app-confirmed.webp" alt="The live prototype: order placed, with Pay my share, Track the order and a map of Chennai" loading="eager"></button>
+    <figcaption>The live prototype after a real three-person test order.</figcaption></figure>
+</div>
+<div class="wrap" style="padding-bottom:48px"><div class="facts">
+  <div class="fact"><b>12</b><span>people per group, no order-value limit</span></div>
+  <div class="fact"><b>26</b><span>screens designed in Google Stitch</span></div>
+  <div class="fact"><b>109 + 39</b><span>database and app checks, all passing</span></div>
+  <div class="fact"><b>₹1,210.25</b><span>three-device test bill, split to the paisa</span></div>
+</div></div></section>
+
+<nav class="journey" aria-label="Case study sections"><ol>
+  <li><a href="#problem"><span class="n">1</span>Problem</a></li>
+  <li><a href="#research"><span class="n">2</span>Research</a></li>
+  <li><a href="#personas"><span class="n">3</span>Personas</a></li>
+  <li><a href="#journey"><span class="n">4</span>Journey</a></li>
+  <li><a href="#market"><span class="n">5</span>Market</a></li>
+  <li><a href="#competitors"><span class="n">6</span>Competitors</a></li>
+  <li><a href="#product"><span class="n">7</span>Product</a></li>
+  <li><a href="#design"><span class="n">8</span>Design</a></li>
+  <li><a href="#build"><span class="n">9</span>Build</a></li>
+  <li><a href="#test"><span class="n">10</span>Test</a></li>
+  <li><a href="#roadmap"><span class="n">11</span>Roadmap</a></li>
+  <li><a href="#launch"><span class="n">12</span>Launch</a></li>
+</ol></nav>
+
+<main>
+<section class="step" id="problem"><div class="wrap">
+  <div class="head"><span class="n">01</span><h2>The problem</h2></div>
+  <p class="q">Who suffers today when a group orders food together?</p>
+  <div class="two"><div class="prose">
+    <p>When friends, flatmates or office colleagues order together, one person does all the work outside the app. They collect everyone's choices on WhatsApp, rebuild the cart by hand, pay the whole bill, and then spend a day or two chasing people for their share on UPI. Choices get lost, late additions arrive after the order is placed, and the host often never gets all the money back.</p>
+    <p><b>Why it suits Ownly's Chennai launch.</b> Every group order brings up to eleven new people into the app through one share link. That is a cheaper way into a new city than winning customers one at a time, and Chennai's office corridors (OMR, Velachery) and flatmate and hostel areas (T. Nagar, Adyar, Anna Nagar, Nungambakkam, Mylapore) already order in groups.</p>
+    <p><b>Goal:</b> adoption first, repeat group orders second. <b>North star:</b> completed group orders per week.</p>
+  </div>
+  <div class="card prose"><p class="eyebrow">Evidence status</p><p>The pain comes from my own experience and observation. It hasn't been measured yet, so I wrote the research plan before claiming anything about how common it is.</p></div></div>
+</div></section>
+
+<section class="step" id="research"><div class="wrap">
+  <div class="head"><span class="n">02</span><h2>User research plan</h2></div>
+  <p class="q">How do I learn what people actually do today, without leading them?</p>
+  <div class="two"><figure><button class="shot" data-full="img/research.webp" aria-label="Open the user research plan"><img src="img/research.webp" alt="User research plan infographic: objective, target users, interview guide and survey" loading="lazy"></button></figure>
+  <div class="prose">
+    <ul>
+      <li><b>12 interviews:</b> 6 hosts and 6 members, 25 to 35 minutes each, across office lunches, shared flats and hostels.</li>
+      <li><b>A 7 to 9 minute survey</b> with separate branches for hosts and members.</li>
+      <li><b>Neutral questions about the last real order</b>, never "would you use…". Every risky question has a rewrite in a bias audit.</li>
+      <li>Concept reactions are kept separate from behaviour, and sample answers are labelled hypothetical.</li>
+    </ul>
+    <p class="note">Status: ready to run. No findings are claimed until the interviews are done.</p>
+  </div></div>
+</div></section>
+
+<section class="step" id="personas"><div class="wrap">
+  <div class="head"><span class="n">03</span><h2>Personas and stories</h2></div>
+  <p class="q">Who is this for, and what does a good day look like for them?</p>
+  <div class="two"><div class="prose">
+    <p><b>Arjun, the office lunch organiser on OMR.</b> He collects twelve orders on WhatsApp, pays ₹2,800 up front and sends reminders the next morning. With Ownly Together he shares one link, everyone adds and pays their own share, and next week he taps "Order again with this group".</p>
+    <p><b>Priya, a flatmate in Velachery.</b> She doesn't know whether the amount next to her name includes someone else's food or the delivery charge. With Ownly Together she picks her own food, sees exactly what she owes and pays it herself.</p>
+    <p class="note">The personas are assumptions to test in the interviews, not research findings.</p>
+  </div>
+  <figure><button class="shot" data-full="img/personas.webp" aria-label="Open the Chennai user personas"><img src="img/personas.webp" alt="Chennai user personas: host and member" loading="lazy"></button></figure></div>
+  <div class="grid2" style="margin-top:24px">
+    <figure><button class="shot" data-full="img/story-office.webp" aria-label="Open the office lunch story"><img src="img/story-office.webp" alt="Story: a smarter office lunch together in Chennai" loading="lazy"></button><figcaption>Arjun's office lunch.</figcaption></figure>
+    <figure><button class="shot" data-full="img/story-food.webp" aria-label="Open the Chennai food stories"><img src="img/story-food.webp" alt="Chennai food stories" loading="lazy"></button><figcaption>Priya's Friday dinner with flatmates.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="step" id="journey"><div class="wrap">
+  <div class="head"><span class="n">04</span><h2>Customer journey</h2></div>
+  <p class="q">Where does the experience break, from first hearing about it to coming back?</p>
+  <figure><button class="shot" data-full="img/journey.webp" aria-label="Open the customer journey map"><img src="img/journey.webp" alt="Customer journey map across awareness, consideration, onboarding, retention and loyalty" loading="lazy"></button></figure>
+  <div class="tbl" style="margin-top:20px"><table>
+    <thead><tr><th>Priority fix</th><th>Pain it removes</th><th>Measured by</th></tr></thead>
+    <tbody>
+      <tr><td>WhatsApp link straight into the group</td><td>"Another app?" at onboarding</td><td>Invite-to-signup conversion</td></tr>
+      <tr><td>Live shared cart with individual totals</td><td>"Any hidden charges?"</td><td>Cart-join rate</td></tr>
+      <tr><td>Each person pays their own share</td><td>The host fronting the whole bill</td><td>Group orders completed per week</td></tr>
+      <tr><td>"Order again with this group"</td><td>Inviting everyone again</td><td>Repeat group orders per week</td></tr>
+    </tbody></table></div>
+</div></section>
+
+<section class="step" id="market"><div class="wrap">
+  <div class="head"><span class="n">05</span><h2>Market sizing</h2></div>
+  <p class="q">Is the opportunity in Chennai big enough to matter?</p>
+  <div class="two"><div>
+    <div class="tbl"><table>
+      <thead><tr><th>Level</th><th class="r">People</th><th class="r">Annual GMV</th></tr></thead>
+      <tbody>
+        <tr><td><b>TAM</b> · group-order users in Chennai metro</td><td class="r">6.05 lakh</td><td class="r">₹648.65 Cr</td></tr>
+        <tr><td><b>SAM</b> · in the launch areas</td><td class="r">1.51 lakh</td><td class="r">₹162.16 Cr</td></tr>
+        <tr><td><b>SOM</b> · year one, 7% adoption</td><td class="r">10,584</td><td class="r">₹11.35 Cr</td></tr>
+        <tr><td>Conservative case, 3% adoption</td><td class="r">4,536</td><td class="r">₹2.65 Cr</td></tr>
+      </tbody></table></div>
+    <p class="note">Illustrative planning estimates built from stated assumptions (group of 4, 0.75 orders a week, ₹1,100 basket). GMV is not Ownly's revenue.</p>
+  </div>
+  <figure><button class="shot" data-full="img/market.webp" aria-label="Open the market opportunity image"><img src="img/market.webp" alt="Chennai group food ordering opportunity: TAM, SAM, SOM" loading="lazy"></button></figure></div>
+</div></section>
+
+<section class="step" id="competitors"><div class="wrap">
+  <div class="head"><span class="n">06</span><h2>Competitors</h2></div>
+  <p class="q">What already exists, and where is the gap?</p>
+  <div class="two flip"><div class="prose">
+    <p>Swiggy, Zomato and EatSure already offer shared group carts, so a shared cart alone isn't a reason to switch. Desk research couldn't confirm member-by-member payment at checkout on any of them, and EatSure's published flow has the host finalise and pay.</p>
+    <p><b>Where Ownly Together competes:</b> each person pays their own share, the host chooses how the bill is split, cash handed to the host is tracked until it reaches the restaurant, and a saved group can reorder in one tap.</p>
+    <p class="note">Desk research, not a hands-on audit. Features vary by city and rollout.</p>
+  </div>
+  <figure><button class="shot" data-full="img/competitors.webp" aria-label="Open the competitor analysis"><img src="img/competitors.webp" alt="Chennai competitor analysis: Swiggy, Zomato, EatSure and WhatsApp plus UPI" loading="lazy"></button></figure></div>
+</div></section>
+
+<section class="step" id="product"><div class="wrap">
+  <div class="head"><span class="n">07</span><h2>Product rules (PRD)</h2></div>
+  <p class="q">What exactly are we building, and what are we deliberately not building?</p>
+  <div class="rules">
+    <div class="rule"><b>Up to 12 people</b><span>Host included. No limit on order value or sign-ups. Email-code sign-in, no passwords, no demo accounts.</span></div>
+    <div class="rule"><b>Host picks the split</b><span>"Pay for what you ordered" (own dishes plus an equal share of shared dishes and charges) or "Split everything equally".</span></div>
+    <div class="rule"><b>Charges worked out for you</b><span>Delivery ₹20 per km, packaging ₹15 or ₹30 per dish by restaurant, GST 5% on food. The host can't edit them.</span></div>
+    <div class="rule"><b>Everyone pays their own share</b><span>The host too. Demo payment screen in the style of Razorpay. No card numbers, CVVs or UPI PINs ever stored.</span></div>
+    <div class="rule"><b>Cash is tracked</b><span>A member can pay the host in cash; the host then passes it on to the restaurant in the app, and the group sees it settled.</span></div>
+    <div class="rule"><b>Everything is recorded</b><span>An audit log of every change: who did what and when. Members can see their own group's history; nobody can edit it.</span></div>
+  </div>
+  <p class="note" style="margin-top:20px"><b>Not in this version:</b> fee discounts or price comparisons, multiple restaurants in one order, rider names or tracking of real riders, real payments.</p>
+</div></section>
+
+<section class="step" id="design"><div class="wrap">
+  <div class="head"><span class="n">08</span><h2>Design</h2></div>
+  <p class="q">How do I get from a PRD to screens a stranger can use?</p>
+  <div class="prose" style="max-width:none">
+    <p>I designed in Google Stitch from the PRD with eight prompts. The first version came back in Stitch's yellow, set in Hyderabad, with invented fee claims, rider names and a 6-person cap. I wrote four rounds of correction prompts and then started again in a new project from a proper Ownly pink design system, with the rules and a "do not include" list in the very first prompt. That produced 26 screens, 13 for mobile and 13 for desktop.</p>
+    <div class="chips"><span class="chip">Ownly pink #F50062</span><span class="chip">Buttons #C40054</span><span class="chip">Navy #111D35</span><span class="chip">Plus Jakarta Sans + Inter</span><span class="chip">Status always in words, never colour alone</span></div>
+  </div>
+  <div class="phones" style="margin-top:20px">
+    <figure><button class="shot" data-full="img/stitch-menu.webp" aria-label="Open the Stitch menu screen"><img src="img/stitch-menu.webp" alt="Stitch design: restaurant menu" loading="lazy"></button><figcaption>Menu</figcaption></figure>
+    <figure><button class="shot" data-full="img/stitch-start.webp" aria-label="Open the Stitch start group screen"><img src="img/stitch-start.webp" alt="Stitch design: start a group order" loading="lazy"></button><figcaption>Start a group order</figcaption></figure>
+    <figure><button class="shot" data-full="img/stitch-cart.webp" aria-label="Open the Stitch shared cart screen"><img src="img/stitch-cart.webp" alt="Stitch design: shared cart" loading="lazy"></button><figcaption>Shared cart</figcaption></figure>
+    <figure><button class="shot" data-full="img/stitch-checkout.webp" aria-label="Open the Stitch host checkout screen"><img src="img/stitch-checkout.webp" alt="Stitch design: host checkout" loading="lazy"></button><figcaption>Host checkout</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="step" id="build"><div class="wrap">
+  <div class="head"><span class="n">09</span><h2>Build</h2></div>
+  <p class="q">Can it actually work, on a real database, for real people?</p>
+  <div class="two"><div class="prose">
+    <p><b>Back end on Supabase.</b> Eleven tables with row-level security on every one, 25 database functions, eight SQL scripts and an audit log written only by triggers. Shares, charges and the split are all worked out in the database, never in the browser, so every phone sees the same numbers.</p>
+    <p><b>Data.</b> 15 real Chennai restaurants and 150 dishes researched with ChatGPT, every dish with a free-licence photo.</p>
+    <p><b>Front end.</b> React and Vite, deployed on Vercel. A cloud coding session built the first version from a written build plan with a test, audit and rebuild loop. I then tested it signed in and drove every fine-tuning round.</p>
+    <p><b>Privacy.</b> Members see the delivery area, never the exact address; the map pin is the middle of the area. A mobile number is required but never shown to the group.</p>
+  </div>
+  <figure><button class="shot" data-full="img/app-track.webp" aria-label="Open the live tracking screenshot"><img src="img/app-track.webp" alt="Live tracking on a real OpenStreetMap map from Anna Nagar to OMR" loading="lazy"></button><figcaption>Live tracking on a real map: Chinese Wok in Anna Nagar to OMR.</figcaption></figure></div>
+  <div class="grid2" style="margin-top:24px">
+    <figure><button class="shot" data-full="img/app-cart.webp" aria-label="Open the shared cart screenshot"><img src="img/app-cart.webp" alt="Shared cart with Done status and charges worked out automatically" loading="lazy"></button><figcaption>Shared cart: who is Done, and charges worked out as dishes are added.</figcaption></figure>
+    <figure><button class="shot" data-full="img/app-pay.webp" aria-label="Open the pay screen screenshot"><img src="img/app-pay.webp" alt="Pay screen with the host's card to pass on collected cash" loading="lazy"></button><figcaption>The host's prompt to pass on cash a member paid them.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="step" id="test"><div class="wrap">
+  <div class="head"><span class="n">10</span><h2>Testing, and what testing changed</h2></div>
+  <p class="q">What did real use reveal that the plan missed?</p>
+  <div class="two"><div>
+    <div class="tbl"><table>
+      <thead><tr><th>Three-device test</th><th class="r">Pays</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td>Host (Chrome)</td><td class="r">₹446.41</td><td>UPI</td></tr>
+        <tr><td>Member (phone)</td><td class="r">₹496.42</td><td>Cash to host</td></tr>
+        <tr><td>Member (second browser)</td><td class="r">₹267.42</td><td>Card</td></tr>
+        <tr><td><b>Whole bill</b></td><td class="r"><b>₹1,210.25</b></td><td>Exact to the paisa</td></tr>
+      </tbody></table></div>
+    <p class="ok">I worked out every share by hand before the host placed the order. The database matched each one exactly.</p>
+    <div class="chips"><span class="chip">109 database checks</span><span class="chip">39 app tests</span><span class="chip">Rule audit: 0 banned words</span><span class="chip">Live security check</span></div>
+  </div>
+  <div class="fix">
+    <div><b>Hosts typed Rapido's charges by hand</b><span>They showed ₹0 until placed. Now worked out automatically and shown live in the cart.</span></div>
+    <div><b>Phone was optional</b><span>Now required, checked as a 10-digit Indian mobile, in the app and in the database.</span></div>
+    <div><b>Nobody knew who had finished</b><span>Added "I'm done adding", visible to the whole group, which resets if they add more.</span></div>
+    <div><b>Cash stopped at the host</b><span>Cash paid to the host never reached the restaurant. Added the host's pass-on step and a status everyone can see.</span></div>
+    <div><b>The map lost its pins</b><span>On longer routes the map drew before the page settled. It now re-measures and always fits both pins.</span></div>
+  </div></div>
+</div></section>
+
+<section class="step" id="roadmap"><div class="wrap">
+  <div class="head"><span class="n">11</span><h2>12-week roadmap</h2></div>
+  <p class="q">How does this get from prototype to a controlled launch?</p>
+  <div class="two"><figure><button class="shot" data-full="img/roadmap.webp" aria-label="Open the 12-week roadmap"><img src="img/roadmap.webp" alt="12-week product roadmap from discovery to general availability" loading="lazy"></button></figure>
+  <div class="prose">
+    <ul>
+      <li><b>Weeks 1–2:</b> discovery, research, architecture, payment-provider feasibility.</li>
+      <li><b>Weeks 3–4:</b> alpha with the shared cart working end to end.</li>
+      <li><b>Weeks 5–6:</b> real UPI split payment and settlement.</li>
+      <li><b>Weeks 7–8:</b> beta with selected Chennai office and flatmate groups.</li>
+      <li><b>Weeks 9–10:</b> user acceptance testing; week 11 is buffer.</li>
+      <li><b>Week 12:</b> controlled public launch.</li>
+    </ul>
+    <p class="note">Stop rule: real-money split payment doesn't ship until collection, settlement, refunds and approvals are verified.</p>
+  </div></div>
+</div></section>
+
+<section class="step" id="launch"><div class="wrap">
+  <div class="head"><span class="n">12</span><h2>Chennai go-to-market</h2></div>
+  <p class="q">How does it reach the first groups?</p>
+  <div class="two flip"><div class="prose">
+    <p>Start where groups already order together: OMR and Velachery office teams, then flatmates and hostels in T. Nagar, Adyar, Anna Nagar, Nungambakkam and Mylapore. Every host is the acquisition channel, because their share link brings the rest of the group in.</p>
+    <p><b>Tools I used:</b></p>
+    <div class="tools">
+      <div class="tool"><b>ChatGPT</b>Infographics, restaurant research</div>
+      <div class="tool"><b>Google Stitch</b>26 screens</div>
+      <div class="tool"><b>Google AI Studio</b>First front end</div>
+      <div class="tool"><b>Claude Code</b>Database, tests, fine-tuning</div>
+      <div class="tool"><b>Supabase</b>Database and sign-in</div>
+      <div class="tool"><b>Vercel</b>Hosting</div>
+      <div class="tool"><b>OpenStreetMap</b>Maps</div>
+    </div>
+  </div>
+  <figure><button class="shot" data-full="img/gtm.webp" aria-label="Open the Chennai launch plan"><img src="img/gtm.webp" alt="Ownly Together Chennai launch plan" loading="lazy"></button></figure></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="cta"><a class="pill primary" href="../">Try the live prototype</a><a class="pill" href="https://github.com/cercit/ownly.food">See the code and documents</a><a class="pill" href="https://samsm.vercel.app">About me</a></div>
+  <p>Built by Sameer Shreenivas Mittimani for the IIT Roorkee × Masai product management course, October 2026.<br>Ownly and Rapido belong to their owners. This is a concept prototype, not an official Rapido product. Payments are a demo; no real money moves.</p>
+</div></footer>
+
+<dialog id="viewer" aria-label="Image viewer"><button type="button" aria-label="Close" onclick="this.closest('dialog').close()">×</button><img alt=""><p></p></dialog>
+<script>
+  const v = document.getElementById('viewer');
+  document.querySelectorAll('.shot[data-full]').forEach(b => b.addEventListener('click', () => {
+    const img = b.querySelector('img');
+    v.querySelector('img').src = b.dataset.full; v.querySelector('img').alt = img.alt;
+    v.querySelector('p').textContent = img.alt; v.showModal();
+  }));
+  v.addEventListener('click', e => { if (e.target === v) v.close(); });
+</script>
+</body>
+</html>
