@@ -102,6 +102,9 @@ export interface SharePayment {
   method: PayMethod | null;
   reference: string | null;
   paid_at: string | null;
+  /** For a share paid to the host in cash: has the host passed it on to the restaurant yet? */
+  cash_passed_on: boolean;
+  cash_passed_on_ref: string | null;
 }
 
 export interface GroupMember {
@@ -129,6 +132,8 @@ export interface Group {
   food_total: number;
   is_member: true;
   is_host: boolean;
+  /** Cash members paid the host that the host has not yet passed on to the restaurant. */
+  cash_to_pass_on: number;
   placed_at: string | null;
   delivered_at: string | null;
   /** Worked out by the database: live while open or locked, fixed once placed. The host can't edit them. */

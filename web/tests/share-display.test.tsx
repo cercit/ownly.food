@@ -5,14 +5,14 @@ import { describe as describeActivity } from '../src/screens/ActivityScreen.tsx'
 import type { Group, GroupMember, SharePayment } from '../src/lib/types.ts';
 
 const pay = (food: number, shared: number, charges: number, total: number, status: SharePayment['status'] = 'pending'): SharePayment =>
-  ({ food, shared_share: shared, charges_share: charges, tax_share: 0, total, status, method: null, reference: null, paid_at: null });
+  ({ food, shared_share: shared, charges_share: charges, tax_share: 0, total, status, method: null, reference: null, paid_at: null, cash_passed_on: false, cash_passed_on_ref: null });
 const member = (name: string, role: 'host' | 'member', is_me: boolean, p: SharePayment): GroupMember =>
   ({ member_id: name, name, role, is_me, done: false, items: [{ id: name + 'i', dish: 'Masala Dosa', qty: 1, unit_price: 100, notes: null, is_veg: true, is_shared: false, image_url: null }], payment: p });
 
 // The worked example from the plan: 4 people, charges 40 + 20 + 36 = 96 (24 each), one shared 280 platter (70 each).
 const itemised: Group = {
   id: 'g1', share_code: 'TNR742', status: 'placed', cut_off_at: '2026-10-24T10:00:00Z', split_rule: 'itemised',
-  delivery_fee: 40, packaging_fee: 20, taxes: 36, max_members: 12, food_total: 830, is_member: true, is_host: true,
+  delivery_fee: 40, packaging_fee: 20, taxes: 36, max_members: 12, food_total: 830, is_member: true, is_host: true, cash_to_pass_on: 0,
   placed_at: '2026-10-24T10:05:00Z', delivered_at: null,
   charges: { delivery: 40, packaging: 20, taxes: 36, total: 96, distance_km: 2 },
   restaurant: { id: 'r', name: 'Test Kitchen', cuisine: 'South Indian', area: 'Adyar', image_url: null, lat: 13.0, lng: 80.25 }, deliver_to: null,

@@ -60,6 +60,11 @@ export function MemberShareRow({ member }: { member: GroupMember }) {
         <p className="font-extrabold flex items-center gap-2"><Avatar name={member.name} />{member.name}{member.is_me && ' (you)'}{member.role === 'host' && <span className="text-xs font-bold text-[#C40054]">Host</span>}</p>
         {p ? statusBadge(p.status) : null}
       </div>
+      {p?.status === 'paid' && p.method === 'cash' && (
+        <p className="text-xs font-bold mt-2" data-testid="cash-status">
+          Paid in cash to the host · {p.cash_passed_on
+            ? <span className="text-[#125F43]">✓ Passed on to the restaurant</span>
+            : <span className="text-[#855000]">Host has not passed it on yet</span>}</p>)}
       <ul className="text-sm text-[#576177] mt-2 space-y-0.5">
         {member.items.length === 0 && <li>No dishes</li>}
         {member.items.map(i => <li key={i.id}>{i.qty} × {i.dish}{i.is_shared ? ' (shared)' : ''}</li>)}

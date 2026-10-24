@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Banknote, Building2, CreditCard, QrCode, Smartphone } from 'lucide-react';
-import { payMyShare } from '../api/ownly-api.ts';
 import { DEMO_PAYMENT_NOTE } from '../lib/config.ts';
 import { rupees } from '../lib/format.ts';
 import type { PayMethod, PaymentMethodRow } from '../lib/types.ts';
@@ -14,8 +13,15 @@ const TABS: { key: PayMethod | 'qr'; label: string; icon: typeof Smartphone }[] 
 
 type Phase = 'choose' | 'failed' | 'paid';
 
-/** Razorpay-style demo payment. Only a method type goes to the database. No card number, CVV or UPI PIN is ever asked for. */
-export function PayModal({ groupId, amount, saved, onClose, onPaid }: { groupId: string; amount: number; saved: PaymentMethodRow[]; onClose: () => void; onPaid: () => void }) {
+/**
+ * Razorpay-style demo payment. Only a method type goes to the database. No card number, CVV or UPI PIN is ever asked for.
+ * `pay` does the real call (pay my share, or pass on collected cash). `allowCash` hides "Paid the host in cash" for the host.
+ */
+export function PayModal({ title = 'Pay your share', amount, saved, allowCash = true, failNote = 'Your share is still Pending.', pay, onClose, onPaid }: {
+  title?: string; amount: number; saved: PaymentMethodRow[]; allowCash?: boolean; failNote?: string;
+  pay: (method: PayMethod) => Promise<{ reference: string }>; onClose: () => void; onPaid: () => void;
+}) {
+  const tabs = TABS.filter(t => allowCash || t.key !== 'cash');
   const [tab, setTab] = useState<PayMethod | 'qr'>('upi');
   const [phase, setPhase] = useState<Phase>('choose');
   const [busy, setBusy] = useState(false);
@@ -26,12 +32,12 @@ export function PayModal({ groupId, amount, saved, onClose, onPaid }: { groupId:
 
   const succeed = async () => {
     setBusy(true); setError(null);
-    try { const r = await payMyShare(groupId, method); setRef(r.reference); setPhase('paid'); onPaid(); }
+    try { const r = await pay(method); setRef(r.reference); setPhase('paid'); onPaid(); }
     catch (e) { setError((e as Error).message); } finally { setBusy(false); }
   };
 
   return (
-    <Modal title={phase === 'paid' ? 'Payment successful' : 'Pay your share'} onClose={onClose}>
+    <Modal title={phase === 'paid' ? 'Payment successful' : title} onClose={onClose}>
       <p className="text-sm bg-[#FFF1D9] text-[#855000] rounded-xl px-3 py-2 font-bold" data-testid="demo-note">{DEMO_PAYMENT_NOTE}</p>
       <p className="mt-4 text-3xl font-extrabold tabular-nums">{rupees(amount)}</p>
 
@@ -40,12 +46,12 @@ export function PayModal({ groupId, amount, saved, onClose, onPaid }: { groupId:
         <div className="mt-5"><Button onClick={onClose}>Done</Button></div></div>}
 
       {phase === 'failed' && <div className="mt-4 space-y-4">
-        <ErrorNote message="The payment failed. Your share is still Pending. Nothing was charged." />
+        <ErrorNote message={`The payment failed. ${failNote} Nothing was charged.`} />
         <div className="flex gap-3"><Button onClick={() => setPhase('choose')}>Retry</Button><Button variant="secondary" onClick={onClose}>Close</Button></div></div>}
 
       {phase === 'choose' && <>
         <div role="tablist" aria-label="Payment method" className="mt-4 flex flex-wrap gap-2">
-          {TABS.map(t => { const I = t.icon; return (
+          {tabs.map(t => { const I = t.icon; return (
             <button key={t.key} role="tab" aria-selected={tab === t.key} onClick={() => setTab(t.key)}
               className={`inline-flex items-center gap-1.5 px-3.5 min-h-11 rounded-full text-sm font-bold border cursor-pointer ${tab === t.key ? 'bg-[#C40054] text-white border-[#C40054]' : 'bg-white border-[#F0D7E2] text-[#576177]'}`}><I className="size-4" aria-hidden />{t.label}</button>); })}
         </div>
@@ -54,7 +60,7 @@ export function PayModal({ groupId, amount, saved, onClose, onPaid }: { groupId:
           {tab === 'qr' && <p>Pretend to scan a QR code with any UPI app. No real code is shown in this demo.</p>}
           {tab === 'card' && <p>Pretend to pay with a card. No card number, expiry or CVV is asked for here.</p>}
           {tab === 'netbanking' && <p>Pretend to approve this in your bank's page. No login is asked for here.</p>}
-          {tab === 'cash' && <p>Choose this if you handed the host cash, outside the app. It marks your share as Paid.</p>}
+          {tab === 'cash' && <p>Choose this if you handed the host cash, outside the app. The host then passes it on to the restaurant in the app.</p>}
           {mine.length > 0 && tab !== 'cash' && tab !== 'qr' && <p className="mt-2">Saved: {mine.map(m => m.display_label).join(', ')}</p>}
         </div>
         {error && <div className="mt-4"><ErrorNote message={error} /></div>}

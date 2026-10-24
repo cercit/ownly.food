@@ -140,6 +140,9 @@ export const cancelGroup = (groupId: string) => rpc<null>('cancel_group', { p_gr
 // ---------- pay my share (demo) ----------
 export interface PayResult { status: 'paid'; reference: string; already: boolean }
 export const payMyShare = (groupId: string, method: PayMethod) => rpc<PayResult>('pay_share', { p_group: groupId, p_method: method });
+/** Host only: pays on to the restaurant all the cash members handed over (UPI, card or netbanking; never cash). */
+export const passOnCash = (groupId: string, method: PayMethod) =>
+  rpc<{ amount: number; shares: number; reference: string }>('pass_on_cash', { p_group: groupId, p_method: method });
 export const listPaymentMethods = () =>
   run<PaymentMethodRow[]>(supabase.from('payment_methods').select('*').order('is_default', { ascending: false }) as never);
 /** Saves a masked label only, such as "Visa •••• 4242". */
