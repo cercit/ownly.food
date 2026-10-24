@@ -23,7 +23,7 @@ export function Layout({ route, children }: { route: Route; children: ReactNode 
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-[#F0D7E2]">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           <a href={hrefFor({ name: 'explore' })} className="flex items-center gap-3 no-underline">
-            <img src="/ownly-logo.jpg" alt="Ownly" className="size-10 rounded-2xl border border-[#F0D7E2] object-cover" />
+            <img src={`${import.meta.env.BASE_URL}ownly-logo.jpg`} alt="Ownly" className="size-10 rounded-2xl border border-[#F0D7E2] object-cover" />
             <span className="leading-tight">
               <span className="block text-lg font-black tracking-tight"><span className="text-[#C40054]">ownly</span> together</span>
               <span className="block text-[11px] font-bold text-[#576177]">Chennai</span>
