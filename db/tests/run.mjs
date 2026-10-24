@@ -254,6 +254,77 @@ await db.query(`insert into payment_methods (user_id, type, display_label, gatew
 await db.exec('reset role');
 ok(+(await one(`select count(*) n from audit_log where changes::text like '%tok_secret%'`)).n === 0, 'payment gateway tokens are never copied into the log');
 
+// ---------- 07: automatic charges, phone pattern, Done status, activity with names ----------
+await db.exec(readFileSync(path.join(here, '..', '07_fine_tune_1.sql'), 'utf8'));
+await db.exec(readFileSync(path.join(here, '..', '07_fine_tune_1.sql'), 'utf8'));
+console.log('applied 07 (twice)');
+const km = (a, b, c, d) => { const r = x => x * Math.PI / 180; return 2 * 6371 * Math.asin(Math.sqrt(Math.sin(r(c - a) / 2) ** 2 + Math.cos(r(a)) * Math.cos(r(c)) * Math.sin(r(d - b) / 2) ** 2)); };
+const s = await one(`select setting('delivery_per_km') k, setting('gst_rate') g`);
+ok(+s.k === 20 && +s.g === 0.05, 'rates come from the settings table: Rs 20 per km, 5% GST');
+const tiers = (await db.query(`select name, packaging_per_item p from restaurants order by name`)).rows;
+const hi = tiers.filter(t => +t.p === 30).map(t => t.name.split(' - ')[0]).sort();
+ok(hi.join('|') === ['Anjappar', 'Bombay Brasserie', 'Dindigul Thalappakatti', 'Pind', "Sandy's Chocolate Laboratory"].join('|') && tiers.filter(t => +t.p === 15).length === 10,
+  `packaging Rs 30 for the 5 higher-end restaurants (${hi.join(', ')}), Rs 15 for the other 10`);
+await throwsLike(`select place_group($1, 1, 1, 1)`, [eq.id], /does not exist/, 'the old place_group with host-typed charges is gone');
+
+// pinned address: Chennai Central to Anjappar Adyar
+await asUser(f1);
+const pinned = (await one(`insert into addresses (user_id, label, label_name, line1, area, city, pincode, lat, lng, source)
+  values (me(), 'home', 'Home', 'Near Central', 'Park Town', 'Chennai', '600003', 13.082700, 80.275500, 'gps') returning id`)).id;
+const anj = (await one(`select id, lat, lng from restaurants where name = 'Anjappar - Adyar'`));
+const gA = (await one(`select create_group_order($1, $2, now() + interval '1 hour', 'itemised') j`, [anj.id, pinned])).j;
+const anjDish = (await one(`select id, price from menu_items where restaurant_id = $1 and is_available order by price limit 1`, [anj.id]));
+await one(`select add_item($1, $2, 3, null, false)`, [gA.id, anjDish.id]);
+const live = (await one(`select get_group($1) j`, [gA.id])).j;
+const expKm = Math.round(km(+anj.lat, +anj.lng, 13.0827, 80.2755) * 10) / 10;
+ok(live.charges.pinned === true && +live.charges.distance_km === expKm && +live.charges.delivery === Math.round(expKm * 20),
+  `live charges before placing: ${expKm} km x Rs 20 = Rs ${live.charges.delivery} delivery (no more Rs 0 on screen)`);
+ok(+live.charges.packaging === 3 * 30 && +live.charges.taxes === Math.round(3 * anjDish.price * 0.05 * 100) / 100,
+  `packaging 3 dishes x Rs 30 = Rs ${live.charges.packaging}; taxes 5% of food = Rs ${live.charges.taxes}`);
+ok(live.deliver_to.lat !== null && Math.abs(+live.deliver_to.lat - 13.0827) > 0.05 && live.deliver_to.area === 'Park Town',
+  'the map gets the middle of the area, never the exact delivery address (members must not see where someone lives)');
+
+// Done status
+await asUser(many[1]); await one(`select join_group($1)`, [gA.share_code]);
+await one(`select add_item($1, $2, 1, null, false)`, [gA.id, anjDish.id]);
+await one(`select set_done($1, true)`, [gA.id]);
+let mem = (await one(`select get_group($1) j`, [gA.id])).j.members;
+ok(mem.find(m => m.is_me).done === true && mem.find(m => !m.is_me).done === false, 'a member taps Done and the group sees Done for them only');
+await one(`select add_item($1, $2, 1, null, false)`, [gA.id, anjDish.id]);
+mem = (await one(`select get_group($1) j`, [gA.id])).j.members;
+ok(mem.find(m => m.is_me).done === false, 'adding another dish switches them back to "Adding items"');
+await asUser(stranger);
+await throwsLike(`select set_done($1, true)`, [gA.id], /Join this group/, 'an outsider cannot mark Done');
+
+// placing uses the database charges
+await asUser(f1);
+await one(`select place_group($1)`, [gA.id]);
+const placedA = (await one(`select get_group($1) j`, [gA.id])).j;
+const billA = 5 * +anjDish.price + +live.charges.delivery + 5 * 30 + Math.round(5 * anjDish.price * 0.05 * 100) / 100;
+const sumA = placedA.members.reduce((t, m) => t + +m.payment.total, 0);
+ok(+placedA.delivery_fee === +live.charges.delivery && +placedA.packaging_fee === 150 && Math.abs(sumA - billA) < 0.001,
+  `placed with automatic charges; shares add up to the bill exactly (Rs ${sumA.toFixed(2)})`);
+await asUser(many[1]);
+await throwsLike(`select set_done($1, false)`, [gA.id], /locked/, 'Done cannot change after the order is placed');
+
+// activity with names
+const act = (await one(`select group_activity($1) j`, [gA.id])).j;
+ok(act.some(a => a.who === 'Friend 1' && a.table_name === 'order_items') && act.some(a => a.who === 'Karthik I.'),
+  'group activity shows names ("Friend 1 added a dish")');
+await asUser(stranger);
+await throwsLike(`select group_activity($1)`, [gA.id], /Join this group/, 'outsiders cannot read the activity');
+
+// phone pattern
+await asUser(f1);
+await throwsLike(`update profiles set phone = '12345'`, [], /check/, 'a phone that is not a 10-digit Indian mobile is refused');
+await throwsLike(`update profiles set phone = '5876543210'`, [], /check/, 'a mobile must start with 6, 7, 8 or 9');
+await db.query(`update profiles set phone = '9876543210'`);
+ok((await one(`select phone from profiles`)).phone === '9876543210', 'a valid mobile is saved');
+await db.exec('reset role');
+ok(+(await one(`select count(*) n from profiles where phone is not null and phone !~ '^[6-9][0-9]{9}$'`)).n === 0, 'existing phone numbers were cleaned to 10 digits');
+await asAnon();
+await throwsLike(`select charges_for($1)`, [gA.id], /permission denied/, 'charges_for is internal (only get_group and place_group use it)');
+
 await db.exec('reset role');
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
