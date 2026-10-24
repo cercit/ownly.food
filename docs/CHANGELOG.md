@@ -44,6 +44,7 @@ Sameer runs each script in the Supabase SQL editor. Claude checks it afterwards 
 
 | Date | Decision |
 |---|---|
+| 24 Oct 2026 | Keep packaging Rs 15 / Rs 30 per dish even though Ownly's public site says no packaging fee; shown as an open question for Ownly in the concept note, one-pager and case study |
 | 24 Oct 2026 | Ownly pink design system replaces the Stitch yellow. Stitch screens to be redesigned from `prompts/stitch-redesign-pink.txt` |
 | 24 Oct 2026 | Keep an audit log of all changes |
 | 24 Oct 2026 | Orders are marked delivered when the tracking timer finishes (prototype) |
