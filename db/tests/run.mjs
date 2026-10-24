@@ -325,6 +325,35 @@ ok(+(await one(`select count(*) n from profiles where phone is not null and phon
 await asAnon();
 await throwsLike(`select charges_for($1)`, [gA.id], /permission denied/, 'charges_for is internal (only get_group and place_group use it)');
 
+// ---------- 08: cash paid to the host is passed on to the restaurant ----------
+await db.exec('reset role');
+await db.exec(readFileSync(path.join(here, '..', '08_cash_handover.sql'), 'utf8'));
+await db.exec(readFileSync(path.join(here, '..', '08_cash_handover.sql'), 'utf8'));
+console.log('applied 08 (twice)');
+// gA was placed by f1 (host) with many[1] as member; nobody has paid yet
+await asUser(f1);
+await throwsLike(`select pay_share($1, 'cash')`, [gA.id], /As the host, pay your share online/, 'the host cannot mark their own share as "paid the host in cash"');
+await throwsLike(`select pass_on_cash($1, 'upi')`, [gA.id], /no cash to pass on/, 'nothing to pass on before anyone pays cash');
+await asUser(many[1]);
+const memberCash = (await one(`select pay_share($1, 'cash') j`, [gA.id])).j;
+ok(memberCash.reference === 'CASH-TO-HOST', 'a member pays the host in cash');
+await throwsLike(`select pass_on_cash($1, 'upi')`, [gA.id], /Only the host/, 'a member cannot pass on cash');
+let mv = (await one(`select get_group($1) j`, [gA.id])).j;
+const cashShare = mv.members.find(m => m.is_me).payment;
+ok(cashShare.status === 'paid' && cashShare.cash_passed_on === false, 'the group sees: paid in cash to the host, not yet passed on');
+await asUser(f1);
+const hv = (await one(`select get_group($1) j`, [gA.id])).j;
+ok(+hv.cash_to_pass_on === +cashShare.total, `the host sees Rs ${hv.cash_to_pass_on} of cash to pass on`);
+await throwsLike(`select pass_on_cash($1, 'cash')`, [gA.id], /online/, 'cash cannot be passed on as cash');
+const passed = (await one(`select pass_on_cash($1, 'upi') j`, [gA.id])).j;
+ok(+passed.amount === +cashShare.total && passed.shares === 1 && /^pay_TEST_/.test(passed.reference), `host passes on Rs ${passed.amount} by UPI (${passed.reference})`);
+await throwsLike(`select pass_on_cash($1, 'upi')`, [gA.id], /no cash to pass on/, 'passing on twice is refused');
+const after = (await one(`select get_group($1) j`, [gA.id])).j;
+ok(+after.cash_to_pass_on === 0 && after.members.find(m => !m.is_me).payment.cash_passed_on === true, 'everyone now sees the cash was passed on');
+await db.exec('reset role');
+ok(+(await one(`select count(*) n from audit_log where group_order_id = $1 and table_name = 'payments' and changes ? 'cash_passed_on_at'`, [gA.id])).n === 1, 'the hand-over is in the audit log');
+
+
 await db.exec('reset role');
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
