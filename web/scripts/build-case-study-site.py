@@ -10,9 +10,13 @@ src_dir = Path(sys.argv[1])           # web/public/case-study
 logo = Path(sys.argv[2])              # web/public/ownly-logo.jpg
 out = Path(sys.argv[3])               # new repo folder
 out.mkdir(parents=True, exist_ok=True)
-if (out / 'img').exists():
-    shutil.rmtree(out / 'img')
-shutil.copytree(src_dir / 'img', out / 'img')
+# Copy into the folder rather than delete-and-recreate it: OneDrive and preview servers can lock the folder.
+(out / 'img').mkdir(exist_ok=True)
+wanted = {f.name for f in (src_dir / 'img').iterdir()}
+for f in (out / 'img').iterdir():
+    if f.name not in wanted:
+        f.unlink()
+shutil.copytree(src_dir / 'img', out / 'img', dirs_exist_ok=True)
 shutil.copy(logo, out / 'ownly-logo.jpg')
 
 html = (src_dir / 'index.html').read_text(encoding='utf-8')
