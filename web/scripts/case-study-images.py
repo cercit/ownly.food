@@ -10,6 +10,10 @@ OUT.mkdir(parents=True, exist_ok=True)
 STITCH = ROOT / 'stitch' / 'stitch_ownly_together_group_ordering'
 
 IMAGES = {
+    'problem.webp': ROOT / 'docs/00-problem/Ownly_Chennai_Group_Ordering_Problem.png',
+    'concept.webp': ROOT / 'docs/00-concept/Ownly_Together_Chennai_Group_Ordering_Concept.png',
+    'one-pager.webp': ROOT / 'docs/00-concept/Ownly_Together_Executive_Product_One_Pager_Chennai.png',
+    'rules.webp': ROOT / 'docs/07-product-rules/Ownly_Together_Product_Rules.png',
     'market.webp': ROOT / 'docs/01-market/Chennai_Group_Food_Ordering_Opportunity.png',
     'competitors.webp': ROOT / 'docs/01-market/Ownly_Together_Chennai_Competitor_Analysis.png',
     'research.webp': ROOT / 'docs/02-user-research/Ownly_Together_User_Research_Plan.webp',

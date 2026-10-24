@@ -133,17 +133,18 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 
 <nav class="journey" aria-label="Case study sections"><ol>
   <li><a href="#problem"><span class="n">1</span>Problem</a></li>
-  <li><a href="#research"><span class="n">2</span>Research</a></li>
-  <li><a href="#personas"><span class="n">3</span>Personas</a></li>
-  <li><a href="#journey"><span class="n">4</span>Journey</a></li>
-  <li><a href="#market"><span class="n">5</span>Market</a></li>
-  <li><a href="#competitors"><span class="n">6</span>Competitors</a></li>
-  <li><a href="#product"><span class="n">7</span>Product</a></li>
-  <li><a href="#design"><span class="n">8</span>Design</a></li>
-  <li><a href="#build"><span class="n">9</span>Build</a></li>
-  <li><a href="#test"><span class="n">10</span>Test</a></li>
-  <li><a href="#roadmap"><span class="n">11</span>Roadmap</a></li>
-  <li><a href="#launch"><span class="n">12</span>Launch</a></li>
+  <li><a href="#concept"><span class="n">2</span>Concept</a></li>
+  <li><a href="#research"><span class="n">3</span>Research</a></li>
+  <li><a href="#personas"><span class="n">4</span>Personas</a></li>
+  <li><a href="#journey"><span class="n">5</span>Journey</a></li>
+  <li><a href="#market"><span class="n">6</span>Market</a></li>
+  <li><a href="#competitors"><span class="n">7</span>Competitors</a></li>
+  <li><a href="#product"><span class="n">8</span>Product</a></li>
+  <li><a href="#design"><span class="n">9</span>Design</a></li>
+  <li><a href="#build"><span class="n">10</span>Build</a></li>
+  <li><a href="#test"><span class="n">11</span>Test</a></li>
+  <li><a href="#roadmap"><span class="n">12</span>Roadmap</a></li>
+  <li><a href="#launch"><span class="n">13</span>Launch</a></li>
 </ol></nav>
 
 <main>
@@ -154,12 +155,31 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
     <p>When friends, flatmates or office colleagues order together, one person does all the work outside the app. They collect everyone's choices on WhatsApp, rebuild the cart by hand, pay the whole bill, and then spend a day or two chasing people for their share on UPI. Choices get lost, late additions arrive after the order is placed, and the host often never gets all the money back.</p>
     <p><b>Why it suits Ownly's Chennai launch.</b> Every group order brings up to eleven new people into the app through one share link. That is a cheaper way into a new city than winning customers one at a time, and Chennai's office corridors (OMR, Velachery) and flatmate and hostel areas (T. Nagar, Adyar, Anna Nagar, Nungambakkam, Mylapore) already order in groups.</p>
     <p><b>Goal:</b> adoption first, repeat group orders second. <b>North star:</b> completed group orders per week.</p>
+    <p class="note"><b>Evidence status:</b> the pain comes from my own experience and observation. It hasn't been measured yet, so I wrote the research plan before claiming anything about how common it is.</p>
   </div>
-  <div class="card prose"><p class="eyebrow">Evidence status</p><p>The pain comes from my own experience and observation. It hasn't been measured yet, so I wrote the research plan before claiming anything about how common it is.</p></div></div>
+  <figure><button class="shot" data-full="img/problem.webp" aria-label="Open the problem statement infographic"><img src="img/problem.webp" alt="Problem statement: group food ordering in Chennai today, from WhatsApp messages to chasing UPI payments" loading="lazy"></button></figure></div>
+</div></section>
+
+<section class="step" id="concept"><div class="wrap">
+  <div class="head"><span class="n">02</span><h2>Product concept and one-pager</h2></div>
+  <p class="q">If a leadership team had five minutes, what should they decide?</p>
+  <div class="two"><div class="prose">
+    <p><b>Recommendation: proceed with validation, not a full build.</b> The concept note and one-pager put the idea in front of a decision-maker: one shared order for up to 12 people, each paying their own share, as an invite-led way into Chennai.</p>
+    <p>They are deliberately honest about what is not yet known, and name three issues to settle before any real launch:</p>
+    <ul>
+      <li><b>Payments:</b> collecting up to 12 separate payments, reconciling them to one order and settling the restaurant has to be confirmed with a licensed payment provider.</li>
+      <li><b>Pricing:</b> the prototype charges packaging per dish, while Ownly's public promise is no packaging fee. That needs Ownly's call.</li>
+      <li><b>Market size:</b> the Chennai numbers are scenario estimates, not observed demand.</li>
+    </ul>
+    <p>Every claim is labelled as a documented fact, my own observation, an assumption or a recommendation.</p>
+    <div class="cta"><a class="pill" href="https://github.com/cercit/ownly.food/blob/main/docs/00-concept/Ownly_Together_Product_Concept_Note_Chennai_2026.md">Read the concept note</a><a class="pill" href="https://github.com/cercit/ownly.food/blob/main/docs/00-concept/Ownly_Together_Executive_Product_One_Pager_Chennai.md">Read the one-pager</a></div>
+  </div>
+  <figure><button class="shot" data-full="img/concept.webp" aria-label="Open the product concept"><img src="img/concept.webp" alt="Ownly Together product concept for Chennai group ordering" loading="lazy"></button><figcaption>The product concept.</figcaption></figure></div>
+  <figure style="margin-top:24px"><button class="shot" data-full="img/one-pager.webp" aria-label="Open the executive one-pager"><img src="img/one-pager.webp" alt="Executive product one-pager: problem, opportunity, solution, metrics, risks and recommendation" loading="lazy"></button><figcaption>The executive one-pager.</figcaption></figure>
 </div></section>
 
 <section class="step" id="research"><div class="wrap">
-  <div class="head"><span class="n">02</span><h2>User research plan</h2></div>
+  <div class="head"><span class="n">03</span><h2>User research plan</h2></div>
   <p class="q">How do I learn what people actually do today, without leading them?</p>
   <div class="two"><figure><button class="shot" data-full="img/research.webp" aria-label="Open the user research plan"><img src="img/research.webp" alt="User research plan infographic: objective, target users, interview guide and survey" loading="lazy"></button></figure>
   <div class="prose">
@@ -174,7 +194,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="personas"><div class="wrap">
-  <div class="head"><span class="n">03</span><h2>Personas and stories</h2></div>
+  <div class="head"><span class="n">04</span><h2>Personas and stories</h2></div>
   <p class="q">Who is this for, and what does a good day look like for them?</p>
   <div class="two"><div class="prose">
     <p><b>Arjun, the office lunch organiser on OMR.</b> He collects twelve orders on WhatsApp, pays ₹2,800 up front and sends reminders the next morning. With Ownly Together he shares one link, everyone adds and pays their own share, and next week he taps "Order again with this group".</p>
@@ -189,7 +209,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="journey"><div class="wrap">
-  <div class="head"><span class="n">04</span><h2>Customer journey</h2></div>
+  <div class="head"><span class="n">05</span><h2>Customer journey</h2></div>
   <p class="q">Where does the experience break, from first hearing about it to coming back?</p>
   <figure><button class="shot" data-full="img/journey.webp" aria-label="Open the customer journey map"><img src="img/journey.webp" alt="Customer journey map across awareness, consideration, onboarding, retention and loyalty" loading="lazy"></button></figure>
   <div class="tbl" style="margin-top:20px"><table>
@@ -203,7 +223,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="market"><div class="wrap">
-  <div class="head"><span class="n">05</span><h2>Market sizing</h2></div>
+  <div class="head"><span class="n">06</span><h2>Market sizing</h2></div>
   <p class="q">Is the opportunity in Chennai big enough to matter?</p>
   <div class="two"><div>
     <div class="tbl"><table>
@@ -220,7 +240,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="competitors"><div class="wrap">
-  <div class="head"><span class="n">06</span><h2>Competitors</h2></div>
+  <div class="head"><span class="n">07</span><h2>Competitors</h2></div>
   <p class="q">What already exists, and where is the gap?</p>
   <div class="two flip"><div class="prose">
     <p>Swiggy, Zomato and EatSure already offer shared group carts, so a shared cart alone isn't a reason to switch. Desk research couldn't confirm member-by-member payment at checkout on any of them, and EatSure's published flow has the host finalise and pay.</p>
@@ -231,7 +251,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="product"><div class="wrap">
-  <div class="head"><span class="n">07</span><h2>Product rules (PRD)</h2></div>
+  <div class="head"><span class="n">08</span><h2>Product rules (PRD)</h2></div>
   <p class="q">What exactly are we building, and what are we deliberately not building?</p>
   <div class="rules">
     <div class="rule"><b>Up to 12 people</b><span>Host included. No limit on order value or sign-ups. Email-code sign-in, no passwords, no demo accounts.</span></div>
@@ -241,11 +261,12 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
     <div class="rule"><b>Cash is tracked</b><span>A member can pay the host in cash; the host then passes it on to the restaurant in the app, and the group sees it settled.</span></div>
     <div class="rule"><b>Everything is recorded</b><span>An audit log of every change: who did what and when. Members can see their own group's history; nobody can edit it.</span></div>
   </div>
+  <figure style="margin-top:24px"><button class="shot" data-full="img/rules.webp" aria-label="Open the product rules infographic"><img src="img/rules.webp" alt="Ownly Together product rules infographic" loading="lazy"></button></figure>
   <p class="note" style="margin-top:20px"><b>Not in this version:</b> fee discounts or price comparisons, multiple restaurants in one order, rider names or tracking of real riders, real payments.</p>
 </div></section>
 
 <section class="step" id="design"><div class="wrap">
-  <div class="head"><span class="n">08</span><h2>Design</h2></div>
+  <div class="head"><span class="n">09</span><h2>Design</h2></div>
   <p class="q">How do I get from a PRD to screens a stranger can use?</p>
   <div class="prose" style="max-width:none">
     <p>I designed in Google Stitch from the PRD with eight prompts. The first version came back in Stitch's yellow, set in Hyderabad, with invented fee claims, rider names and a 6-person cap. I wrote four rounds of correction prompts and then started again in a new project from a proper Ownly pink design system, with the rules and a "do not include" list in the very first prompt. That produced 26 screens, 13 for mobile and 13 for desktop.</p>
@@ -260,7 +281,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="build"><div class="wrap">
-  <div class="head"><span class="n">09</span><h2>Build</h2></div>
+  <div class="head"><span class="n">10</span><h2>Build</h2></div>
   <p class="q">Can it actually work, on a real database, for real people?</p>
   <div class="two"><div class="prose">
     <p><b>Back end on Supabase.</b> Eleven tables with row-level security on every one, 25 database functions, eight SQL scripts and an audit log written only by triggers. Shares, charges and the split are all worked out in the database, never in the browser, so every phone sees the same numbers.</p>
@@ -276,7 +297,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="test"><div class="wrap">
-  <div class="head"><span class="n">10</span><h2>Testing, and what testing changed</h2></div>
+  <div class="head"><span class="n">11</span><h2>Testing, and what testing changed</h2></div>
   <p class="q">What did real use reveal that the plan missed?</p>
   <div class="two"><div>
     <div class="tbl"><table>
@@ -300,7 +321,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="roadmap"><div class="wrap">
-  <div class="head"><span class="n">11</span><h2>12-week roadmap</h2></div>
+  <div class="head"><span class="n">12</span><h2>12-week roadmap</h2></div>
   <p class="q">How does this get from prototype to a controlled launch?</p>
   <div class="two"><figure><button class="shot" data-full="img/roadmap.webp" aria-label="Open the 12-week roadmap"><img src="img/roadmap.webp" alt="12-week product roadmap from discovery to general availability" loading="lazy"></button></figure>
   <div class="prose">
@@ -317,7 +338,7 @@ dialog button{position:fixed;top:14px;right:14px;width:44px;height:44px;border-r
 </div></section>
 
 <section class="step" id="launch"><div class="wrap">
-  <div class="head"><span class="n">12</span><h2>Chennai go-to-market</h2></div>
+  <div class="head"><span class="n">13</span><h2>Chennai go-to-market</h2></div>
   <p class="q">How does it reach the first groups?</p>
   <div class="two flip"><div class="prose">
     <p>Start where groups already order together: OMR and Velachery office teams, then flatmates and hostels in T. Nagar, Adyar, Anna Nagar, Nungambakkam and Mylapore. Every host is the acquisition channel, because their share link brings the rest of the group in.</p>
