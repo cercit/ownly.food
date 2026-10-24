@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Minus, Plus, Trash2 } from 'lucide-react';
-import { addItem, cancelGroup, getMenu, leaveGroup, lockGroup, removeItem } from '../api/ownly-api.ts';
+import { addItem, cancelGroup, getMenu, leaveGroup, lockGroup, removeItem, setDone } from '../api/ownly-api.ts';
+import { ChargesLines } from '../components/ShareBreakdown.tsx';
+import { GroupLinks } from '../components/GroupLinks.tsx';
 import { MAX_MEMBERS } from '../lib/config.ts';
 import { labelName, mmss, rupees, splitRuleName } from '../lib/format.ts';
 import { hrefFor, navigate } from '../lib/router.ts';
@@ -55,10 +57,7 @@ export function CartScreen({ gid }: { gid: string }) {
         {g.status === 'locked' && <p className="mt-3 text-sm bg-[#FFF1D9] text-[#855000] rounded-xl p-3">The host has locked the cart. No more dishes can be added.</p>}
         {g.status === 'cancelled' && <p className="mt-3 text-sm bg-[#FFE7E9] text-[#A32234] rounded-xl p-3">The host cancelled this order.</p>}
         {(g.status === 'placed' || g.status === 'delivered') && (
-          <div className="mt-3 flex flex-wrap gap-2">
-            <a href={hrefFor({ name: 'pay', gid })} className="inline-flex min-h-11 px-5 items-center rounded-full bg-[#C40054] text-white font-bold no-underline">My share and pay</a>
-            <a href={hrefFor({ name: 'track', gid })} className="inline-flex min-h-11 px-5 items-center rounded-full border-[1.5px] border-[#F0D7E2] font-bold no-underline text-[#111D35]">Track order</a>
-          </div>)}
+          <div className="mt-3"><GroupLinks gid={gid} show={['pay', 'track', 'confirmed', 'activity']} /></div>)}
         {actionError && <div className="mt-3"><ErrorNote message={actionError} /></div>}
       </Card>
 
@@ -79,9 +78,11 @@ export function CartScreen({ gid }: { gid: string }) {
             <h2 className="text-xl font-extrabold mb-3">Shared cart</h2>
             {g.members.every(m => m.items.length === 0) && <Empty title="The cart is empty" hint={open ? 'Pick a dish from the menu to add it.' : undefined} />}
             <ul className="space-y-5">
-              {g.members.filter(m => m.items.length > 0).map(m => (
+              {g.members.map(m => (
                 <li key={m.member_id}>
-                  <p className="font-extrabold flex items-center gap-2"><Avatar name={m.name} index={g.members.indexOf(m)} />{m.name}{m.is_me && ' (you)'}{m.role === 'host' && <span className="text-xs font-bold text-[#C40054]">Host</span>}</p>
+                  <p className="font-extrabold flex flex-wrap items-center gap-2"><Avatar name={m.name} index={g.members.indexOf(m)} />{m.name}{m.is_me && ' (you)'}{m.role === 'host' && <span className="text-xs font-bold text-[#C40054]">Host</span>}
+                    {(open || g.status === 'locked') && (m.done ? <Badge tone="paid">✓ Done</Badge> : <Badge tone="pending">Adding items</Badge>)}</p>
+                  {m.items.length === 0 && <p className="text-sm text-[#576177] mt-1 ml-11">No dishes yet</p>}
                   <ul className="mt-1 divide-y divide-[#F5E6ED]">
                     {m.items.map(i => (
                       <li key={i.id} className="py-2 flex items-start gap-2">
@@ -97,6 +98,14 @@ export function CartScreen({ gid }: { gid: string }) {
                 </li>))}
             </ul>
             <div className="flex justify-between border-t border-[#F0D7E2] mt-4 pt-3 font-extrabold text-lg"><span>Food total</span><span className="tabular-nums">{rupees(g.food_total)}</span></div>
+            {g.food_total > 0 && <div className="mt-3"><ChargesLines group={g} /></div>}
+            {open && mine && (mine.done
+              ? <div className="mt-4 rounded-2xl bg-[#E5F6ED] text-[#125F43] p-3 text-sm flex flex-wrap items-center justify-between gap-2">
+                  <span className="font-bold">✓ You're done. The group can see it.</span>
+                  <button className="font-bold underline cursor-pointer min-h-11" disabled={busy} onClick={() => act(() => setDone(gid, false))}>I want to add more</button></div>
+              : <Button className="w-full mt-4" busy={busy} disabled={mine.items.length === 0 && !g.is_host} onClick={() => act(() => setDone(gid, true), 'Marked as done')}>
+                  I'm done adding</Button>)}
+            {open && mine && !mine.done && mine.items.length === 0 && !g.is_host && <p className="text-xs text-[#576177] mt-2 text-center">Add a dish first, then tap Done.</p>}
           </Card>
 
           {g.is_host && (open || g.status === 'locked') && (

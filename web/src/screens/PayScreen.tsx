@@ -7,6 +7,7 @@ import { Button, Card, Empty, ErrorNote, Spinner, statusBadge, useLoad } from '.
 import { ChargesLines, MemberShareRow, ShareBreakdown } from '../components/ShareBreakdown.tsx';
 import { PayModal } from '../components/PayModal.tsx';
 import { useGroup } from '../ui/group.tsx';
+import { GroupLinks } from '../components/GroupLinks.tsx';
 
 export function PayScreen({ gid }: { gid: string }) {
   const { member: g, preview, error, loading, refresh } = useGroup(gid, 4000);
@@ -33,9 +34,7 @@ export function PayScreen({ gid }: { gid: string }) {
           <div className="mt-5 rounded-2xl bg-[#E5F6ED] text-[#125F43] p-4"><p className="font-bold">Paid{p.paid_at && ` on ${dateTime(p.paid_at)}`}</p>
             {p.reference && <p className="text-sm tabular-nums">Reference {p.reference}</p>}</div>
         ) : p && <div className="mt-5"><Button className="w-full sm:w-auto" onClick={() => setOpen(true)}>Pay my share</Button><p className="text-xs text-[#576177] mt-2">{DEMO_PAYMENT_NOTE}</p></div>}
-        <div className="mt-4 flex flex-wrap gap-3 text-sm font-bold">
-          <a href={hrefFor({ name: 'track', gid })}>Track the order</a><a href={hrefFor({ name: 'confirmed', gid })}>Order confirmation</a><a href={hrefFor({ name: 'activity', gid })}>Group activity</a>
-        </div>
+        <div className="mt-5"><GroupLinks gid={gid} show={['track', 'confirmed', 'activity']} /></div>
       </Card>
 
       <Card>

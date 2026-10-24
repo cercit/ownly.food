@@ -1,4 +1,6 @@
-import { PartyPopper } from 'lucide-react';
+import { PartyPopper, Wallet } from 'lucide-react';
+import { RouteMap } from '../components/RouteMap.tsx';
+import { GroupLinks } from '../components/GroupLinks.tsx';
 import { labelName, rupees } from '../lib/format.ts';
 import { hrefFor } from '../lib/router.ts';
 import { Card, Empty, ErrorNote, Spinner } from '../ui/kit.tsx';
@@ -13,6 +15,8 @@ export function ConfirmationScreen({ gid }: { gid: string }) {
   if (g.status === 'open' || g.status === 'locked') return <Empty title="This order is not placed yet" action={<a href={hrefFor({ name: 'cart', gid })} className="font-bold">Back to the cart</a>} />;
   if (g.status === 'cancelled') return <Empty title="This order was cancelled" />;
   const total = g.members.reduce((s, m) => s + (m.payment?.total ?? 0), 0);
+  const from = g.restaurant.lat != null && g.restaurant.lng != null ? { lat: +g.restaurant.lat, lng: +g.restaurant.lng } : null;
+  const to = g.deliver_to?.lat != null && g.deliver_to?.lng != null ? { lat: +g.deliver_to.lat, lng: +g.deliver_to.lng } : null;
 
   return (
     <div className="max-w-3xl mx-auto space-y-5">
@@ -21,10 +25,16 @@ export function ConfirmationScreen({ gid }: { gid: string }) {
         <h1 className="text-3xl sm:text-4xl font-extrabold mt-3">Order placed!</h1>
         <p className="text-[#576177] mt-2">{g.restaurant.name}{g.deliver_to && ` · Deliver to ${labelName(g.deliver_to.label, g.deliver_to.label_name)}, ${g.deliver_to.area}`}</p>
         <div className="mt-5 flex flex-wrap justify-center gap-3">
-          <a href={hrefFor({ name: 'pay', gid })} className="inline-flex min-h-12 px-6 items-center rounded-full bg-[#C40054] text-white font-bold no-underline hover:bg-[#A80047]">Pay my share</a>
-          <a href={hrefFor({ name: 'track', gid })} className="inline-flex min-h-12 px-6 items-center rounded-full border-[1.5px] border-[#F0D7E2] bg-white font-bold no-underline text-[#111D35] hover:bg-[#FFF1F6]">Track the order</a>
+          <a href={hrefFor({ name: 'pay', gid })} className="inline-flex items-center gap-2 min-h-12 px-6 rounded-full bg-[#C40054] text-white font-bold no-underline hover:bg-[#A80047]"><Wallet className="size-4" aria-hidden />Pay my share</a>
         </div>
+        <div className="mt-3 flex justify-center"><GroupLinks gid={gid} show={['track', 'activity', 'orders']} /></div>
       </div>
+
+      {from && to && <Card>
+        <h2 className="text-xl font-extrabold mb-3">On the map</h2>
+        <RouteMap from={from} to={to} progress={g.status === 'delivered' ? 1 : 0} fromLabel={g.restaurant.name.split(' - ')[0]} toLabel={g.deliver_to ? `${labelName(g.deliver_to.label, g.deliver_to.label_name)}, ${g.deliver_to.area}` : 'You'} />
+        <p className="text-xs text-[#576177] mt-1">{Number(g.charges.distance_km).toFixed(1)} km. The delivery pin shows the middle of the area, not the exact address.</p>
+      </Card>}
 
       <Card>
         <h2 className="text-xl font-extrabold mb-3">Who ordered what</h2>

@@ -7,6 +7,7 @@ import {
 import { useAuth } from '../lib/auth.tsx';
 import { CHENNAI_AREAS } from '../lib/config.ts';
 import { labelName } from '../lib/format.ts';
+import { phoneError } from '../lib/phone.ts';
 import { maskBank, maskCard, maskUpi, type MaskResult } from '../lib/mask.ts';
 import { navigateHash } from '../lib/router.ts';
 import type { Address, AddressLabel, PayMethod } from '../lib/types.ts';
@@ -31,7 +32,8 @@ export function ProfileScreen() {
     e.preventDefault(); setBusy(true); setError(null);
     try {
       if (name.trim().length < 2) throw new Error('Enter your name.');
-      if (phone.trim() && !/^[0-9+\s-]{7,15}$/.test(phone.trim())) throw new Error('Enter a valid phone number, or leave it empty.');
+      const bad = phoneError(phone);
+      if (bad) throw new Error(bad);
       await updateProfile({ full_name: name, phone }); await refreshProfile(); toast.show('Profile saved');
     } catch (err) { setError((err as Error).message); } finally { setBusy(false); }
   };
@@ -44,7 +46,7 @@ export function ProfileScreen() {
         <h2 className="text-xl font-extrabold mb-4">You</h2>
         <form onSubmit={saveProfile} className="grid gap-4 sm:grid-cols-2" noValidate>
           <Field label="Name"><input value={name} onChange={e => setName(e.target.value)} className={inputCls} /></Field>
-          <Field label="Phone (optional)"><input inputMode="tel" value={phone} onChange={e => setPhone(e.target.value)} className={inputCls} /></Field>
+          <Field label="Mobile number" hint="Required. 10 digits, not shown to your group."><input type="tel" inputMode="tel" autoComplete="tel-national" value={phone} onChange={e => setPhone(e.target.value)} className={`${inputCls} tabular-nums`} /></Field>
           <Field label="Email" hint="Your email is how you sign in. It cannot be changed here."><input value={user?.email ?? ''} readOnly className={`${inputCls} bg-[#FFF9FC]`} /></Field>
           <div className="sm:col-span-2 space-y-3">{error && <ErrorNote message={error} />}
             <div className="flex flex-wrap gap-3"><Button type="submit" busy={busy}>Save</Button>

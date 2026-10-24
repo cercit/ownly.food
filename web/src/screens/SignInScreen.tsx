@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { getProfile, signOut, sendCode, updateProfile, verifyCode } from '../api/ownly-api.ts';
-import { needsName, useAuth } from '../lib/auth.tsx';
+import { needsDetails, needsName, useAuth } from '../lib/auth.tsx';
+import { phoneError } from '../lib/phone.ts';
 import { navigateHash } from '../lib/router.ts';
 import { Button, Card, ErrorNote, Field, inputCls } from '../ui/kit.tsx';
 
@@ -11,7 +12,8 @@ export function SignInScreen({ next }: { next?: string }) {
   const [step, setStep] = useState<Step>('email');
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
-  const [name, setName] = useState('');
+  const [name, setName] = useState(profile && !needsName(profile) ? profile.full_name ?? '' : '');
+  const [phone, setPhone] = useState(profile?.phone ?? '');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sentNote, setSentNote] = useState<string | null>(null);
@@ -32,17 +34,19 @@ export function SignInScreen({ next }: { next?: string }) {
     await verifyCode(email, code);
     const p = await getProfile();
     await refreshProfile();
-    if (needsName(p)) setStep('name'); else done();
+    if (needsDetails(p)) { if (p && !needsName(p)) setName(p.full_name ?? ''); setStep('name'); } else done();
   });
   const saveName = wrap(async () => {
     if (name.trim().length < 2) throw new Error('Enter your name so the group can see who you are.');
-    await updateProfile({ full_name: name });
+    const bad = phoneError(phone);
+    if (bad) throw new Error(bad);
+    await updateProfile({ full_name: name, phone });
     await refreshProfile();
     done();
   });
 
   // Already signed in (for example returned to this page): offer to continue.
-  const showName = step === 'name' || (!!user && needsName(profile) && step === 'email');
+  const showName = step === 'name' || (!!user && needsDetails(profile) && step === 'email');
   if (user && !showName) {
     return (
       <Card className="max-w-md mx-auto text-center">
@@ -58,7 +62,7 @@ export function SignInScreen({ next }: { next?: string }) {
 
   return (
     <Card className="max-w-md mx-auto">
-      <h1 className="text-2xl sm:text-3xl font-extrabold">{showName ? 'What is your name?' : 'Sign in to Ownly Together'}</h1>
+      <h1 className="text-2xl sm:text-3xl font-extrabold">{showName ? 'Your name and mobile' : 'Sign in to Ownly Together'}</h1>
       {step === 'email' && !showName && <>
         <p className="text-[#576177] mt-2">Enter your email. We send you a 6-digit code. No password, and new people sign up the same way.</p>
         <form onSubmit={send} className="mt-5 space-y-4" noValidate>
@@ -79,9 +83,10 @@ export function SignInScreen({ next }: { next?: string }) {
           </div>
         </form></>}
       {showName && <>
-        <p className="text-[#576177] mt-2">Your group sees this name next to your dishes.</p>
+        <p className="text-[#576177] mt-2">Your group sees your name next to your dishes. Your mobile number is not shown to anyone.</p>
         <form onSubmit={saveName} className="mt-5 space-y-4" noValidate>
           <Field label="Your name"><input autoComplete="name" autoFocus value={name} onChange={e => setName(e.target.value)} className={inputCls} /></Field>
+          <Field label="Mobile number" hint="10 digits, for example 98765 43210"><input type="tel" inputMode="tel" autoComplete="tel-national" value={phone} onChange={e => setPhone(e.target.value)} placeholder="98765 43210" className={`${inputCls} tabular-nums`} /></Field>
           {error && <ErrorNote message={error} />}
           <Button type="submit" busy={busy} className="w-full">Save and continue</Button>
         </form></>}

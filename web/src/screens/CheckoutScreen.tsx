@@ -2,17 +2,12 @@ import { useState } from 'react';
 import { cancelGroup, lockGroup, placeGroup } from '../api/ownly-api.ts';
 import { rupees, splitRuleName } from '../lib/format.ts';
 import { hrefFor, navigate } from '../lib/router.ts';
-import { Badge, Button, Card, Empty, ErrorNote, Field, Modal, Spinner, inputCls } from '../ui/kit.tsx';
+import { Badge, Button, Card, Empty, ErrorNote, Modal, Spinner } from '../ui/kit.tsx';
+import { ChargesLines } from '../components/ShareBreakdown.tsx';
 import { useGroup } from '../ui/group.tsx';
-
-const toAmount = (v: string) => (v.trim() === '' ? 0 : Number(v));
-const valid = (v: string) => v.trim() === '' || (Number.isFinite(Number(v)) && Number(v) >= 0 && /^\d*\.?\d{0,2}$/.test(v.trim()));
 
 export function CheckoutScreen({ gid }: { gid: string }) {
   const { member: g, preview, error, loading, refresh } = useGroup(gid);
-  const [delivery, setDelivery] = useState('');
-  const [packaging, setPackaging] = useState('');
-  const [taxes, setTaxes] = useState('');
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [confirm, setConfirm] = useState<'place' | 'cancel' | null>(null);
@@ -25,7 +20,7 @@ export function CheckoutScreen({ gid }: { gid: string }) {
   if (g.status === 'cancelled') return <Empty title="This order was cancelled" />;
 
   const sharedItems = g.members.flatMap(m => m.items.filter(i => i.is_shared));
-  const amountsOk = valid(delivery) && valid(packaging) && valid(taxes);
+  const notDone = g.members.filter(m => !m.done && !m.is_me);
   const run = async (fn: () => Promise<unknown>) => { setBusy(true); setErr(null); try { await fn(); } catch (e) { setErr((e as Error).message); setConfirm(null); } finally { setBusy(false); } };
 
   return (
@@ -38,7 +33,7 @@ export function CheckoutScreen({ gid }: { gid: string }) {
         <ul className="mt-4 space-y-3">
           {g.members.map(m => (
             <li key={m.member_id} className="border border-[#F0D7E2] rounded-2xl p-3">
-              <p className="font-bold">{m.name}{m.is_me && ' (you)'}</p>
+              <p className="font-bold flex flex-wrap items-center gap-2">{m.name}{m.is_me && ' (you)'}{m.done ? <Badge tone="paid">✓ Done</Badge> : <Badge tone="pending">Adding items</Badge>}</p>
               {m.items.length === 0 ? <p className="text-sm text-[#576177]">No dishes yet</p> :
                 <ul className="text-sm text-[#576177] mt-1">{m.items.map(i => <li key={i.id} className="flex justify-between gap-3"><span>{i.qty} × {i.dish}{i.is_shared ? ' (shared)' : ''}{i.notes ? ` · ${i.notes}` : ''}</span><span className="tabular-nums">{rupees(i.qty * i.unit_price)}</span></li>)}</ul>}
             </li>))}
@@ -48,27 +43,24 @@ export function CheckoutScreen({ gid }: { gid: string }) {
       </Card>
 
       <Card>
-        <h2 className="text-xl font-extrabold">Rapido's charges for this order</h2>
-        <p className="text-sm text-[#576177] mt-1 mb-4">Type the three amounts. Each one is split equally across everyone in the group, including you.</p>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <Field label="Delivery (₹)"><input inputMode="decimal" value={delivery} onChange={e => setDelivery(e.target.value)} placeholder="0" className={`${inputCls} tabular-nums`} aria-invalid={!valid(delivery)} /></Field>
-          <Field label="Packaging (₹)"><input inputMode="decimal" value={packaging} onChange={e => setPackaging(e.target.value)} placeholder="0" className={`${inputCls} tabular-nums`} aria-invalid={!valid(packaging)} /></Field>
-          <Field label="Taxes (₹)"><input inputMode="decimal" value={taxes} onChange={e => setTaxes(e.target.value)} placeholder="0" className={`${inputCls} tabular-nums`} aria-invalid={!valid(taxes)} /></Field>
-        </div>
-        {!amountsOk && <p className="text-sm text-[#A32234] mt-2">Enter amounts in rupees, like 40 or 36.50.</p>}
-        <p className="text-sm text-[#576177] mt-4">When you place the order, the database works out each person's share. You see all of them on the next screen.</p>
+        <h2 className="text-xl font-extrabold">Charges for this order</h2>
+        <p className="text-sm text-[#576177] mt-1 mb-4">Worked out automatically: delivery by distance, packaging per dish and GST on the food. Each is split equally across everyone, including you.</p>
+        <ChargesLines group={g} />
+        <div className="flex justify-between mt-4 font-extrabold text-lg"><span>Whole bill</span><span className="tabular-nums" data-testid="bill-total">{rupees(g.food_total + g.charges.total)}</span></div>
+        <p className="text-sm text-[#576177] mt-3">When you place the order, the database works out each person's share. You see all of them on the next screen.</p>
         {err && <div className="mt-4"><ErrorNote message={err} /></div>}
         <div className="mt-5 flex flex-wrap gap-3">
           {g.status === 'open' && <Button variant="secondary" busy={busy} onClick={() => run(async () => { await lockGroup(gid); await refresh(); })}>Lock the cart</Button>}
-          <Button disabled={!amountsOk || g.food_total <= 0} onClick={() => setConfirm('place')}>Place order</Button>
+          <Button disabled={g.food_total <= 0} onClick={() => setConfirm('place')}>Place order</Button>
           <Button variant="danger" onClick={() => setConfirm('cancel')}>Cancel the order</Button>
         </div>
         {g.food_total <= 0 && <p className="text-sm text-[#576177] mt-3">The cart is empty. Add at least one dish to place the order.</p>}
       </Card>
 
       {confirm === 'place' && <Modal title="Place this order?" onClose={() => setConfirm(null)}>
-        <p className="text-[#576177]">Food {rupees(g.food_total)} plus Rapido's charges {rupees(toAmount(delivery) + toAmount(packaging) + toAmount(taxes))}. After this nobody can add dishes.</p>
-        <div className="mt-5 flex gap-3"><Button busy={busy} onClick={() => run(async () => { await placeGroup(gid, toAmount(delivery), toAmount(packaging), toAmount(taxes)); navigate({ name: 'confirmed', gid }); })}>Place order</Button><Button variant="secondary" onClick={() => setConfirm(null)}>Not yet</Button></div>
+        <p className="text-[#576177]">Food {rupees(g.food_total)} plus charges {rupees(g.charges.total)} = {rupees(g.food_total + g.charges.total)}. After this nobody can add dishes.</p>
+        {notDone.length > 0 && <p className="mt-3 text-sm bg-[#FFF1D9] text-[#855000] rounded-xl p-3">{notDone.map(m => m.name).join(', ')} {notDone.length === 1 ? 'has' : 'have'} not tapped Done yet.</p>}
+        <div className="mt-5 flex gap-3"><Button busy={busy} onClick={() => run(async () => { await placeGroup(gid); navigate({ name: 'confirmed', gid }); })}>Place order</Button><Button variant="secondary" onClick={() => setConfirm(null)}>Not yet</Button></div>
       </Modal>}
       {confirm === 'cancel' && <Modal title="Cancel this order?" onClose={() => setConfirm(null)}>
         <p className="text-[#576177]">Nobody can add dishes or pay after you cancel.</p>

@@ -109,6 +109,8 @@ export interface GroupMember {
   name: string | null;
   role: 'host' | 'member';
   is_me: boolean;
+  /** Tapped "Done" (finished adding). Adding or removing a dish resets it. */
+  done: boolean;
   items: GroupItem[];
   payment: SharePayment | null;
 }
@@ -129,9 +131,26 @@ export interface Group {
   is_host: boolean;
   placed_at: string | null;
   delivered_at: string | null;
-  restaurant: { id: string; name: string; cuisine: string; area: string; image_url: string | null };
-  deliver_to: { label: AddressLabel; label_name: string | null; area: string; city: string } | null;
+  /** Worked out by the database: live while open or locked, fixed once placed. The host can't edit them. */
+  charges: Charges;
+  restaurant: { id: string; name: string; cuisine: string; area: string; image_url: string | null; lat: number | null; lng: number | null };
+  /** lat/lng is the middle of the delivery area, never the exact address. */
+  deliver_to: { label: AddressLabel; label_name: string | null; area: string; city: string; lat: number | null; lng: number | null } | null;
   members: GroupMember[];
+}
+
+export interface Charges {
+  delivery: number;
+  packaging: number;
+  taxes: number;
+  total: number;
+  distance_km: number;
+  /** Present while the order is still open or locked. */
+  pinned?: boolean;
+  dishes?: number;
+  per_km?: number;
+  packaging_per_item?: number;
+  gst_rate?: number;
 }
 
 export type GroupView = Group | GroupPreview;
@@ -151,7 +170,9 @@ export interface HistoryRow {
 
 export interface ActivityRow {
   at: string;
-  actor_id: string | null;
+  /** Name of the person who made the change ("Ownly" for system actions). */
+  who: string;
+  is_me: boolean;
   table_name: string;
   action: 'insert' | 'update' | 'delete';
   changes: Record<string, unknown> | null;

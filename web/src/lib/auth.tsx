@@ -31,3 +31,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 /** True when the profile still has the name made from the email (the first-time name step is not done). */
 export const needsName = (p: Profile | null) =>
   !!p && (!p.full_name || p.full_name.trim() === p.email.split('@')[0]);
+
+/** True when the person still has to give their name or mobile number (both are required). */
+export const needsDetails = (p: Profile | null) => !!p && (needsName(p) || !p.phone);

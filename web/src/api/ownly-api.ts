@@ -3,6 +3,7 @@
 import { createClient, type User } from '@supabase/supabase-js';
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from '../lib/config.ts';
 import { buildShareLink, readJoinParam } from '../lib/room.ts';
+import { normalisePhone } from '../lib/phone.ts';
 import type {
   ActivityRow, Address, AddressLabel, GroupView, HistoryRow, JoinedGroup, MenuItem, PayMethod,
   PaymentMethodRow, Profile, Restaurant, SplitRule, StartedGroup,
@@ -44,7 +45,7 @@ export const getProfile = async (): Promise<Profile | null> =>
 export const updateProfile = async (p: { full_name: string; phone?: string | null }): Promise<Profile> => {
   const me = await getProfile();
   if (!me) throw new Error('Please sign in first.');
-  return run<Profile>(supabase.from('profiles').update({ full_name: p.full_name.trim(), phone: p.phone?.trim() || null }).eq('id', me.id).select().single() as never);
+  return run<Profile>(supabase.from('profiles').update({ full_name: p.full_name.trim(), phone: p.phone ? normalisePhone(p.phone) : null }).eq('id', me.id).select().single() as never);
 };
 
 export const recordLocationConsent = async () => {
@@ -114,6 +115,8 @@ export const addItem = (groupId: string, menuItemId: string, qty = 1, notes: str
   rpc<string>('add_item', { p_group: groupId, p_menu_item: menuItemId, p_qty: qty, p_notes: notes, p_shared: shared });
 export const removeItem = (itemId: string) => rpc<null>('remove_item', { p_item: itemId });
 export const leaveGroup = (groupId: string) => rpc<null>('leave_group', { p_group: groupId });
+/** "Done" = finished adding dishes. Adding or removing a dish switches it back automatically. */
+export const setDone = (groupId: string, done = true) => rpc<null>('set_done', { p_group: groupId, p_done: done });
 
 /** Refreshes the group every few seconds while a screen is open. Returns stop(). */
 export const watchGroup = (groupId: string, cb: (g: GroupView | null, err?: Error) => void, everyMs = 5000) => {
@@ -130,8 +133,8 @@ export const watchGroup = (groupId: string, cb: (g: GroupView | null, err?: Erro
 
 // ---------- host: lock, place, cancel ----------
 export const lockGroup = (groupId: string) => rpc<null>('lock_group', { p_group: groupId });
-export const placeGroup = (groupId: string, delivery: number, packaging = 0, taxes = 0) =>
-  rpc<null>('place_group', { p_group: groupId, p_delivery: delivery, p_packaging: packaging, p_taxes: taxes });
+/** Charges (delivery, packaging, taxes) are worked out by the database, not typed by the host. */
+export const placeGroup = (groupId: string) => rpc<null>('place_group', { p_group: groupId });
 export const cancelGroup = (groupId: string) => rpc<null>('cancel_group', { p_group: groupId });
 
 // ---------- pay my share (demo) ----------
@@ -150,6 +153,5 @@ export const deletePaymentMethod = async (id: string) => { await run(supabase.fr
 // ---------- tracking, history, activity ----------
 export const markDelivered = (groupId: string) => rpc<{ status: 'delivered'; delivered_at: string; already: boolean }>('mark_delivered', { p_group: groupId });
 export const myGroupOrders = () => rpc<HistoryRow[]>('my_group_orders');
-export const groupActivity = (groupId: string) =>
-  run<ActivityRow[]>(supabase.from('audit_log').select('at, actor_id, table_name, action, changes').eq('group_order_id', groupId).order('at') as never);
+export const groupActivity = (groupId: string) => rpc<ActivityRow[]>('group_activity', { p_group: groupId });
 

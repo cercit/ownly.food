@@ -9,15 +9,24 @@ const Line = ({ label, value, strong, hint }: { label: string; value: number; st
   </div>
 );
 
-/** Rapido's charges for the order as three plain lines, as the host entered them. Each is split equally. */
+/**
+ * Delivery, packaging and taxes, worked out by the database (nobody types them).
+ * While the cart is open or locked they update as dishes are added; once placed they are fixed.
+ */
 export function ChargesLines({ group }: { group: Group }) {
   const n = group.members.length;
+  const c = group.charges;
+  const live = group.status === 'open' || group.status === 'locked';
+  const km = Number(c.distance_km ?? 0);
   return (
-    <div className="rounded-2xl bg-[#FFF9FC] border border-[#F0D7E2] px-4 py-2">
-      <p className="text-xs font-bold text-[#576177] pt-1">Rapido's charges for this order, split equally across {n} {n === 1 ? 'person' : 'people'}</p>
-      <Line label="Delivery" value={group.delivery_fee ?? 0} />
-      <Line label="Packaging" value={group.packaging_fee ?? 0} />
-      <Line label="Taxes" value={group.taxes ?? 0} />
+    <div className="rounded-2xl bg-[#FFF9FC] border border-[#F0D7E2] px-4 py-2" data-testid="charges">
+      <p className="text-xs font-bold text-[#576177] pt-1">
+        {live ? 'Charges so far (final when the host places the order)' : 'Charges for this order'}, split equally across {n} {n === 1 ? 'person' : 'people'}
+      </p>
+      <Line label="Delivery" value={c.delivery} hint={`${km.toFixed(1)} km${c.per_km ? ` × ${rupees(c.per_km)} per km` : ''}${live && c.pinned === false ? ' (from the middle of the delivery area)' : ''}`} />
+      <Line label="Packaging" value={c.packaging} hint={live && c.packaging_per_item ? `${c.dishes ?? 0} ${c.dishes === 1 ? 'dish' : 'dishes'} × ${rupees(c.packaging_per_item)}` : undefined} />
+      <Line label="Taxes" value={c.taxes} hint="GST 5% on the food" />
+      <Line label="Total charges" value={c.total} strong />
     </div>
   );
 }

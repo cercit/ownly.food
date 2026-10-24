@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 import { Compass, Hash, Receipt, UsersRound, UserRound } from 'lucide-react';
 import { ConceptStrip } from './ConceptStrip.tsx';
-import { useAuth } from '../lib/auth.tsx';
+import { needsDetails, useAuth } from '../lib/auth.tsx';
+import { SignInScreen } from '../screens/SignInScreen.tsx';
 import { hrefFor, type Route } from '../lib/router.ts';
 import { Button, Card, Spinner } from '../ui/kit.tsx';
 
@@ -58,8 +59,10 @@ export function Layout({ route, children }: { route: Route; children: ReactNode 
 
 /** Wraps a screen that needs a signed-in person. */
 export function RequireSignIn({ children, why = 'Sign in to continue.' }: { children: ReactNode; why?: string }) {
-  const { user, loading } = useAuth();
+  const { user, profile, loading } = useAuth();
   if (loading) return <Spinner />;
+  // Name and mobile are required: anyone who hasn't given them is asked once before going on.
+  if (user && needsDetails(profile)) return <SignInScreen next={window.location.hash || '#/'} />;
   if (!user) return (
     <Card className="max-w-md mx-auto text-center">
       <h1 className="text-2xl font-extrabold">Sign in first</h1>
